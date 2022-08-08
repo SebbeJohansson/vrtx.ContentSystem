@@ -1,0 +1,14 @@
+import enTranslation from '../translations/en';
+
+export default {
+  locales: ['en'],
+  defaultLocale: 'en',
+  strategy: 'prefix',
+  detectBrowserLanguage: false,
+  vueI18n: {
+    fallbackLocale: 'en',
+    messages: {
+      en: enTranslation,
+    },
+  },
+};

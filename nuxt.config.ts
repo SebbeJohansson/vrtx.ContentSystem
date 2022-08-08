@@ -1,11 +1,25 @@
 import { defineNuxtConfig } from '@nuxt/bridge';
 
+import i18nConfig from './config/i18n.config';
+
 export default defineNuxtConfig({
   bridge: {
     meta: true,
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+
+  // Global page headers: https://go.nuxtjs.dev/config-head
+  head: {
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'format-detection', content: 'telephone=no' },
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    ],
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -27,6 +41,7 @@ export default defineNuxtConfig({
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/i18n',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -37,5 +52,9 @@ export default defineNuxtConfig({
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  i18n: {
+    i18nConfig,
   },
 });

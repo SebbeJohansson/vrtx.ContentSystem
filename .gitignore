@@ -88,3 +88,11 @@ sw.*
 
 # Vim swap files
 *.swp
+
+
+
+# config
+translations/*
+!translations/en.ts.example
+config/*
+!config/i18n.config.ts.example
