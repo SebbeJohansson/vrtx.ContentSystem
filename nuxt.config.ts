@@ -54,7 +54,5 @@ export default defineNuxtConfig({
   build: {
   },
 
-  i18n: {
-    i18nConfig,
-  },
+  i18n: i18nConfig,
 });

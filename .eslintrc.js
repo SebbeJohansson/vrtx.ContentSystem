@@ -17,5 +17,6 @@ module.exports = {
   rules: {
     'vue/multi-word-component-names': 'off',
     'import/extensions': [2, 'never'],
+    'eslint-disable linebreak-style': 'off',
   },
 };
