@@ -54,7 +54,7 @@ export default defineNuxtConfig({
   modules: [
     '@storyblok/nuxt',
     'nuxt-jsonld',
-    'nuxt-full-static',
+    // 'nuxt-full-static', // Turns on full static mode
     // '@funken-studio/sitemap-nuxt-3',
   ],
 
@@ -93,22 +93,4 @@ export default defineNuxtConfig({
   //     lastmod: new Date().toISOString(),
   //   },
   // },
-
-  hooks: {
-    'nitro:config': async function (nitroConfig) {
-      // console.log(nitroConfig);
-      if (nitroConfig.dev) { return; }
-      // ..Async logic..
-      nitroConfig.prerender.routes.push('/custom');
-      nitroConfig.prerender.routes.push(...(await dynamicRoutes(process.env.STORYBLOK_API_TOKEN)));
-      // console.log(nitroConfig.prerender.routes);
-    },
-  },
-
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/help', '/prerender'],
-    },
-  },
 });
