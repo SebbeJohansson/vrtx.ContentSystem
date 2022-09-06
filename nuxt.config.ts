@@ -19,7 +19,6 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'SebbeJohansson',
       htmlAttrs: {
         lang: 'en',
       },

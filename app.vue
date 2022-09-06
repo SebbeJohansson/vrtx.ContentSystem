@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { StoryData } from '@storyblok/vue/dist';
 
+const layout = 'content-page';
+
 const route = useRoute();
 
 const isPreview = !!(route.query._storyblok && route.query._storyblok !== '');
@@ -11,7 +13,7 @@ const story = ref({} as StoryData);
 if (isPreview) {
   // We are in preview so lets fetch it with the normal module.
   const storyblokApi = useStoryblokApi();
-  await storyblokApi.get(`cdn/stories/portfolio/${route.params.slug}`, {
+  await storyblokApi.get(`cdn/stories/${route.path}`, {
     version,
   }).then((response) => {
     if (!response) { return; }
@@ -27,29 +29,24 @@ if (isPreview) {
   });
 } else {
   // Custom fetch for full static support.
-  await useStoryblokFetch(`portfolio/${route.params.slug}`, {
+  console.log(route.path);
+  await useStoryblokFetch(route.path, {
     version,
   }).then((response) => {
+    console.log(response);
     if (!response) { return; }
     story.value = response.story;
   });
 }
-
-const portfolioTitle = computed((): string => story.value.content?.title || story.value.name || 'Portfolio entry');
-const portfolioDescription = computed((): string => story.value.content?.description || `${story.value.content?.role} - ${story.value.content?.title}` || story.value.name || 'wow');
-
-useHead({
-  titleTemplate: title => `${(story.value.content.role ? `${story.value.content?.role} at ` : '')}${portfolioTitle.value} - ${title}`,
-  meta: [{
-    vmid: 'description',
-    name: 'description',
-    content: portfolioDescription.value,
-  }],
-});
 </script>
 
 <template>
   <div>
-    <component :is="$resolveStoryBlokComponent(story)" :blok="story.content" :raw="story" />
+    <NuxtLayout :name="layout">
+      <span>
+        {{ story }}
+        <component :is="$resolveStoryBlokComponent(story)" :blok="story.content" :raw="story" />
+      </span>
+    </NuxtLayout>
   </div>
 </template>
