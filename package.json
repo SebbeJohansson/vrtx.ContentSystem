@@ -15,8 +15,11 @@
   "dependencies": {
     "@nuxt/bridge": "npm:@nuxt/bridge-edge",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/composition-api": "^0.33.1",
     "@nuxtjs/i18n": "^7.2.3",
+    "@storyblok/nuxt-2": "^1.1.0",
     "@vueuse/head": "^0.7.9",
+    "axios": "^0.27.2",
     "core-js": "^3.19.3",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
