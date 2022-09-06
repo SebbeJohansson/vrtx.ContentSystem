@@ -1,142 +1,114 @@
-import { defineNuxtConfig } from '@nuxt/bridge';
-import axios from 'axios';
-import { StoryblokVue, useStoryblokBridge, useStoryblokApi } from '@storyblok/nuxt-2';
-
-import i18nConfig from './config/i18n.config';
+import { defineNuxtConfig } from 'nuxt';
+import dynamicRoutes from './helpers/dynamicRoutes';
 
 export default defineNuxtConfig({
-  // bridge: false, // Temporarily disable bridge integration
-  bridge: {
-    meta: true,
-  },
+  telemetry: false,
 
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  // Disable servenr-side rendering: https://go.nuxtjs.dev/ssr-mode
+  // ssr: false,
 
-  ssr: false,
-
-  // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'format-detection', content: 'telephone=no' },
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ],
-  },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxt/bridge',
-    ['@storyblok/nuxt-2/module', { accessToken: 'liEdsDqa1r20DQlvJHQbzgtt' }],
-  ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    '@nuxtjs/i18n',
-  ],
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-  },
-
-  hooks: {
-    'nitro:config': async function (nitroConfig) {
-      console.log(nitroConfig);
-      if (nitroConfig.dev) { return; }
-      // ..Async logic..
-      nitroConfig.prerender.routes.push('/custom');
-      console.log(nitroConfig.prerender.routes);
-      axios.get('https://api.storyblok.com/v2/cdn/stories?token=liEdsDqa1r20DQlvJHQbzgtt&version=published').then((res) => res.data.stories.map((story) => story.slug));
+  runtimeConfig: {
+    public: {
+      STORYBLOK_API_TOKEN: process.env.STORYBLOK_API_TOKEN,
     },
   },
 
   generate: {
-    // routes: async () => { // add async here
-    //   /* const client = contentful.createClient(config);
-
-    //   const blogRoutes = await client // add await here
-    //     .getEntries({
-    //       content_type: 'blogPost',
-    //     })
-    //     .then((response) => response.items.map(
-    //       (entry) => `/blog/${entry.fields.slug}`,
-    //     ));
-    //   const collectionRoutes = await client // add await here
-    //     .getEntries({
-    //       content_type: 'collection',
-    //     })
-    //     .then((response) => response.items.map(
-    //       (entry) => `/collections/${entry.fields.slug}`,
-    //     )); */
-
-    //   // const storyblokApi = useStoryblokApi();
-    //   // const { data } = await storyblokApi.get(`cdn/stories`, {
-    //   //   version: "draft",
-    //   // });
-    //   // await storyblokApi.get('cdn/stories', {
-    //   //   version: 'published',
-    //   //   filter_query: {
-    //   //     component: {
-    //   //       any_in_array: 'content-page,blog-page',
-    //   //     },
-    //   //   },
-    //   // }).then(({ data }) => {
-    //   // });
-
-    //   const routes = [/* ...blogRoutes, ...collectionRoutes */]; // return a single array of strings
-
-    //   return routes;
-    // },
-
-    /* routes() {
-      console.log(axios);
-      return axios.get('https://api.storyblok.com/v2/cdn/stories?token=liEdsDqa1r20DQlvJHQbzgtt&version=published').then((res) => res.data.stories.map((story) => story.slug));
-    }, */
+    crawler: true,
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  /*  build: {
-    extend(config, context) {
-      if (context.isServer && process.env.NODE_ENV !== 'development') {
-        const client = new useStoryblokApi.StoryblokClient({
-          accessToken: process.env.STORYBLOK_ACCESSTOKEN,
-        });
+  app: {
+    head: {
+      title: 'SebbeJohansson',
+      htmlAttrs: {
+        lang: 'en',
+      },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: '' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
+      script: [
+        {
+          hid: 'gtm',
+          children: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${process.env.GTM_ID}');`,
+          type: 'text/javascript',
+        },
+      ],
+    },
+  },
 
-        // Render BlockPage
-        client.get('cdn/stories', {
-          version: 'published',
-          filter_query: {
-            component: {
-              in: 'BlockPage',
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    '~/assets/styles/index.css',
+  ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    '@storyblok/nuxt',
+    'nuxt-jsonld',
+    'nuxt-full-static',
+    // '@funken-studio/sitemap-nuxt-3',
+  ],
+
+  storyblok: {
+    accessToken: process.env.STORYBLOK_API_TOKEN,
+  },
+
+  postcss: {
+    plugins: {
+      'postcss-import': {},
+      'postcss-custom-media': {
+        importFrom: [
+          {
+            customMedia: {
+              '--phone': '(max-width: 767px)',
+              '--phoneAndTablet': '(max-width: 1023px)',
+              '--tablet': '(min-width: 768px) and (max-width: 1023px)',
+              '--tabletAndDesktop': '(min-width: 768px)',
+              '--desktop': '(min-width: 1024px)',
             },
           },
-        }).then(({ data }) => {
-          data.stories.forEach((detailPage) => {
-            const path = detailPage.path || `/${detailPage.slug}`;
-            this.buildContext.options.generate.routes.push(path);
-          });
-        });
-      }
+        ],
+      },
+      autoprefixer: {
+        overrideBrowserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
+      },
     },
-  }, */
+  },
 
-  i18n: i18nConfig,
+  // sitemap: {
+  //   hostname: 'https://sebbejohansson.com',
+  //   gzip: true,
+  //   cacheTime: 1,
+  //   // routes: dynamicRoutes,
+  //   defaults: {
+  //     lastmod: new Date().toISOString(),
+  //   },
+  // },
+
+  hooks: {
+    'nitro:config': async function (nitroConfig) {
+      // console.log(nitroConfig);
+      if (nitroConfig.dev) { return; }
+      // ..Async logic..
+      nitroConfig.prerender.routes.push('/custom');
+      nitroConfig.prerender.routes.push(...(await dynamicRoutes(process.env.STORYBLOK_API_TOKEN)));
+      // console.log(nitroConfig.prerender.routes);
+    },
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/help', '/prerender'],
+    },
+  },
 });
