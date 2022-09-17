@@ -2,9 +2,7 @@
 import { StoryData } from '@storyblok/vue/dist';
 
 const pageContent = usePageContent();
-console.log("storyblok page: ", pageContent);
 const blok = pageContent.value as StoryData;
-
 </script>
 
 <template>

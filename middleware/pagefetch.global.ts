@@ -2,14 +2,12 @@ import { StoryData } from '@storyblok/vue/dist';
 
 // import { Blok } from '~/composables/useStoryblokFetch';
 
-export default defineNuxtRouteMiddleware(async (to, from) => {
-  console.log('Middleware: pagefetch.global.ts', to);
-
+export default defineNuxtRouteMiddleware(async (to) => {
   const pageContent = usePageContent();
   const pageType = usePageType();
   const pageSource = usePageSource();
 
-  const currentRoute = { ...useRoute() };
+  const currentRoute = { ...to };
   if (currentRoute.path === '/') {
     currentRoute.path = 'index';
   }
