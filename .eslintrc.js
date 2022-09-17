@@ -1,22 +1,39 @@
 module.exports = {
-  root: true,
   env: {
     browser: true,
-    es6: true,
+    es2021: true,
     node: true,
   },
   extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended',
-    'airbnb-base',
+    "./node_modules/eslint-config-airbnb-base/rules/best-practices.js",
+    "./node_modules/eslint-config-airbnb-base/rules/errors.js",
+    "./node_modules/eslint-config-airbnb-base/rules/es6.js",
+    "./node_modules/eslint-config-airbnb-base/rules/imports.js",
+    "./node_modules/eslint-config-airbnb-base/rules/node.js",
+    // './node_modules/eslint-config-airbnb-base/rules/strict.js',
+    "./node_modules/eslint-config-airbnb-base/rules/variables.js",
+    "@nuxtjs/eslint-config-typescript",
+    "./node_modules/eslint-config-airbnb-base/rules/style.js",
   ],
-  plugins: [
-    'vue',
-  ],
-  // add your custom rules here
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
   rules: {
-    'vue/multi-word-component-names': 'off',
-    'import/extensions': [2, 'never'],
-    'eslint-disable linebreak-style': 'off',
+    "max-len": ["error", { code: 240 }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: false,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
+    "vue/multi-word-component-names": "off",
+    "import/extensions": [2, "never"],
+    "linebreak-style": "off",
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
   },
 };
