@@ -17,7 +17,7 @@ defineProps({
       :is="$resolveStoryBlokComponent(block)"
       v-for="block in blok.content"
       :key="block._uid"
-      :blok="block.content"
+      :blok="block"
     />
   </div>
 </template>
