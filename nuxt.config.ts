@@ -83,6 +83,16 @@ export default defineNuxtConfig({
     },
   },
 
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/styles/global-vars.scss";',
+        },
+      },
+    },
+  },
+
   // sitemap: {
   //   hostname: 'https://sebbejohansson.com',
   //   gzip: true,

@@ -31,17 +31,14 @@ const columns = computed(() => props.blok.columns);
   </div>
 </template>
 
-<style>
+<style lang="scss">
 .sb-columns-block {
   overflow: hidden;
   width: 100%;
-  max-width: calc(1180px + 2rem);
-  margin: auto;
-  padding: 0 1rem;
+  @include content-width();
 }
 
 .sb-columns-block__margin {
-  margin: 0 -1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
