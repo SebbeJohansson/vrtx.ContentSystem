@@ -6,7 +6,7 @@ const pageSource = usePageSource();
 <template>
   <div>
     <NuxtLayout :name="layout">
-      <ContentPagesStoryblokPage v-if="pageSource === 'storyblok'" />
+      <SourcesStoryblokPage v-if="pageSource === 'storyblok'" />
     </NuxtLayout>
   </div>
 </template>
