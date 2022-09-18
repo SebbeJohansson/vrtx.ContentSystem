@@ -7,7 +7,6 @@ const blok = pageContent.value as StoryData;
 
 <template>
   <div>
-    {{ blok }}
     <component
       :is="$resolveStoryBlokComponent(blok)"
       v-if="blok.content"
