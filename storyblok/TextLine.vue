@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { renderRichText } from '@storyblok/js';
-
 const { $formatRichText } = useNuxtApp();
 
 const props = defineProps({
@@ -9,7 +7,7 @@ const props = defineProps({
     required: true,
   },
 });
-const text = computed((): string => $formatRichText(renderRichText(props.blok.text)));
+const text = computed((): string => $formatRichText(useStoryblokApi().richTextResolver.render(props.blok.text)));
 const css = computed(() => {
   const cssObject = {} as any;
 
