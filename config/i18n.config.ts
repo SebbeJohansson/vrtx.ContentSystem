@@ -3,12 +3,10 @@ export default {
     {
       code: 'en',
       file: 'en.ts',
-      domain: 'localhost',
     },
     {
       code: 'sv',
       file: 'sv.ts',
-      domain: 'dragon.revolutionrace.se',
     },
   ],
   defaultLocale: 'en',

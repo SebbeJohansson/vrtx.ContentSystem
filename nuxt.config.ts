@@ -1,11 +1,13 @@
 import { defineNuxtConfig } from 'nuxt';
 import dynamicRoutes from './helpers/dynamicRoutes';
 
+import i18nConfig from './config/i18n.config';
+
 export default defineNuxtConfig({
   telemetry: false,
 
   // Disable servenr-side rendering: https://go.nuxtjs.dev/ssr-mode
-  // ssr: false,
+  ssr: false,
 
   runtimeConfig: {
     public: {
@@ -53,6 +55,7 @@ export default defineNuxtConfig({
   modules: [
     '@storyblok/nuxt',
     'nuxt-jsonld',
+    '@nuxtjs/i18n',
     // 'nuxt-full-static', // Turns on full static mode
     // '@funken-studio/sitemap-nuxt-3',
   ],
@@ -92,6 +95,8 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  i18n: i18nConfig,
 
   // sitemap: {
   //   hostname: 'https://sebbejohansson.com',
