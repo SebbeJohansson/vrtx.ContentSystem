@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Richtext } from 'storyblok-js-client';
+
 const { $formatRichText } = useNuxtApp();
 
 const props = defineProps({
@@ -7,7 +9,37 @@ const props = defineProps({
     required: true,
   },
 });
-const text = computed((): string => $formatRichText(useStoryblokApi().richTextResolver.render(props.blok.text)));
+const textObject = { ...props.blok.text };
+const nodes = computed((): any[] => {
+  const localNodes = [];
+  // Proof of concept for custom handling of inline blok nodes.
+  Object.entries(textObject.content).forEach(([key, node]) => {
+    if (node.type === 'blok') {
+      const blok = {
+        content: node.attrs?.body?.[0],
+      };
+      localNodes.push({
+        key,
+        type: 'blok',
+        content: {
+          blok,
+        },
+      });
+    } else {
+      localNodes.push({
+        key,
+        type: 'html',
+        content: $formatRichText(useStoryblokApi().richTextResolver.render({
+          type: 'doc',
+          content: [
+            node,
+          ],
+        } as Richtext)),
+      });
+    }
+  });
+  return localNodes;
+});
 const css = computed(() => {
   const cssObject = {} as any;
 
@@ -35,7 +67,15 @@ const classes = computed(() => {
     :class="classes"
     :style="css"
   >
-    <div class="sb-text-line__content" v-html="text" />
+    <div v-for="node in nodes" :key="node.key">
+      <component
+        :is="$resolveStoryBlokComponent(node.content.blok)"
+        v-if="node.type === 'blok'"
+        class="sb-text-line__content"
+        :blok="node.content.blok.content"
+      />
+      <div v-else class="sb-text-line__content" v-html="node.content" />
+    </div>
   </div>
 </template>
 
