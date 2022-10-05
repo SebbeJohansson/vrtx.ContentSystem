@@ -1,63 +1,63 @@
 <script setup lang="ts">
-import { Richtext } from 'storyblok-js-client';
+  import { Richtext } from 'storyblok-js-client';
 
-const { $formatRichText } = useNuxtApp();
+  const { $formatRichText } = useNuxtApp();
 
-const props = defineProps({
-  blok: {
-    type: Object,
-    required: true,
-  },
-});
-const textObject = { ...props.blok.text };
-const nodes = computed((): any[] => {
-  const localNodes = [];
-  // Proof of concept for custom handling of inline blok nodes.
-  Object.entries(textObject.content).forEach(([key, node]) => {
-    if (node.type === 'blok') {
-      const blok = {
-        content: node.attrs?.body?.[0],
-      };
-      localNodes.push({
-        key,
-        type: 'blok',
-        content: {
-          blok,
-        },
-      });
-    } else {
-      localNodes.push({
-        key,
-        type: 'html',
-        content: $formatRichText(useStoryblokApi().richTextResolver.render({
-          type: 'doc',
-          content: [
-            node,
-          ],
-        } as Richtext)),
-      });
-    }
+  const props = defineProps({
+    blok: {
+      type: Object,
+      required: true,
+    },
   });
-  return localNodes;
-});
-const css = computed(() => {
-  const cssObject = {} as any;
+  const textObject = { ...props.blok.text };
+  const nodes = computed((): any[] => {
+    const localNodes = [];
+    // Proof of concept for custom handling of inline blok nodes.
+    Object.entries(textObject.content).forEach(([key, node]) => {
+      if (node.type === 'blok') {
+        const blok = {
+          content: node.attrs?.body?.[0],
+        };
+        localNodes.push({
+          key,
+          type: 'blok',
+          content: {
+            blok,
+          },
+        });
+      } else {
+        localNodes.push({
+          key,
+          type: 'html',
+          content: $formatRichText(useStoryblokApi().richTextResolver.render({
+            type: 'doc',
+            content: [
+              node,
+            ],
+          } as Richtext)),
+        });
+      }
+    });
+    return localNodes;
+  });
+  const css = computed(() => {
+    const cssObject = {} as any;
 
-  if (props.blok.text_color?.color && props.blok.text_color?.color !== '') {
-    cssObject.color = props.blok.text_color.color;
-  }
+    if (props.blok.text_color?.color && props.blok.text_color?.color !== '') {
+      cssObject.color = props.blok.text_color.color;
+    }
 
-  return cssObject;
-});
-const classes = computed(() => {
-  const classesObject = [];
+    return cssObject;
+  });
+  const classes = computed(() => {
+    const classesObject = [];
 
-  if (props.blok.text_align) {
-    classesObject.push(`sb-text-line--text-align-${props.blok.text_align}`);
-  }
+    if (props.blok.text_align) {
+      classesObject.push(`sb-text-line--text-align-${props.blok.text_align}`);
+    }
 
-  return classesObject;
-});
+    return classesObject;
+  });
 </script>
 
 <template>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-defineProps({
-  blok: {
-    type: Object,
-    required: true,
-  },
-});
+  defineProps({
+    blok: {
+      type: Object,
+      required: true,
+    },
+  });
 </script>
 
 <template>

@@ -1,18 +1,18 @@
 <script setup lang="ts">
-const props = defineProps({
-  blok: {
-    type: Object,
-    required: true,
-  },
-});
-const blockClasses = computed(() => {
-  const classes = [];
-  if (props.blok.design) {
-    classes.push(`sb-columns-block--design-${props.blok.design}`);
-  }
-  return classes;
-});
-const columns = computed(() => props.blok.columns);
+  const props = defineProps({
+    blok: {
+      type: Object,
+      required: true,
+    },
+  });
+  const blockClasses = computed(() => {
+    const classes = [];
+    if (props.blok.design) {
+      classes.push(`sb-columns-block--design-${props.blok.design}`);
+    }
+    return classes;
+  });
+  const columns = computed(() => props.blok.columns);
 </script>
 
 <template>

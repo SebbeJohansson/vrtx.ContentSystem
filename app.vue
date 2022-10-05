@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const layout = usePageType().value;
-const pageSource = usePageSource();
+  const layout = usePageType().value;
+  const pageSource = usePageSource();
 </script>
 
 <template>
