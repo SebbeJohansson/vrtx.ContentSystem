@@ -21,7 +21,7 @@ defineProps({
   </div>
 </template>
 
-<style>
+<style scoped>
 .sb-column-structure {
   padding: 0 0.5rem;
 }

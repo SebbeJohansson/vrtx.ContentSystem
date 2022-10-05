@@ -133,7 +133,7 @@ const useBackgroundLook = computed(() => !$isArrayEmpty(backgroundCss.value));
   </component>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .sb-banner-block {
   position: relative;
   text-decoration: none;

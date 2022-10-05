@@ -31,7 +31,7 @@ const columns = computed(() => props.blok.columns);
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .sb-columns-block {
   overflow: hidden;
   width: 100%;

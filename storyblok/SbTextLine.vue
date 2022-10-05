@@ -79,7 +79,7 @@ const classes = computed(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .sb-text-line--text-align-right{
   text-align: right;
 }
