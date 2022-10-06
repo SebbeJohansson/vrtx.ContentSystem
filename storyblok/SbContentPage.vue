@@ -13,11 +13,15 @@
     v-editable="blok"
     class="sb-content-page"
   >
-    <component
-      :is="$resolveStoryBlokComponent(block)"
+    <ContentBaseBlock
       v-for="block in blok.content"
       :key="block._uid"
-      :blok="block"
-    />
+      :block-key="block._uid"
+    >
+      <component
+        :is="$resolveStoryBlokComponent(block)"
+        :blok="block"
+      />
+    </ContentBaseBlock>
   </div>
 </template>

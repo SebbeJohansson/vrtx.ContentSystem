@@ -40,32 +40,19 @@
     });
     return localNodes;
   });
-  const css = computed(() => {
-    const cssObject = {} as any;
-
+  const textColor = computed(() => {
     if (props.blok.text_color?.color && props.blok.text_color?.color !== '') {
-      cssObject.color = props.blok.text_color.color;
+      return props.blok.text_color.color;
     }
-
-    return cssObject;
-  });
-  const classes = computed(() => {
-    const classesObject = [];
-
-    if (props.blok.text_align) {
-      classesObject.push(`sb-text-line--text-align-${props.blok.text_align}`);
-    }
-
-    return classesObject;
+    return '000';
   });
 </script>
 
 <template>
-  <div
+  <ContentTextLine
     v-editable="blok"
-    class="sb-text-line"
-    :class="classes"
-    :style="css"
+    :text-align="blok.text_align"
+    :text-color="textColor"
   >
     <div v-for="node in nodes" :key="node.key">
       <component
@@ -76,23 +63,5 @@
       />
       <div v-else class="sb-text-line__content" v-html="node.content" />
     </div>
-  </div>
+  </ContentTextLine>
 </template>
-
-<style scoped>
-.sb-text-line--text-align-right{
-  text-align: right;
-}
-.sb-text-line--text-align-left{
-  text-align: left;
-}
-.sb-text-line--text-align-center{
-  text-align: center;
-}
-.sb-text-line__content *:first-child {
-  margin-top: 0;
-}
-.sb-text-line__content *:last-child {
-  margin-bottom: 0;
-}
-</style>
