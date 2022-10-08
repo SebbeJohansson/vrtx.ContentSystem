@@ -1,5 +1,4 @@
-import { defineNuxtConfig } from 'nuxt';
-import dynamicRoutes from './helpers/dynamicRoutes';
+// import dynamicRoutes from './helpers/dynamicRoutes';
 
 import i18nConfig from './config/i18n.config';
 
@@ -15,8 +14,11 @@ export default defineNuxtConfig({
     },
   },
 
-  generate: {
-    crawler: true,
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    },
   },
 
   app: {
@@ -56,7 +58,6 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     'nuxt-jsonld',
     '@nuxtjs/i18n',
-    // 'nuxt-full-static', // Turns on full static mode
     // '@funken-studio/sitemap-nuxt-3',
   ],
 
