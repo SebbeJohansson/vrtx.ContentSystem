@@ -1,6 +1,7 @@
 // import dynamicRoutes from './helpers/dynamicRoutes';
+import availableLocales from './locales/availableLocales';
 
-import i18nConfig from './config/i18n.config';
+// import i18nConfig from './config/i18n.config';
 
 export default defineNuxtConfig({
   telemetry: false,
@@ -57,7 +58,8 @@ export default defineNuxtConfig({
   modules: [
     '@storyblok/nuxt',
     'nuxt-jsonld',
-    '@nuxtjs/i18n',
+    '@intlify/nuxt3',
+    // '@nuxtjs/i18n', /* @nuxtjs/i18n is currently not supporting nuxt3 properly */
     // '@funken-studio/sitemap-nuxt-3',
   ],
 
@@ -97,7 +99,18 @@ export default defineNuxtConfig({
     },
   },
 
-  i18n: i18nConfig,
+  // i18n: i18nConfig, /* @nuxtjs/i18n is currently not supporting nuxt3 properly */
+
+  /* intlify instead of nuxt/i18n */
+  /* https://github.com/nuxt-community/i18n-module/issues/1410#issuecomment-1192735679 */
+  intlify: {
+    vueI18n: {
+      locale: availableLocales[0],
+      fallbackLocale: availableLocales[0],
+      availableLocales,
+      sync: true,
+    },
+  },
 
   // sitemap: {
   //   hostname: 'https://sebbejohansson.com',
