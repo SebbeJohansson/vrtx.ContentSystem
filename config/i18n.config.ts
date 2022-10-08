@@ -2,17 +2,18 @@ export default {
   locales: [
     {
       code: 'en',
-      file: 'en.ts',
+      file: 'en.json',
     },
     {
       code: 'sv',
-      file: 'sv.ts',
+      file: 'sv.json',
+      domain: 'dragon.revolutionrace.se',
     },
   ],
   defaultLocale: 'en',
   detectBrowserLanguage: false,
   differentDomains: true,
   // strategy: 'prefix',
-  // lazy: true,
-  langDir: 'translations/',
+  lazy: true,
+  langDir: 'locales/',
 };
