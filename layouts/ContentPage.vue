@@ -1,7 +1,8 @@
 <template>
   <div>
     content page;
-    {{$t("welcome")}}
+    {{ $t("welcome") }}
+    <PartsLanguageSwitcher />
     <slot />
   </div>
 </template>

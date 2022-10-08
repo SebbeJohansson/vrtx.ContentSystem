@@ -57,7 +57,7 @@ export default defineNuxtConfig({
   modules: [
     '@storyblok/nuxt',
     'nuxt-jsonld',
-    '@nuxtjs/i18n',
+    '@nuxtjs/i18n', // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
     // '@funken-studio/sitemap-nuxt-3',
   ],
 
