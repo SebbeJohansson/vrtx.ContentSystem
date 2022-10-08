@@ -7,7 +7,4 @@ $content-width: 1180px;
   max-width: calc($content-width + 2rem);
   margin: auto;
   padding: 0 1rem;
-  > * {
-    margin: 0 -1rem;
-  }
 }

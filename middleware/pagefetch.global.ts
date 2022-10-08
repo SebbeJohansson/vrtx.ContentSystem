@@ -45,7 +45,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
       // story.value = response.story;
       pageContent.value = response.story as StoryData;
       // console.log(response.story);
-      pageType.value = response.story.content.component;
+      pageType.value = response.story.content.component.substr(3);
       pageSource.value = 'storyblok';
     });
   }
