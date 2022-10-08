@@ -23,7 +23,7 @@
     "axios": "^0.27.2",
     "eslint-config-airbnb-base": "^15.0.0",
     "nuxt": "npm:nuxt3@latest",
-    "nuxt-jsonld": "^2.0.3",
+    "nuxt-jsonld": "^2.0.6",
     "nuxt3": "npm:nuxt3@latest",
     "postcss-custom-media": "^8.0.2",
     "sass": "^1.54.9",
