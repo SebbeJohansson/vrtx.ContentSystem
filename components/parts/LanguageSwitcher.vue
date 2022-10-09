@@ -1,6 +1,7 @@
 <script setup>
   // const switchLocalePath = useSwitchLocalePath(); // switchLocalePath doesnt work very well with lazy locales
   const { /* locale, */ locales, setLocale } = useI18n();
+  console.log(useI18n());
   const availableLocales = computed(() => (locales.value)/* .filter(i => i.code !== locale.value) */);
 </script>
 
