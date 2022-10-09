@@ -6,43 +6,62 @@ export interface Blok {
   cv: number,
 }
 
-export const useStoryblokFetch = async (slug: string, params?: any) => {
-  const config = useRuntimeConfig();
+export const useStoryblokFetch = async () => {
 
-  const { data: result } = await useAsyncData(
-    `${slug}-${new URLSearchParams(params)}`,
-    async () => {
-      let pages = 0;
-      const stories: StoryData[] = [];
+  console.log("use storyblok fetch");
 
-      await $fetch.raw(`https://api.storyblok.com/v2/cdn/stories/${slug}?token=${config.public.STORYBLOK_API_TOKEN}&${new URLSearchParams(params)}`).then((res) => {
-        if (!res._data) { return; }
-        if (res._data.story) {
-          stories.push(res._data.story);
-        } else {
-          const total = res.headers.get('total');
-          const perPage = res.headers.get('per_page') || total > 25 ? 25 : null;
+  const { locale } = useI18n();
 
-          if (perPage) {
-            pages = Math.ceil(total / perPage);
-          }
+  const pageContent = usePageContent();
+  const pageType = usePageType();
+  const pageSource = usePageSource();
 
-          stories.push(...(res._data.stories as StoryData[]));
-        }
-      });
+  const route = useRoute();
 
-      for (let page = 2; page <= pages; page += 1) {
-        await $fetch(`https://api.storyblok.com/v2/cdn/stories/${slug}?token=${config.public.STORYBLOK_API_TOKEN}&${new URLSearchParams({ ...params, page })}`).then((res) => {
-          stories.push(...(res.stories as StoryData[]));
-        });
-      }
+  const currentRoute = { ...route };
+  const localeString = `/${locale.value}`;
+  if (currentRoute.path.startsWith(localeString)) {
+    currentRoute.path = currentRoute.path.slice(localeString.length);
+  }
+  if (currentRoute.path === '/') {
+    currentRoute.path = 'index';
+  }
 
-      return {
-        stories,
-        story: stories[0],
-      };
-    },
-  );
-  const blok = result.value as Blok;
-  return blok;
+  const isPreview = !!(currentRoute.query._storyblok && currentRoute.query._storyblok !== '');
+  const version = isPreview ? 'draft' : 'published';
+
+  // const story = ref({} as StoryData);
+
+  if (isPreview) {
+    // We are in preview so lets fetch it with the normal module.
+    /* const storyblokApi = useStoryblokApi();
+    await storyblokApi.get(`cdn/stories/${currentRoute.path}`, {
+      version,
+    }).then((response) => {
+      if (!response) { return; }
+      // story.value = response.data.story;
+      pageContent.value = response.data as Blok;
+    }); */
+
+    // We are in preview so lets fetch it with the normal module.
+    await useStoryblok(currentRoute.path, {
+      version,
+      language: locale.value,
+    }).then((response) => {
+      if (!response) { return; }
+      pageContent.value = response.value;
+    });
+  } else {
+    await useAsyncStoryblok(currentRoute.path, {
+      version,
+      language: locale.value,
+    }).then((response) => {
+      console.log(response);
+      if (!response) { return; }
+      pageContent.value = response.value;
+      pageType.value = response.value.content.component.substr(3);
+      pageSource.value = 'storyblok';
+    });
+  }
 };
+

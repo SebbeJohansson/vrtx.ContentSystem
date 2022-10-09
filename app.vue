@@ -1,12 +1,14 @@
 <script setup lang="ts">
+  await usePageFetch();
+
   const layout = usePageType().value;
   const pageSource = usePageSource();
-  const { locale } = useI18n();
 </script>
 
 <template>
-  <div>
-    {{ locale }}
+  <div v-if="layout">
+    layout = {{ layout }}
+    {{pageSource}}
     <NuxtLayout :name="layout">
       <SourcesStoryblokPage v-if="pageSource === 'storyblok'" />
     </NuxtLayout>

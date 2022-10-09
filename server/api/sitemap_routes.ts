@@ -24,8 +24,6 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
       page: 1,
     });
 
-    console.log(pageInfo);
-
     const totalPages = Math.ceil(pageInfo.headers.total / 25);
     for (let page = 1; page <= totalPages; page++) {
       const pages = await storyblokApi.get(`cdn/stories/?starts_with=${slug}`, {
