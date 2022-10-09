@@ -10,6 +10,7 @@
     "static-deploy": "npx serve -s .output/public"
   },
   "devDependencies": {
+    "@intlify/nuxt3": "^0.2.4",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
@@ -18,6 +19,8 @@
   },
   "dependencies": {
     "@funken-studio/sitemap-nuxt-3": "^3.2.0",
+    "@nuxt/kit": "^3.0.0-rc.11",
+    "@nuxtjs/i18n": "8.0.0-alpha.2",
     "@storyblok/js": "^1.7.2",
     "@storyblok/nuxt": "^4.4.1",
     "axios": "^0.27.2",

@@ -2,19 +2,23 @@ export default {
   locales: [
     {
       code: 'en',
-      file: 'en.ts',
-      domain: 'localhost',
+      file: 'en.json',
     },
     {
       code: 'sv',
-      file: 'sv.ts',
-      domain: 'dragon.revolutionrace.se',
+      file: 'sv.json',
+      // domain: 'dragon.revolutionrace.se',
     },
   ],
-  defaultLocale: 'en',
-  detectBrowserLanguage: false,
-  differentDomains: true,
-  // strategy: 'prefix',
-  // lazy: true,
-  langDir: 'translations/',
+  defaultLocale: 'sv',
+  detectBrowserLanguage: {
+    useCookie: true,
+    cookieKey: 'lang',
+    alwaysRedirect: true,
+    fallbackLocale: 'en',
+  },
+  // differentDomains: true, // DifferentDomains are not supported in nuxt3.
+  strategy: 'prefix_and_default',
+  lazy: true, // Lazy is not fully supported in nuxt3. Changing language is not working with cookie.
+  langDir: 'locales/',
 };
