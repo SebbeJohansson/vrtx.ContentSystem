@@ -58,6 +58,7 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     'nuxt-jsonld',
     '@nuxtjs/i18n', // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
+    '~/modules/sitemap',
     // '@funken-studio/sitemap-nuxt-3',
   ],
 
@@ -98,6 +99,10 @@ export default defineNuxtConfig({
   },
 
   i18n: i18nConfig,
+
+  sitemap: {
+    hostname: process.env.HOSTNAME,
+  },
 
   // sitemap: {
   //   hostname: 'https://sebbejohansson.com',
