@@ -50,13 +50,15 @@ export const useStoryblokFetch = async () => {
     }).then((response) => {
       if (!response) { return; }
       pageContent.value = response.value;
+      pageType.value = response.value.content.component.substr(3);
+      console.log(pageType.value);
+      pageSource.value = 'storyblok';
     });
   } else {
     await useAsyncStoryblok(currentRoute.path, {
       version,
       language: locale.value,
     }).then((response) => {
-      console.log(response);
       if (!response) { return; }
       pageContent.value = response.value;
       pageType.value = response.value.content.component.substr(3);
