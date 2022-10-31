@@ -2,7 +2,7 @@
   await usePageFetch();
 
   const layout = usePageType().value;
-  const pageSource = usePageSource();
+  const pageSource = usePageSource().value;
 </script>
 
 <template>
