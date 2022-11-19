@@ -23,13 +23,13 @@
     if (props.blok.link.id !== '') {
       return `${props.blok.link.cached_url || props.blok.link.link}`;
     }
-    return null;
+    return undefined;
   });
   const externalLink = computed(() => {
     if (!props.blok.link.id || props.blok.link.id === '') {
       return `${props.blok.link.cached_url || props.blok.link.link}`;
     }
-    return null;
+    return undefined;
   });
   const deviceSpecificHeight = computed(() => props.blok.height);
 </script>

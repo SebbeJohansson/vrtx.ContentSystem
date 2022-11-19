@@ -64,7 +64,7 @@ export default defineNuxtConfig({
   storyblok: {
     accessToken: process.env.STORYBLOK_API_TOKEN,
     useApiClient: true,
-    apiOptions: { cache: { type: 'memory' } }
+    apiOptions: { cache: { type: 'memory' } },
   },
 
   postcss: {
