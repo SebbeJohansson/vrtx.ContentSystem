@@ -7,8 +7,6 @@
 
 <template>
   <div v-if="layout">
-    layout = {{ layout }}
-    {{pageSource}}
     <NuxtLayout :name="layout">
       <SourcesStoryblokPage v-if="pageSource === 'storyblok'" />
     </NuxtLayout>

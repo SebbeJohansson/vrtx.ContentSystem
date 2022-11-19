@@ -30,40 +30,14 @@ export const useStoryblokFetch = async () => {
   const isPreview = !!(currentRoute.query._storyblok && currentRoute.query._storyblok !== '');
   const version = isPreview ? 'draft' : 'published';
 
-  // const story = ref({} as StoryData);
-
-  if (isPreview) {
-    // We are in preview so lets fetch it with the normal module.
-    /* const storyblokApi = useStoryblokApi();
-    await storyblokApi.get(`cdn/stories/${currentRoute.path}`, {
-      version,
-    }).then((response) => {
-      if (!response) { return; }
-      // story.value = response.data.story;
-      pageContent.value = response.data as Blok;
-    }); */
-
-    // We are in preview so lets fetch it with the normal module.
-    await useStoryblok(currentRoute.path, {
-      version,
-      language: locale.value,
-    }).then((response) => {
-      if (!response) { return; }
-      pageContent.value = response.value;
-      pageType.value = response.value.content.component.substr(3);
-      console.log(pageType.value);
-      pageSource.value = 'storyblok';
-    });
-  } else {
-    await useAsyncStoryblok(currentRoute.path, {
-      version,
-      language: locale.value,
-    }).then((response) => {
-      if (!response) { return; }
-      pageContent.value = response.value;
-      pageType.value = response.value.content.component.substr(3);
-      pageSource.value = 'storyblok';
-    });
-  }
+  await useAsyncStoryblok(currentRoute.path, {
+    version,
+    language: locale.value,
+  }).then((response) => {
+    if (!response) { return; }
+    pageContent.value = response.value;
+    pageType.value = response.value.content.component.substr(3);
+    pageSource.value = 'storyblok';
+  });
 };
 
