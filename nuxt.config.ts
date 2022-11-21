@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   telemetry: false,
 
   // Disable servenr-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false, // nuxtjs/i18n is not working with ssr yet.
+  // ssr: false, // nuxtjs/i18n is not working with ssr yet.
 
   runtimeConfig: {
     public: {

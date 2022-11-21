@@ -8,7 +8,7 @@
 </script>
 
 <template>
-  <div
+  <ContentMenuContent
     v-if="blok.departments && Array.isArray(blok.departments) && blok.departments.length > 0"
     v-editable="blok"
     class="sb-menu"
@@ -19,5 +19,5 @@
       :key="department._uid"
       :blok="department"
     />
-  </div>
+  </ContentMenuContent>
 </template>

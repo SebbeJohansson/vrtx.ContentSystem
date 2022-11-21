@@ -23,7 +23,7 @@
 </script>
 
 <template>
-  <ContentMenuDepartment
+  <HeaderMenuDepartment
     v-editable="blok"
     class="sb-menu-department"
     :title="title"
@@ -36,5 +36,5 @@
       :key="sub_department._uid"
       :blok="sub_department"
     />
-  </ContentMenuDepartment>
+  </HeaderMenuDepartment>
 </template>

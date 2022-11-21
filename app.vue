@@ -1,12 +1,25 @@
 <script setup lang="ts">
-  await usePageFetch();
 
-  const layout = usePageType().value;
+  try {
+    await usePageFetch();
+  } catch (e) {
+    console.log(e);
+  }
+
+  const acceptedPageTypes = ['content-page'];
+
+  let layout = usePageType().value;
   const pageSource = usePageSource().value;
+
+  if (!acceptedPageTypes.includes(layout) || !pageSource) {
+    console.log('redirecting to 404');
+    layout = 'error';
+    throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
+  }
 </script>
 
 <template>
-  <div v-if="layout">
+  <div v-if="layout" class="app">
     <NuxtLayout :name="layout">
       <SourcesStoryblokPage v-if="pageSource === 'storyblok'" />
     </NuxtLayout>
