@@ -17,7 +17,7 @@
     "eslint-plugin-vue": "^9.0.1"
   },
   "dependencies": {
-    "@nuxtjs/i18n": "8.0.0-alpha.2",
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@storyblok/js": "^1.7.2",
     "@storyblok/nuxt": "^4.4.1",
     "axios": "^0.27.2",

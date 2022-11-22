@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   telemetry: false,
 
   // Disable servenr-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false, // nuxtjs/i18n is not working with ssr yet.
+  // ssr: false, // nuxtjs/i18n is not working with ssr yet.
 
   runtimeConfig: {
     public: {
@@ -64,7 +64,7 @@ export default defineNuxtConfig({
   storyblok: {
     accessToken: process.env.STORYBLOK_API_TOKEN,
     useApiClient: true,
-    apiOptions: { cache: { type: 'memory' } }
+    apiOptions: { cache: { type: 'memory' } },
   },
 
   postcss: {
