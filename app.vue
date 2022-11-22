@@ -10,8 +10,11 @@
 
   let layout = usePageType().value;
   const pageSource = usePageSource().value;
+  const pagePreview = usePagePreview().value;
 
-  if (!acceptedPageTypes.includes(layout) || !pageSource) {
+  console.log(pagePreview);
+
+  if ((!acceptedPageTypes.includes(layout) || !pageSource) && !pagePreview) {
     console.log('redirecting to 404');
     layout = 'error';
     throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });

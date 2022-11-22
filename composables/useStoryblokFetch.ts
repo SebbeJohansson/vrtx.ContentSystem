@@ -12,6 +12,7 @@ export const useStoryblokPageFetch = async () => {
   const pageContent = usePageContent();
   const pageType = usePageType();
   const pageSource = usePageSource();
+  const pagePreview = usePagePreview();
 
   const route = useRoute();
 
@@ -26,6 +27,7 @@ export const useStoryblokPageFetch = async () => {
 
   const isPreview = !!(currentRoute.query._storyblok && currentRoute.query._storyblok !== '');
   const version = isPreview ? 'draft' : 'published';
+  pagePreview.value = isPreview;
 
   await useAsyncStoryblok(currentRoute.path, {
     version,
