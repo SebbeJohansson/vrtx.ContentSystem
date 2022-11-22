@@ -61,3 +61,23 @@ export const useStoryblokMenuFetch = async () => {
   });
 };
 
+export const useStoryblokFooterFetch = async () => {
+  const { locale } = useI18n();
+
+  const footerContent = useFooterContent();
+  const footerSource = useFooterSource();
+
+  const route = useRoute();
+
+  const isPreview = !!(route.query._storyblok && route.query._storyblok !== '');
+  const version = isPreview ? 'draft' : 'published';
+
+  await useAsyncStoryblok('footer', {
+    version,
+    language: locale.value,
+  }).then((response) => {
+    if (!response) { return; }
+    footerContent.value = response.value;
+    footerSource.value = 'storyblok';
+  });
+};
