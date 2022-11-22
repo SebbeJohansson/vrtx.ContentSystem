@@ -100,10 +100,6 @@ export default defineNuxtConfig({
 
   i18n: i18nConfig,
 
-  sitemap: {
-    hostname: process.env.HOSTNAME,
-  },
-
   // sitemap: {
   //   hostname: 'https://sebbejohansson.com',
   //   gzip: true,
