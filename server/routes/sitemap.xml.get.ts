@@ -13,7 +13,7 @@ export default defineCachedEventHandler(async (event) => {
     ...routes.map(
       route => [
         '<url>',
-        `  <loc>https://yourdomain.com${route}</loc>`,
+        `  <loc>${runtimeConfig.public.HOSTNAME}${route}</loc>`,
         `  <lastmod>${timestamp}</lastmod>`,
         '</url>',
       ].join(''),

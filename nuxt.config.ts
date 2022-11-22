@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       STORYBLOK_API_TOKEN: process.env.STORYBLOK_API_TOKEN,
+      HOSTNAME: process.env.HOSTNAME,
     },
   },
 
