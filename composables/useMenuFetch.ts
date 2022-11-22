@@ -4,6 +4,5 @@ export const useMenuSource = () => useState<string>('menuSource', () => '');
 /* useMenuFetch - Fetches content from sources. */
 /* Currently only storyblok. */
 export const useMenuFetch = async () => {
-  console.log("this is the menu fetch");
   await useStoryblokMenuFetch();
 };

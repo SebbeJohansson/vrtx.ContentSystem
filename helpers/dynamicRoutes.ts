@@ -18,11 +18,6 @@ import axios from 'axios';
 //   },
 // });
 
-export default (storyblokApiToken) => {
-  console.log(storyblokApiToken);
-  console.log(`https://api.storyblok.com/v2/cdn/stories?token=${storyblokApiToken}&version=published`);
-  console.log(axios.get(`https://api.storyblok.com/v2/cdn/stories?token=${storyblokApiToken}&version=published`).then((res) => res.data.stories.map((story) => `/${story.full_slug}`)));
-  return axios.get(`https://api.storyblok.com/v2/cdn/stories?token=${storyblokApiToken}&version=published`).then((res) => res.data.stories.map((story) => `/${story.full_slug}`));
-};
+export default storyblokApiToken => axios.get(`https://api.storyblok.com/v2/cdn/stories?token=${storyblokApiToken}&version=published`).then(res => res.data.stories.map(story => `/${story.full_slug}`));
 
 // export default async () => ['/route'];
