@@ -18,15 +18,13 @@
     "sitemap": "^7.1.1"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.11",
-    "@nuxtjs/i18n": "8.0.0-alpha.2",
+    "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
     "@storyblok/js": "^1.7.2",
     "@storyblok/nuxt": "^4.4.1",
     "axios": "^0.27.2",
     "eslint-config-airbnb-base": "^15.0.0",
     "nuxt": "npm:nuxt3@latest",
     "nuxt-jsonld": "^2.0.6",
-    "nuxt3": "npm:nuxt3@latest",
     "postcss-custom-media": "^8.0.2",
     "sass": "^1.54.9",
     "typescript": "^4.7.2",

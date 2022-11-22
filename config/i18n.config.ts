@@ -3,10 +3,12 @@ export default {
     {
       code: 'en',
       file: 'en.json',
+      prefix: 'en',
     },
     {
       code: 'sv',
       file: 'sv.json',
+      prefix: 'sv',
       // domain: 'dragon.revolutionrace.se',
     },
   ],
@@ -19,6 +21,6 @@ export default {
   }, */
   // differentDomains: true, // DifferentDomains are not supported in nuxt3.
   strategy: 'prefix_and_default',
-  lazy: true, // Lazy is not fully supported in nuxt3. Changing language is not working with cookie.
+  // lazy: true, // Lazy is not fully supported in nuxt3. Changing language is not working with cookie.
   langDir: 'locales/',
 };

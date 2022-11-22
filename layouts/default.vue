@@ -1,6 +1,5 @@
 <template>
   <div class="default-layout">
-    default;
-    <NuxtPage />
+    <slog />
   </div>
 </template>
