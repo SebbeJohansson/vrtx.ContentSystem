@@ -17,10 +17,12 @@
 <template>
   <div class="menu">
     <div class="menu__content">
-      <h2>
+      <h2 class="menu__logo">
         LocoLogo
-        {{ $t("welcome") }}
       </h2>
+      <h3 class="menu__logo">
+        {{ $t("welcome") }}
+      </h3>
       <component
         :is="menuContentComponent"
         class="menu__source-content"
@@ -35,9 +37,14 @@
   background-color: $base-color;
 }
 .menu__content {
+  @include content-width();
   display: flex;
   flex-direction: row;
-  @include content-width();
+  height: 60px;
+  align-items: center;
+}
+.menu__logo {
+  margin-right: 1rem;
 }
 .menu__source-content {
   display: flex;

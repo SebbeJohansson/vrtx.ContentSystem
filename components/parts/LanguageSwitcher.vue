@@ -6,7 +6,6 @@
 
 <template>
   <div>
-    {{ $t("welcome") }}
     <!--
       switchLocalePath doesnt work very well with lazy locales
     <NuxtLink :to="switchLocalePath('en')">
@@ -34,7 +33,6 @@
       </select>
       <p>{{ $t('welcome') }}</p>
     </form> -->
-    {{ availableLocales }}
     <button
       v-for="availableLocale in availableLocales"
       :key="availableLocale.code"
