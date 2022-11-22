@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/'],
+      routes: ['/', '/sitemap.xml'],
     },
   },
 
@@ -58,8 +58,6 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     'nuxt-jsonld',
     '@nuxtjs/i18n', // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
-    '~/modules/sitemap',
-    // '@funken-studio/sitemap-nuxt-3',
   ],
 
   storyblok: {
