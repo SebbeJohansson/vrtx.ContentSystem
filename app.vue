@@ -6,11 +6,11 @@
     console.log(e);
   }
 
-  const acceptedPageTypes = ['content-page'];
-
   let layout = usePageType().value;
   const pageSource = usePageSource().value;
   const pagePreview = usePagePreview().value;
+
+  console.log(await useStoryblokGetDynamicRoutes());
 
   if ((!acceptedPageTypes.includes(layout) || !pageSource) && !pagePreview) {
     layout = 'error';
