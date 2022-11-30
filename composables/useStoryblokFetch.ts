@@ -31,7 +31,6 @@ export const useStoryblokPageFetch = async () => {
   const version = isPreview ? 'draft' : 'published';
   pagePreview.value = isPreview;
 
-  console.log(useGetAcceptedStoryblokPageTypes().join(','));
   await useAsyncStoryblok(currentRoute.path, {
     version,
     language: locale.value,

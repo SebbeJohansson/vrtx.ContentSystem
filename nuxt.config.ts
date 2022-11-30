@@ -1,4 +1,4 @@
-// import dynamicRoutes from './helpers/dynamicRoutes';
+import { useStoryblokRawFetchDynamicRoutes } from './composables/useStoryblokRawFetch';
 
 import i18nConfig from './config/i18n.config';
 
@@ -19,6 +19,15 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/', '/sitemap.xml'],
+    },
+  },
+
+  hooks: {
+    async 'nitro:config'(nitroConfig) {
+      if (nitroConfig.dev) { return; }
+      // ..Async logic..
+      const dynamicRoutes = await useStoryblokRawFetchDynamicRoutes(process.env.STORYBLOK_API_TOKEN as string);
+      nitroConfig?.prerender?.routes?.push(...dynamicRoutes);
     },
   },
 
@@ -100,14 +109,4 @@ export default defineNuxtConfig({
   },
 
   i18n: i18nConfig,
-
-  // sitemap: {
-  //   hostname: 'https://sebbejohansson.com',
-  //   gzip: true,
-  //   cacheTime: 1,
-  //   // routes: dynamicRoutes,
-  //   defaults: {
-  //     lastmod: new Date().toISOString(),
-  //   },
-  // },
 });

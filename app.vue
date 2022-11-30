@@ -10,8 +10,6 @@
   const pageSource = usePageSource().value;
   const pagePreview = usePagePreview().value;
 
-  console.log(await useStoryblokGetDynamicRoutes());
-
   if ((!acceptedPageTypes.includes(layout) || !pageSource) && !pagePreview) {
     layout = 'error';
     throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });

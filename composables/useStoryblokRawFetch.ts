@@ -1,6 +1,8 @@
+/* eslint-disable import/no-duplicates */
 import { StoryData } from '@storyblok/vue/dist';
-// eslint-disable-next-line import/no-duplicates
 import { apiPlugin } from '@storyblok/vue';
+
+import { acceptedPageTypes } from './usePageFetch';
 
 export interface Blok {
   story: StoryData;
@@ -8,24 +10,14 @@ export interface Blok {
   cv: number,
 }
 
-export const useStoryblokRawFetchStories = async (params?: any) => {
-  const config = useRuntimeConfig();
-  const { storyblokApi } = apiPlugin({ apiOptions: { accessToken: config.public.STORYBLOK_API_TOKEN } });
+export const useStoryblokRawFetchStories = async (storyblokApiToken: string, params?: any) => {
+  const { storyblokApi } = apiPlugin({ apiOptions: { accessToken: storyblokApiToken } });
 
   let pages = 0;
   const stories: StoryData[] = [];
-
-  const pageInfo = await storyblokApi.get('cdn/stories/', {
-    version: 'published',
-    filter_query: {
-      component: {
-        in: 'sb-content-page',
-      },
-    },
-  });
+  const pageInfo = await storyblokApi.get('cdn/stories/', params);
 
   stories.push(...(pageInfo.data.stories as StoryData[]));
-  console.log(pageInfo.data.stories);
   const { total } = pageInfo.headers;
   const perPage = pageInfo.headers.per_page || total > 25 ? 25 : null;
 
@@ -35,7 +27,7 @@ export const useStoryblokRawFetchStories = async (params?: any) => {
 
   for (let page = 2; page <= pages; page += 1) {
     const pageInfo2 = await storyblokApi.get('cdn/stories/', {
-      version: 'published',
+      ...params,
       page,
     });
     stories.push(...(pageInfo2.data.stories as StoryData[]));
@@ -44,14 +36,17 @@ export const useStoryblokRawFetchStories = async (params?: any) => {
   return stories;
 };
 
-export const useStoryblokRawFetchDynamicRoutes = async () => {
-  const data = await useStoryblokRawFetchStories({
-    version: 'published',
-    filter_query: {
-      component: {
-        in: ['content-page'].join(','),
+export const useStoryblokRawFetchDynamicRoutes = async (storyblokApiToken: string) => {
+  const data = await useStoryblokRawFetchStories(
+    storyblokApiToken,
+    {
+      version: 'published',
+      filter_query: {
+        component: {
+          in: acceptedPageTypes.map(pageType => `sb-${pageType}`).join(','),
+        },
       },
     },
-  });
-  return data.map(story => story.path || `/${story.full_slug}`);
+  );
+  return data.map(story => story.path || `/${story.full_slug}`) as string[];
 };
