@@ -6,8 +6,6 @@
     console.log(e);
   }
 
-  const acceptedPageTypes = ['content-page'];
-
   let layout = usePageType().value;
   const pageSource = usePageSource().value;
   const pagePreview = usePagePreview().value;

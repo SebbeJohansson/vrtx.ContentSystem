@@ -6,6 +6,8 @@ export interface Blok {
   cv: number,
 }
 
+export const useGetAcceptedStoryblokPageTypes = () => acceptedPageTypes.map(pageType => `sb-${pageType}`);
+
 export const useStoryblokPageFetch = async () => {
   const { locale } = useI18n();
 
@@ -80,4 +82,62 @@ export const useStoryblokFooterFetch = async () => {
     footerContent.value = response.value;
     footerSource.value = 'storyblok';
   });
+};
+
+export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
+  const storyblokApi = useStoryblokApi();
+  let result = {} as Blok;
+  try {
+    const { data } = await useAsyncData(
+      `storyblok-fetch-${slug}-${new URLSearchParams(JSON.stringify(params))}`,
+      async () => {
+        let pages = 0;
+        const stories: StoryData[] = [];
+
+        await storyblokApi.get(`cdn/stories/${slug}`, params).then((res) => {
+          if (!res.data) { return; }
+          if (res.data.story) {
+            stories.push(res.data.story);
+          } else {
+            const { total } = res.headers;
+            const perPage = res.headers.per_page || total > 25 ? 25 : null;
+
+            if (perPage) {
+              pages = Math.ceil(total / perPage);
+            }
+
+            stories.push(...(res.data.stories as StoryData[]));
+          }
+        });
+
+        for (let page = 2; page <= pages; page += 1) {
+          // eslint-disable-next-line no-await-in-loop
+          await storyblokApi.get(`cdn/stories/${slug}`, params).then((res) => {
+            stories.push(...(res.data.stories as StoryData[]));
+          });
+        }
+
+        return {
+          stories,
+          story: stories[0],
+        };
+      },
+    );
+    result = data.value as Blok;
+  } catch (error) {
+    console.error(error);
+  }
+  return result;
+};
+
+export const useStoryblokFetchDynamicRoutes = async () => {
+  const data = await useStoryblokFetchStories('', {
+    version: 'published',
+    filter_query: {
+      component: {
+        in: useGetAcceptedStoryblokPageTypes().join(','),
+      },
+    },
+  });
+  return data.stories.map(story => `/${story.full_slug}`);
 };

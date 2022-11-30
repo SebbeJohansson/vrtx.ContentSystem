@@ -1,9 +1,9 @@
-import dynamicRoutes from '~/helpers/dynamicRoutes';
+import { useStoryblokRawFetchDynamicRoutes } from '~/composables/useStoryblokRawFetch';
 
 export default defineCachedEventHandler(async (event) => {
   const runtimeConfig = useRuntimeConfig();
   // perform async logic
-  const routes = await dynamicRoutes(runtimeConfig.public.STORYBLOK_API_TOKEN);
+  const routes = await useStoryblokRawFetchDynamicRoutes(runtimeConfig.public.STORYBLOK_API_TOKEN);
   // copy the logic from the module above though you might consider,
   // if relevant, using your CMS's modified date for <lastmod> instead
   const timestamp = new Date().toISOString();
