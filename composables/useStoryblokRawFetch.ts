@@ -45,6 +45,9 @@ export const useStoryblokRawFetchDynamicRoutes = async (storyblokApiToken: strin
         component: {
           in: acceptedPageTypes.map(pageType => `sb-${pageType}`).join(','),
         },
+        exclude_from_index: {
+          is: 'false',
+        },
       },
     },
   );
