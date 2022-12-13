@@ -60,7 +60,8 @@ export default defineNuxtConfig({
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/styles/index.css',
+    '~/assets/styles/normalize.css',
+    '~/assets/styles/reset.local.css',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -102,7 +103,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/styles/global-vars.scss";',
+          additionalData: '@import "@/assets/styles/global-vars";',
         },
       },
     },
