@@ -93,3 +93,7 @@ sw.*
 # Custom
 assets/styles/custom/
 public/icon.png
+config/
+!config/i18n.config.ts
+locales/
+!locales/en.json.example
