@@ -18,7 +18,7 @@
   <div class="footer-footer">
     <div class="footer-footer__content">
       <h2>
-        LocoLogo
+        {{ $t("logo") }}
       </h2>
       <component
         :is="footerContentComponent"

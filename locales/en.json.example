@@ -1,3 +1,4 @@
-export default {
-  welcome: 'Welcome',
-};
+{
+  "logo": "Your Logo",
+  "welcome": "This is the welcome message"
+}
