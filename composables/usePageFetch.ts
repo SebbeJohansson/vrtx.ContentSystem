@@ -1,7 +1,13 @@
+interface PageMeta {
+  title: string;
+  description: string;
+}
+
 export const usePageContent = () => useState<object>('pageContent', () => ({}));
 export const usePageType = () => useState<string>('pageType', () => '');
 export const usePageSource = () => useState<string>('pageSource', () => '');
 export const usePagePreview = () => useState<boolean>('pagePreview', () => false);
+export const usePageMeta = () => useState<PageMeta>('pageMeta', () => ({} as PageMeta));
 
 export const acceptedPageTypes = ['content-page'];
 

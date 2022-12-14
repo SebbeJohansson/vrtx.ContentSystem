@@ -15,6 +15,7 @@ export const useStoryblokPageFetch = async () => {
   const pageType = usePageType();
   const pageSource = usePageSource();
   const pagePreview = usePagePreview();
+  const pageMeta = usePageMeta();
 
   const route = useRoute();
 
@@ -39,6 +40,8 @@ export const useStoryblokPageFetch = async () => {
     pageContent.value = response.value;
     pageType.value = response.value.content.component.substr(3);
     pageSource.value = 'storyblok';
+    pageMeta.value.title = response.value.content.title;
+    pageMeta.value.description = response.value.content.description;
   });
 };
 
