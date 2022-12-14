@@ -1,5 +1,6 @@
 interface PageMeta {
   title: string;
+  description: string;
 }
 
 export const usePageContent = () => useState<object>('pageContent', () => ({}));

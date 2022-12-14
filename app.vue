@@ -19,10 +19,9 @@
 
 <template>
   <div v-if="layout" class="app">
-    {{ pageMeta }}
     <Head>
       <Title>{{ pageMeta.title }}</Title>
-      <Meta name="description" content="My app description" />
+      <Meta name="description" :content="pageMeta.description" />
     </Head>
     <NuxtLayout :name="layout">
       <SourcesStoryblokPage v-if="pageSource === 'storyblok'" />
