@@ -18,7 +18,7 @@
   <div class="menu">
     <div class="menu__content">
       <h2 class="menu__logo">
-        LocoLogo
+        {{ $t("logo") }}
       </h2>
       <h3 class="menu__logo">
         {{ $t("welcome") }}
