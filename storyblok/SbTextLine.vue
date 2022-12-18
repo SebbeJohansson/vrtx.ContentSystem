@@ -29,7 +29,7 @@
         localNodes.push({
           key,
           type: 'html',
-          content: $formatRichText(useStoryblokApi().richTextResolver.render({
+          content: $formatRichText(renderRichText({
             type: 'doc',
             content: [
               node,
