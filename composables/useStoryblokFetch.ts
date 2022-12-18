@@ -32,7 +32,8 @@ export const useStoryblokPageFetch = async () => {
   const version = isPreview ? 'draft' : 'published';
   pagePreview.value = isPreview;
 
-  await useAsyncStoryblok(currentRoute.path, {
+  console.log(currentRoute);
+  await useStoryblok('blog-page', {
     version,
     language: locale.value,
   }).then((response) => {

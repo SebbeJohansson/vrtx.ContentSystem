@@ -6,14 +6,14 @@
     console.log(e);
   }
 
-  let layout = usePageType().value;
+  const layout = usePageType();
   const pageSource = usePageSource().value;
   const pagePreview = usePagePreview().value;
   const pageMeta = usePageMeta().value;
 
-  if ((!acceptedPageTypes.includes(layout) || !pageSource) && !pagePreview) {
-    layout = 'error';
-    throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
+  if ((!acceptedPageTypes.includes(layout.value) || !pageSource) && !pagePreview) {
+    layout.value = 'error';
+    throw createError({ statusCode: 404, statusMessage: 'Page Not Found', fatal: true });
   }
 </script>
 

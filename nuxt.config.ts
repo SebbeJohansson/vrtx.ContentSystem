@@ -69,7 +69,6 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     'nuxt-jsonld',
     '@nuxtjs/i18n', // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
-    // '@kevinmarrec/nuxt-pwa',
   ],
 
   storyblok: {
@@ -111,10 +110,4 @@ export default defineNuxtConfig({
   },
 
   i18n: i18nConfig,
-
-  /* pwa: {
-    workbox: {
-      enabled: true, // Run PWA workbox in dev mode
-    },
-  }, */
 });

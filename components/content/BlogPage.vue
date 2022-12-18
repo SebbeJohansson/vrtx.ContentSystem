@@ -25,12 +25,6 @@
 
     return post.cover_image.alt_tag;
   };
-
-  return {
-    coverCss,
-    coverImage,
-    coverImageAlt,
-  };
 </script>
 
 <template>
