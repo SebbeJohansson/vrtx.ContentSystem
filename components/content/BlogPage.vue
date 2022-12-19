@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
   defineProps({
     posts: {
       type: Array as () => BlogPost[],
@@ -6,8 +7,8 @@
     },
   });
 
-  const coverCss = (post) => {
-    const css = {};
+  const coverCss = (post: BlogPost) => {
+    const css = {} as Record<string, string>;
 
     if (post.cover_image?.color) {
       css['background-color'] = post.cover_image.color;
@@ -15,12 +16,12 @@
 
     return css;
   };
-  const coverImage = (post) => {
+  const coverImage = (post: BlogPost) => {
     if (!post.cover_image || !post.cover_image.image || post.cover_image.image === '') { return null; }
 
     return post.cover_image.image;
   };
-  const coverImageAlt = (post) => {
+  const coverImageAlt = (post: BlogPost) => {
     if (!post.cover_image || !post.cover_image.alt_tag || post.cover_image.alt_tag === '') { return null; }
 
     return post.cover_image.alt_tag;

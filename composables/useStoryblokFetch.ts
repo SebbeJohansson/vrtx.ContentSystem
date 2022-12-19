@@ -33,13 +33,15 @@ export const useStoryblokPageFetch = async () => {
   pagePreview.value = isPreview;
 
   console.log(currentRoute);
-  await useStoryblok(currentRoute.path, {
+  await useAsyncStoryblok(currentRoute.path, {
     version,
     language: locale.value,
+    resolve_relations: 'sb-blog-page.categories',
   }).then((response) => {
-    console.log(response.value.content.component.substring(3));
     if (!response) { return; }
+
     pageContent.value = response.value;
+
     pageType.value = response.value.content.component.substring(3);
     pageSource.value = 'storyblok';
     pageMeta.value.title = response.value.content.title;
@@ -89,6 +91,19 @@ export const useStoryblokFooterFetch = async () => {
   });
 };
 
+export const useStoryblokBlogPostFetch = async (version: string, categories: StoryData[]) => {
+  const data = await useStoryblokFetchStories('', {
+    version,
+    content_type: 'sb-blog-post',
+    filter_query: {
+      categories: {
+        any_in_array: categories.map(category => category.uuid).join(','),
+      },
+    },
+  });
+  return data.stories as StoryData[];
+};
+
 export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
   const storyblokApi = useStoryblokApi();
   let result = {} as Blok;
@@ -130,6 +145,7 @@ export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
     );
     result = data.value as Blok;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
   return result;
