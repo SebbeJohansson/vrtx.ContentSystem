@@ -3,18 +3,15 @@
   try {
     await usePageFetch();
   } catch (e) {
-    console.log(e);
+    // eslint-disable-next-line no-console
+    console.error(e);
   }
 
   const layout = usePageType();
   const pageSource = usePageSource().value;
-  const pagePreview = usePagePreview().value;
   const pageMeta = usePageMeta().value;
 
-  if ((!acceptedPageTypes.includes(layout.value) || !pageSource) && !pagePreview) {
-    layout.value = 'error';
-    throw createError({ statusCode: 404, statusMessage: 'Page Not Found', fatal: true });
-  }
+  usePageTypeCheck();
 </script>
 
 <template>

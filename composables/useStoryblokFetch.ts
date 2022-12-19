@@ -33,13 +33,14 @@ export const useStoryblokPageFetch = async () => {
   pagePreview.value = isPreview;
 
   console.log(currentRoute);
-  await useStoryblok('blog-page', {
+  await useStoryblok(currentRoute.path, {
     version,
     language: locale.value,
   }).then((response) => {
+    console.log(response.value.content.component.substring(3));
     if (!response) { return; }
     pageContent.value = response.value;
-    pageType.value = response.value.content.component.substr(3);
+    pageType.value = response.value.content.component.substring(3);
     pageSource.value = 'storyblok';
     pageMeta.value.title = response.value.content.title;
     pageMeta.value.description = response.value.content.description;
