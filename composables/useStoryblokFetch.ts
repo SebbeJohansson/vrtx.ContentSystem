@@ -8,9 +8,7 @@ export interface Blok {
 
 export const useGetAcceptedStoryblokPageTypes = () => acceptedPageTypes.map(pageType => `sb-${pageType}`);
 
-export const useStoryblokPageFetch = async () => {
-  const { locale } = useI18n();
-
+export const useStoryblokPageFetch = async (locale: string) => {
   const pageContent = usePageContent();
   const pageType = usePageType();
   const pageSource = usePageSource();
@@ -20,7 +18,7 @@ export const useStoryblokPageFetch = async () => {
   const route = useRoute();
 
   const currentRoute = { ...route };
-  const localeString = `/${locale.value}`;
+  const localeString = `/${locale}`;
   if (currentRoute.path.startsWith(localeString)) {
     currentRoute.path = currentRoute.path.slice(localeString.length);
   }
@@ -32,10 +30,9 @@ export const useStoryblokPageFetch = async () => {
   const version = isPreview ? 'draft' : 'published';
   pagePreview.value = isPreview;
 
-  console.log(currentRoute);
   await useAsyncStoryblok(currentRoute.path, {
     version,
-    language: locale.value,
+    language: locale,
     resolve_relations: 'sb-blog-page.categories',
   }).then((response) => {
     if (!response) { return; }

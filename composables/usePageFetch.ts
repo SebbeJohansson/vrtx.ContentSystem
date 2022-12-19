@@ -14,7 +14,15 @@ export const acceptedPageTypes = ['content-page', 'blog-page'];
 /* usePageFetch - Fetches content from sources. */
 /* Currently only storyblok. */
 export const usePageFetch = async () => {
-  await useStoryblokPageFetch();
+  const route = useRoute();
+  const currentPath = ref('');
+  const { locale } = useI18n();
+
+  await watchEffect(async () => {
+    currentPath.value = route.fullPath;
+    await useStoryblokPageFetch(locale.value);
+  });
+  await useStoryblokPageFetch(locale.value);
 };
 
 export const useGetDynamicRoutes = async () => {

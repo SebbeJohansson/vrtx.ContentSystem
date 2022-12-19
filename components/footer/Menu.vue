@@ -1,7 +1,7 @@
 <script setup lang="ts">
   await useFooterFetch();
   const footerSource = useFooterSource().value;
-  let footerContentComponent;
+  let footerContentComponent: any;
   switch (footerSource) {
     case 'storyblok':
       footerContentComponent = resolveComponent('SourcesStoryblokFooter');

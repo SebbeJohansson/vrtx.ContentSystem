@@ -1,4 +1,9 @@
 <script setup lang="ts">
+  definePageMeta({
+    // We use a custom solution for layouts since some features we need does not exist.
+    layout: false,
+  });
+
   try {
     await usePageFetch();
   } catch (e) {
@@ -7,8 +12,8 @@
   }
 
   const layout = usePageType();
-  const pageSource = usePageSource();
-  const pageMeta = usePageMeta();
+  const pageSource = usePageSource().value;
+  const pageMeta = usePageMeta().value;
 
   usePageTypeCheck();
 </script>
