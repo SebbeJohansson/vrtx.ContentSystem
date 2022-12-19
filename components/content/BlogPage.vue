@@ -36,7 +36,7 @@
       class="blog-page__posts"
     >
       <div class="blog-page__posts-margin">
-        <nuxt-link
+        <NuxtLink
           v-for="post in posts"
           :key="post.key"
           class="blog-page__post"
@@ -66,7 +66,7 @@
               <span>Read More</span>
             </div>
           </div>
-        </nuxt-link>
+        </NuxtLink>
       </div>
     </div>
   </div>

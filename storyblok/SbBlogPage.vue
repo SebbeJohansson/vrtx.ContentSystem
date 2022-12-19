@@ -18,20 +18,17 @@
       blogPosts.value = blogPosts.value.concat(response);
     });
   }
-  const posts = computed(() => blogPosts.value.map((post: StoryData) => {
-    console.log(post);
-    return {
-      key: post.uuid,
-      title: post.content.title || post.content.name || post.name,
-      /* cover_image: {
+  const posts = computed(() => blogPosts.value.map((post: StoryData) => ({
+    key: post.uuid,
+    title: post.content.title || post.content.name || post.name,
+    /* cover_image: {
         color: post.content.cover_image.color,
         image: post.content.cover_image.image,
         alt_tag: post.content.cover_image.alt_tag,
       }, */
-      // description: post.content.description,
-      slug: post.full_slug,
-    } as BlogPost;
-  }));
+    // description: post.content.description,
+    slug: post.full_slug,
+  } as BlogPost)));
 </script>
 
 <template>
