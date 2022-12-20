@@ -20,6 +20,7 @@ export const usePageFetch = async () => {
 
   await watchEffect(async () => {
     currentPath.value = route.fullPath;
+    // TODO: Investigate if this is causing multiple fetches from storyblok.
     await useStoryblokPageFetch(locale.value);
   });
   await useStoryblokPageFetch(locale.value);

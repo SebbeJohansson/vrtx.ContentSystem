@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  const { toImageUrl } = useMediaHandler();
 
   defineProps({
     posts: {
@@ -10,21 +11,21 @@
   const coverCss = (post: BlogPost) => {
     const css = {} as Record<string, string>;
 
-    if (post.cover_image?.color) {
-      css['background-color'] = post.cover_image.color;
+    if (post.cover_color) {
+      css['background-color'] = post.cover_color;
     }
 
     return css;
   };
   const coverImage = (post: BlogPost) => {
-    if (!post.cover_image || !post.cover_image.image || post.cover_image.image === '') { return null; }
+    if (!post.cover_image || !post.cover_image.url || post.cover_image.url === '') { return undefined; }
 
-    return post.cover_image.image;
+    return toImageUrl(post.cover_image.url, { focalPoint: post.cover_image.focal_point });
   };
   const coverImageAlt = (post: BlogPost) => {
-    if (!post.cover_image || !post.cover_image.alt_tag || post.cover_image.alt_tag === '') { return null; }
+    if (!post.cover_image || !post.cover_image.alt_text || post.cover_image.alt_text === '') { return undefined; }
 
-    return post.cover_image.alt_tag;
+    return post.cover_image.alt_text;
   };
 </script>
 

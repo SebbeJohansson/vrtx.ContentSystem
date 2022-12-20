@@ -1,12 +1,18 @@
-export default defineNuxtPlugin((useNuxtApp) => {
-  interface MediaArguments {
-    maxHeight?: number | undefined;
-    maxWidth?: number | undefined;
-    skipAutoFormat?: boolean | undefined;
-  }
+export interface MediaArguments {
+  maxHeight?: number | undefined;
+  maxWidth?: number | undefined;
+  skipAutoFormat?: boolean | undefined;
+  focalPoint?: string | undefined;
+}
 
-  function toMediaUrl(url: string, { maxHeight = null, maxWidth = null, skipAutoFormat = false }: MediaArguments) {
-    if (url.startsWith('https://') || url.startsWith('http://')) {
+export const useMediaHandler = () => {
+  function toImageUrl(url: string, {
+    maxHeight = undefined,
+    maxWidth = undefined,
+    skipAutoFormat = false,
+    focalPoint = undefined,
+  }: MediaArguments) {
+    if (url.startsWith('https://a.storyblok.com')) {
       return formatStoryblokImage(url);
     }
 
@@ -21,6 +27,10 @@ export default defineNuxtPlugin((useNuxtApp) => {
 
       if (maxWidth || maxHeight) {
         qs.push(`${maxWidth || 0}x${maxHeight || 0}`);
+      }
+
+      if (focalPoint) {
+        qs.push(`filters:focal(${focalPoint})`);
       }
 
       let imageUrl = image;
@@ -64,9 +74,7 @@ export default defineNuxtPlugin((useNuxtApp) => {
   }
 
   return {
-    provide: {
-      formatRichText,
-      toMediaUrl,
-    },
+    toImageUrl,
+    formatRichText,
   };
-});
+};

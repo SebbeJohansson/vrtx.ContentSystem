@@ -21,11 +21,14 @@
   const posts = computed(() => blogPosts.value.map((post: StoryData) => ({
     key: post.uuid,
     title: post.content.title || post.content.name || post.name,
-    /* cover_image: {
-        color: post.content.cover_image.color,
-        image: post.content.cover_image.image,
-        alt_tag: post.content.cover_image.alt_tag,
-      }, */
+    cover_image: {
+      url: post.content.cover_image?.filename,
+      alt_text: post.content.cover_image?.alt,
+      focal_point: post.content.cover_image?.focus,
+      name: post.content.cover_image?.name,
+      title: post.content.cover_image?.title,
+    },
+    cover_color: post.content.cover_color?.color,
     description: post.content.description,
     slug: post.full_slug,
   } as BlogPost)));
