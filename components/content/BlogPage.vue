@@ -9,6 +9,7 @@
   });
 
   const coverCss = (post: BlogPost) => {
+    console.log(post);
     const css = {} as Record<string, string>;
 
     if (post.cover_color) {
@@ -63,7 +64,7 @@
             <p>
               {{ post.description }}
             </p>
-            <div class="blog-page__post-button btn-campaign-solid--xs">
+            <div class="blog-page__post-button btn">
               <span>Read More</span>
             </div>
           </div>
@@ -74,56 +75,5 @@
 </template>
 
 <style scoped lang="scss">
-.blog-page {
-  margin-bottom: 1rem;
-}
-.blog-page__posts {
-  overflow: hidden;
-  @include content-width();
-  padding: 0 2rem;
-  margin-top: 1rem;
-}
-.blog-page__posts-margin {
-  margin: 0 -1rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  @include for-phone-only {
-    grid-template-columns: 1fr;
-  }
-}
-.blog-page__post {
-  background-color: #f1eff1;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-}
-.blog-page__post-cover {
-  position: relative;
-  height: 15rem;
-  width: 100%;
-}
-.blog-page__post-cover-image {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.blog-page__post-content {
-  overflow: auto;
-  padding: 2rem 1rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.blog-page__post-title {
-  margin-top: 0;
-}
-.blog-page__post-button {
-  margin-top: auto;
-}
+@import "./BlogPage.scss";
 </style>

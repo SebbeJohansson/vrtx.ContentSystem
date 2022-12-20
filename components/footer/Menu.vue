@@ -30,19 +30,5 @@
 </template>
 
 <style scoped lang="scss">
-.footer-menu {
-  background-color: $base-color;
-}
-.footer-menu__content {
-  @include content-width();
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.footer-menu__source-content {
-  display: flex;
-  align-items: center;
-}
+@import "./Menu.scss";
 </style>

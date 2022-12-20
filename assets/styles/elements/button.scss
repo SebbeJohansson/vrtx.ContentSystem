@@ -1,0 +1,24 @@
+$button-color: gray !default;
+$button-color-hover: rgba($button-color, 0.88) !default;
+$button-color-border: darkgray !default;
+
+
+button, input[type="submit"], a.btn, .btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: $button-color;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  padding: .5rem 2rem;
+  border: none;
+  cursor: pointer;
+}
+button:hover, button:focus, input[type="submit"]:hover, .btn:hover {
+  background-color: $button-color-hover;
+  outline: none;
+}
+
+button:disabled, input[type="submit"]:disabled, .btn:disabled {
+  background-color: $button-color-hover;
+}

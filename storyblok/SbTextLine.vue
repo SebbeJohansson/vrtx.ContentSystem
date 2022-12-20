@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { Richtext } from 'storyblok-js-client';
 
-  const { $formatRichText } = useNuxtApp();
+  const { formatRichText } = useMediaHandler();
 
   const props = defineProps({
     blok: {
@@ -29,7 +29,7 @@
         localNodes.push({
           key,
           type: 'html',
-          content: $formatRichText(renderRichText({
+          content: formatRichText(renderRichText({
             type: 'doc',
             content: [
               node,

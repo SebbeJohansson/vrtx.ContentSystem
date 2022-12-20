@@ -2,6 +2,7 @@ $base-color: #c6538c;
 $border-dark: rgba($base-color, 0.88);
 $content-width: 1180px;
 
+
 @mixin content-width()
 {
   max-width: calc($content-width + 2rem);
