@@ -26,7 +26,7 @@
         image: post.content.cover_image.image,
         alt_tag: post.content.cover_image.alt_tag,
       }, */
-    // description: post.content.description,
+    description: post.content.description,
     slug: post.full_slug,
   } as BlogPost)));
 </script>

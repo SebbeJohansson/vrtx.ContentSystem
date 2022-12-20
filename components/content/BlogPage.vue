@@ -72,16 +72,14 @@
   </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 .blog-page {
   margin-bottom: 1rem;
 }
 .blog-page__posts {
   overflow: hidden;
-  width: 100%;
-  max-width: calc(1180px + 2rem);
-  margin: auto;
-  padding: 0 1rem;
+  @include content-width();
+  padding: 0 2rem;
   margin-top: 1rem;
 }
 .blog-page__posts-margin {
@@ -89,6 +87,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
+  @include for-phone-only {
+    grid-template-columns: 1fr;
+  }
 }
 .blog-page__post {
   background-color: #f1eff1;

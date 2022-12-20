@@ -89,15 +89,20 @@ export const useStoryblokFooterFetch = async () => {
 };
 
 export const useStoryblokBlogPostFetch = async (version: string, categories: StoryData[]) => {
-  const data = await useStoryblokFetchStories('', {
+  const params = {
     version,
     content_type: 'sb-blog-post',
-    filter_query: {
-      categories: {
-        any_in_array: categories.map(category => category.uuid).join(','),
-      },
-    },
-  });
+    ...categories.length > 0
+      ? {
+        filter_query: {
+          categories: {
+            any_in_array: categories.map(category => category.uuid).join(','),
+          },
+        },
+      }
+      : {},
+  };
+  const data = await useStoryblokFetchStories('', params);
   return data.stories as StoryData[];
 };
 

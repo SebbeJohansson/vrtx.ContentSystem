@@ -15,14 +15,14 @@
 </script>
 
 <template>
-  <div class="footer-footer">
-    <div class="footer-footer__content">
+  <div class="footer-menu">
+    <div class="footer-menu__content">
       <h2>
         {{ $t("logo") }}
       </h2>
       <component
         :is="footerContentComponent"
-        class="footer-footer__source-content"
+        class="footer-menu__source-content"
       />
       <PartsLanguageSwitcher />
     </div>
@@ -30,10 +30,10 @@
 </template>
 
 <style scoped lang="scss">
-.footer-footer {
+.footer-menu {
   background-color: $base-color;
 }
-.footer-footer__content {
+.footer-menu__content {
   @include content-width();
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -41,7 +41,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.footer-footer__source-content {
+.footer-menu__source-content {
   display: flex;
   align-items: center;
 }

@@ -15,38 +15,44 @@
 </script>
 
 <template>
-  <div class="menu">
-    <div class="menu__content">
-      <h2 class="menu__logo">
-        {{ $t("logo") }}
-      </h2>
-      <h3 class="menu__logo">
-        {{ $t("welcome") }}
-      </h3>
+  <div class="header-menu">
+    <div class="header-menu__content">
+      <div>
+        <h2 class="header-menu__logo">
+          {{ $t("logo") }}
+        </h2>
+        <h3 class="header-menu__logo">
+          {{ $t("welcome") }}
+        </h3>
+      </div>
       <component
         :is="menuContentComponent"
-        class="menu__source-content"
+        class="header-menu__source-content"
       />
-      <PartsLanguageSwitcher />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.menu {
+.header-menu {
   background-color: $base-color;
 }
-.menu__content {
+.header-menu__content {
   @include content-width();
   display: flex;
   flex-direction: row;
-  height: 60px;
+  min-height: calc(60px - 1rem);
   align-items: center;
+  padding: .5rem 1rem;
+  @include for-phone-only {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
-.menu__logo {
+.header-menu__logo {
   margin-right: 1rem;
 }
-.menu__source-content {
+.header-menu__source-content {
   display: flex;
   align-items: center;
 }

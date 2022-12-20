@@ -80,19 +80,6 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       'postcss-import': {},
-      'postcss-custom-media': {
-        importFrom: [
-          {
-            customMedia: {
-              '--phone': '(max-width: 767px)',
-              '--phoneAndTablet': '(max-width: 1023px)',
-              '--tablet': '(min-width: 768px) and (max-width: 1023px)',
-              '--tabletAndDesktop': '(min-width: 768px)',
-              '--desktop': '(min-width: 1024px)',
-            },
-          },
-        ],
-      },
       autoprefixer: {
         overrideBrowserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
       },
