@@ -90,7 +90,7 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/styles/global-vars";',
+          additionalData: '@use "@/assets/styles/global-vars" as *;',
         },
       },
     },
