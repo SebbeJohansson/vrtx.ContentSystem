@@ -16,11 +16,11 @@
       type: Object,
       default: null,
     },
-    internalLink: {
+    link: {
       type: String,
       default: null,
     },
-    externalLink: {
+    target: {
       type: String,
       default: null,
     },
@@ -53,17 +53,10 @@
     return props.background.alt_tag;
   });
   const banner = computed(() => {
-    if (props.internalLink !== '') {
+    if (props.link) {
       return {
-        type: resolveComponent('NuxtLink'),
-        url: props.internalLink,
-      };
-    }
-
-    if (props.externalLink !== '') {
-      return {
-        type: 'a',
-        url: props.internalLink,
+        type: resolveComponent('nuxt-link'),
+        url: props.link,
       };
     }
     return { type: 'div', url: null };
@@ -118,7 +111,7 @@
     <component
       :is="banner.type"
       :to="banner.url"
-      :href="banner.url"
+      :target="target"
       class="banner-block"
       :class="blockClass"
     >

@@ -1,10 +1,6 @@
 <script setup lang="ts">
   const props = defineProps({
-    internalLink: {
-      type: String,
-      default: null,
-    },
-    externalLink: {
+    link: {
       type: String,
       default: null,
     },
@@ -12,20 +8,17 @@
       type: String,
       default: null,
     },
+    target: {
+      type: String,
+      default: null,
+    },
   });
 
   const item = computed(() => {
-    if (props.internalLink !== '') {
+    if (props.link) {
       return {
         type: resolveComponent('nuxt-link'),
-        url: props.internalLink,
-      };
-    }
-
-    if (props.externalLink !== '') {
-      return {
-        type: 'a',
-        url: props.internalLink,
+        url: props.link,
       };
     }
     return { type: 'div', url: null };
@@ -36,8 +29,8 @@
 <template>
   <component
     :is="item.type"
-    :to="item.url"
-    :href="item.url"
+    :to="item.url ? item.url : null"
+    :target="target"
     class="menu-department"
   >
     {{ title }}

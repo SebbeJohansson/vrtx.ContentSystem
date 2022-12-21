@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { BlogPost } from '~/composables/useBlog';
+
   const { toImageUrl } = useMediaHandler();
 
   defineProps({
@@ -13,7 +15,6 @@
   });
 
   const coverCss = (post: BlogPost) => {
-    console.log(post);
     const css = {} as Record<string, string>;
 
     if (post.cover_color) {

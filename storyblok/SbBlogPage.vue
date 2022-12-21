@@ -15,9 +15,7 @@
   const blogPosts = ref(props.blok.blogs as StoryData[]);
 
   const version = pagePreview.value ? 'draft' : 'published';
-  console.log("blog page");
   if (props.blok.component === 'sb-blog-page' || props.blok.component === 'sb-blog-category') {
-    console.log(props.blok.categories);
     await useStoryblokBlogPostFetch(version, props.blok.categories).then((response) => {
       blogPosts.value = blogPosts.value.concat(response);
     });

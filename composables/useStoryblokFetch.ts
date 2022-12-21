@@ -33,7 +33,7 @@ export const useStoryblokPageFetch = async (locale: string) => {
   await useAsyncStoryblok(currentRoute.path, {
     version,
     language: locale,
-    resolve_relations: 'sb-blog-page.categories',
+    resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories',
   }).then((response) => {
     if (!response) { return; }
 

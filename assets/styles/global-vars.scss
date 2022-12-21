@@ -1,6 +1,7 @@
 /* Colors */
 $base-color: #818181;
-$border-dark: rgba($base-color, 0.88);
+$background-color: #ededed;
+$border-dark: darken($background-color, 10%);
 $text-color: #cfcfcf;
 $title-color: black;
 
@@ -14,7 +15,8 @@ $base-font: Roboto, system-ui, Helvetica,Arial,sans-serif;
 @mixin content-width()
 {
   max-width: calc($content-width + 2rem);
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
   padding: 0 1rem;
 }
 

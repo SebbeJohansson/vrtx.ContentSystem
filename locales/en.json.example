@@ -1,3 +1,7 @@
 {
   "logo": "Your Logo",
+  "blog-post": {
+    "categories": "Categories",
+    "author": "Author"
+  }
 }

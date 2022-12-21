@@ -7,7 +7,6 @@
   }
 
   const layout = usePageType();
-  console.log(layout);
   const pageSource = usePageSource();
   const pageMeta = usePageMeta();
 

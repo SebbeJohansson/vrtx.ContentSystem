@@ -13,7 +13,6 @@
 
   const blockCss = computed(() => {
     const css = {};
-    console.log(props.margins);
     if (props.margins && (props.margins.bottom !== '' || props.margins.top !== '')) {
       if (props.margins.top !== '') {
         css['margin-top'] = props.margins.top;

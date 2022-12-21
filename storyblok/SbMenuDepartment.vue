@@ -8,18 +8,17 @@
 
   const title = computed(() => props.blok.title);
 
-  const internalLink = computed(() => {
-    if (props.blok.link.id !== '') {
-      return `${props.blok.link.cached_url || props.blok.link.link}`;
+  const link = computed(() => {
+    if (props.blok.link.id !== '' && props.blok.link.linktype === 'story') {
+      return `${props.blok.link.cached_url ?? props.blok.link.url ?? props.blok.link.link}`;
+    }
+    if (props.blok.link.linktype === 'url') {
+      return `${props.blok.link.url ?? props.blok.link.link}`;
     }
     return undefined;
   });
-  const externalLink = computed(() => {
-    if (!props.blok.link.id || props.blok.link.id === '') {
-      return `${props.blok.link.cached_url || props.blok.link.link}`;
-    }
-    return undefined;
-  });
+
+  const target = computed(() => props.blok.link.target);
 </script>
 
 <template>
@@ -27,8 +26,8 @@
     v-editable="blok"
     class="sb-menu-department"
     :title="title"
-    :internal-link="internalLink"
-    :external-link="externalLink"
+    :link="link"
+    :target="target"
   >
     <component
       :is="$resolveStoryBlokComponent(sub_department)"

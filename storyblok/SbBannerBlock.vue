@@ -20,18 +20,18 @@
 
     return css;
   });
-  const internalLink = computed(() => {
-    if (props.blok.link.id !== '') {
-      return `${props.blok.link.cached_url || props.blok.link.link}`;
+
+  const link = computed(() => {
+    if (props.blok.link.id !== '' && props.blok.link.linktype === 'story') {
+      return `${props.blok.link.cached_url ?? props.blok.link.url ?? props.blok.link.link}`;
+    }
+    if (props.blok.link.linktype === 'url') {
+      return `${props.blok.link.url ?? props.blok.link.link}`;
     }
     return undefined;
   });
-  const externalLink = computed(() => {
-    if (!props.blok.link.id || props.blok.link.id === '') {
-      return `${props.blok.link.cached_url || props.blok.link.link}`;
-    }
-    return undefined;
-  });
+
+  const target = computed(() => props.blok.link.target);
   const deviceSpecificHeight = computed(() => props.blok.height);
 </script>
 
@@ -40,8 +40,8 @@
     v-editable="blok"
     class="sb-banner-block"
     :block-key="blok._uid"
-    :internal-link="internalLink"
-    :external-link="externalLink"
+    :link="link"
+    :target="target"
     :background="background"
     :device-specific-height="deviceSpecificHeight"
     :margins="margins"
