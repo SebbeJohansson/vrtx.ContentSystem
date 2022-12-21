@@ -1,9 +1,24 @@
+<script setup lang="ts">
+  defineProps({
+    blockKey: {
+      type: String,
+      required: true,
+    },
+    margins: {
+      type: Object,
+      default: null,
+    },
+  });
+</script>
+
 <template>
-  <div
+  <ContentBaseBlock
     class="column-structure"
+    :block-key="blockKey"
+    :margins="margins"
   >
     <slot />
-  </div>
+  </ContentBaseBlock>
 </template>
 
 <style scoped>

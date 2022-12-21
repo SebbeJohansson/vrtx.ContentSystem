@@ -1,13 +1,39 @@
-$base-color: #c6538c;
-$border-dark: rgba($base-color, 0.88);
+/* Colors */
+$base-color: #818181;
+$background-color: #ededed;
+$border-dark: darken($background-color, 10%);
+$text-color: #cfcfcf;
+$title-color: black;
+
+/* Sizes */
 $content-width: 1180px;
+
+/* Font Families */
+$base-font: Roboto, system-ui, Helvetica,Arial,sans-serif;
+
 
 @mixin content-width()
 {
   max-width: calc($content-width + 2rem);
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
   padding: 0 1rem;
 }
 
+@mixin for-phone-only {
+  @media (max-width: 767px) { @content; }
+}
+@mixin for-tablet-only {
+  @media (min-width: 768px) and (max-width: 1023px) { @content; }
+}
+@mixin for-phone-and-tablet-only {
+  @media (max-width: 1023px) { @content; }
+}
+@mixin for-desktop-only {
+  @media (min-width: 1024px) { @content; }
+}
+@mixin for-tablet-and-desktop-only {
+  @media (min-width: 768px) { @content; }
+}
 
 @import "@/assets/styles/custom/global-vars";

@@ -1,4 +1,7 @@
 {
   "logo": "Your Logo",
-  "welcome": "This is the welcome message"
+  "blog-post": {
+    "categories": "Categories",
+    "author": "Author"
+  }
 }

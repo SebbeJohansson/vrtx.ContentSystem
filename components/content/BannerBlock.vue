@@ -12,11 +12,15 @@
       type: String,
       required: true,
     },
-    internalLink: {
+    margins: {
+      type: Object,
+      default: null,
+    },
+    link: {
       type: String,
       default: null,
     },
-    externalLink: {
+    target: {
       type: String,
       default: null,
     },
@@ -49,17 +53,10 @@
     return props.background.alt_tag;
   });
   const banner = computed(() => {
-    if (props.internalLink !== '') {
+    if (props.link) {
       return {
-        type: 'nuxt-link',
-        url: props.internalLink,
-      };
-    }
-
-    if (props.externalLink !== '') {
-      return {
-        type: 'a',
-        url: props.internalLink,
+        type: resolveComponent('nuxt-link'),
+        url: props.link,
       };
     }
     return { type: 'div', url: null };
@@ -86,12 +83,9 @@
   </script>
 
 <template>
-  <component
-    :is="banner.type"
-    :to="banner.url"
-    :href="banner.url"
-    class="banner-block"
-    :class="blockClass"
+  <ContentBaseBlock
+    :block-key="blockKey"
+    :margins="margins"
   >
     <component
       :is="'style'"
@@ -114,22 +108,30 @@
       }
       }
     </component>
-    <div
-      v-if="useBackgroundLook"
-      class="banner-block__background"
-      :style="backgroundCss"
+    <component
+      :is="banner.type"
+      :to="banner.url"
+      :target="target"
+      class="banner-block"
+      :class="blockClass"
     >
-      <img
-        v-if="backgroundImage"
-        class="banner-block__background-image"
-        :src="backgroundImage"
-        :alt="backgroundImageAlt"
+      <div
+        v-if="useBackgroundLook"
+        class="banner-block__background"
+        :style="backgroundCss"
       >
-    </div>
-    <div class="banner-block__content" :class="{ 'banner-block__content--no-background': !useBackgroundLook}">
-      <slot name="body" />
-    </div>
-  </component>
+        <img
+          v-if="backgroundImage"
+          class="banner-block__background-image"
+          :src="backgroundImage"
+          :alt="backgroundImageAlt"
+        >
+      </div>
+      <div class="banner-block__content" :class="{ 'banner-block__content--no-background': !useBackgroundLook}">
+        <slot name="body" />
+      </div>
+    </component>
+  </ContentBaseBlock>
 </template>
 
   <style scoped lang="scss">
@@ -137,6 +139,7 @@
     position: relative;
     text-decoration: none;
     display: block;
+    height: 100%;
   }
   .banner-block__content {
     overflow: auto;

@@ -8,9 +8,7 @@ export interface Blok {
 
 export const useGetAcceptedStoryblokPageTypes = () => acceptedPageTypes.map(pageType => `sb-${pageType}`);
 
-export const useStoryblokPageFetch = async () => {
-  const { locale } = useI18n();
-
+export const useStoryblokPageFetch = async (locale: string) => {
   const pageContent = usePageContent();
   const pageType = usePageType();
   const pageSource = usePageSource();
@@ -20,7 +18,7 @@ export const useStoryblokPageFetch = async () => {
   const route = useRoute();
 
   const currentRoute = { ...route };
-  const localeString = `/${locale.value}`;
+  const localeString = `/${locale}`;
   if (currentRoute.path.startsWith(localeString)) {
     currentRoute.path = currentRoute.path.slice(localeString.length);
   }
@@ -34,11 +32,14 @@ export const useStoryblokPageFetch = async () => {
 
   await useAsyncStoryblok(currentRoute.path, {
     version,
-    language: locale.value,
+    language: locale,
+    resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories,sb-blog-post.author',
   }).then((response) => {
     if (!response) { return; }
+
     pageContent.value = response.value;
-    pageType.value = response.value.content.component.substr(3);
+
+    pageType.value = response.value.content.component.substring(3);
     pageSource.value = 'storyblok';
     pageMeta.value.title = response.value.content.title;
     pageMeta.value.description = response.value.content.description;
@@ -87,6 +88,24 @@ export const useStoryblokFooterFetch = async () => {
   });
 };
 
+export const useStoryblokBlogPostFetch = async (version: string, categories: StoryData[]) => {
+  const params = {
+    version,
+    content_type: 'sb-blog-post',
+    ...categories.length > 0
+      ? {
+        filter_query: {
+          categories: {
+            any_in_array: categories.map(category => category.uuid).join(','),
+          },
+        },
+      }
+      : {},
+  };
+  const data = await useStoryblokFetchStories('', params);
+  return data.stories as StoryData[];
+};
+
 export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
   const storyblokApi = useStoryblokApi();
   let result = {} as Blok;
@@ -128,6 +147,7 @@ export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
     );
     result = data.value as Blok;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
   return result;
@@ -143,4 +163,11 @@ export const useStoryblokFetchDynamicRoutes = async () => {
     },
   });
   return data.stories.map(story => `/${story.full_slug}`);
+};
+
+export const useStoryblokMakeLinkSafe = (link: string, language: string) => {
+  if (link.startsWith(language)) {
+    return link.slice(language.length);
+  }
+  return link;
 };

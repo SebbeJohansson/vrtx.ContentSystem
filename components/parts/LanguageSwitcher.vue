@@ -31,7 +31,6 @@
           sv
         </option>
       </select>
-      <p>{{ $t('welcome') }}</p>
     </form> -->
     <button
       v-for="availableLocale in availableLocales"

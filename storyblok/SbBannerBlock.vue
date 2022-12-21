@@ -7,6 +7,7 @@
       required: true,
     },
   });
+  const margins = computed(() => props.blok.margins);
   const body = computed(() => props.blok.body);
   const background = computed(() => props.blok.background);
   const buttons = computed(() => props.blok.button);
@@ -19,29 +20,31 @@
 
     return css;
   });
-  const internalLink = computed(() => {
-    if (props.blok.link.id !== '') {
-      return `${props.blok.link.cached_url || props.blok.link.link}`;
+
+  const link = computed(() => {
+    if (props.blok.link.id !== '' && props.blok.link.linktype === 'story') {
+      return `${props.blok.link.cached_url ?? props.blok.link.url ?? props.blok.link.link}`;
+    }
+    if (props.blok.link.linktype === 'url') {
+      return `${props.blok.link.url ?? props.blok.link.link}`;
     }
     return undefined;
   });
-  const externalLink = computed(() => {
-    if (!props.blok.link.id || props.blok.link.id === '') {
-      return `${props.blok.link.cached_url || props.blok.link.link}`;
-    }
-    return undefined;
-  });
+
+  const target = computed(() => props.blok.link.target);
   const deviceSpecificHeight = computed(() => props.blok.height);
 </script>
 
 <template>
   <ContentBannerBlock
     v-editable="blok"
+    class="sb-banner-block"
     :block-key="blok._uid"
-    :internal-link="internalLink"
-    :external-link="externalLink"
+    :link="link"
+    :target="target"
     :background="background"
     :device-specific-height="deviceSpecificHeight"
+    :margins="margins"
   >
     <template #body>
       <StoryblokComponent
@@ -62,6 +65,9 @@
 </template>
 
 <style scoped lang="scss">
+.sb-banner-block {
+  height: 100%;
+}
 .sb-banner-block__buttons {
   margin: .5rem -.5rem 0;
   display: inline-flex;

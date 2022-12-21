@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   telemetry: false,
 
   // Disable servenr-side rendering: https://go.nuxtjs.dev/ssr-mode
-  // ssr: false, // nuxtjs/i18n is not working with ssr yet.
+  ssr: false, // nuxtjs/i18n is not working with ssr yet.
 
   runtimeConfig: {
     public: {
@@ -69,7 +69,6 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     'nuxt-jsonld',
     '@nuxtjs/i18n', // https://v8.i18n.nuxtjs.org/getting-started/basic-usage
-    '@kevinmarrec/nuxt-pwa',
   ],
 
   storyblok: {
@@ -81,19 +80,6 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       'postcss-import': {},
-      'postcss-custom-media': {
-        importFrom: [
-          {
-            customMedia: {
-              '--phone': '(max-width: 767px)',
-              '--phoneAndTablet': '(max-width: 1023px)',
-              '--tablet': '(min-width: 768px) and (max-width: 1023px)',
-              '--tabletAndDesktop': '(min-width: 768px)',
-              '--desktop': '(min-width: 1024px)',
-            },
-          },
-        ],
-      },
       autoprefixer: {
         overrideBrowserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 8', 'iOS >= 8', 'Android >= 4'],
       },
@@ -104,17 +90,11 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/styles/global-vars";',
+          additionalData: '@use "@/assets/styles/global-vars" as *;',
         },
       },
     },
   },
 
   i18n: i18nConfig,
-
-  pwa: {
-    workbox: {
-      enabled: true,
-    },
-  },
 });

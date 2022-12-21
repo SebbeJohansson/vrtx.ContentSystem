@@ -1,5 +1,13 @@
 <script setup lang="ts">
   const props = defineProps({
+    blockKey: {
+      type: String,
+      required: true,
+    },
+    margins: {
+      type: Object,
+      default: null,
+    },
     design: {
       type: String,
       default: null,
@@ -15,14 +23,16 @@
 </script>
 
 <template>
-  <div
+  <ContentBaseBlock
     class="columns-block"
     :class="blockClasses"
+    :block-key="blockKey"
+    :margins="margins"
   >
     <div class="columns-block__margin">
       <slot />
     </div>
-  </div>
+  </ContentBaseBlock>
 </template>
 
 <style scoped lang="scss">

@@ -1,5 +1,5 @@
 <template>
-  <div class="default-layout">
-    <slog />
-  </div>
+  <LayoutsDefaultLayout>
+    <slot />
+  </LayoutsDefaultLayout>
 </template>
