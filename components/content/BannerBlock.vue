@@ -12,6 +12,10 @@
       type: String,
       required: true,
     },
+    margins: {
+      type: Object,
+      default: null,
+    },
     internalLink: {
       type: String,
       default: null,
@@ -51,7 +55,7 @@
   const banner = computed(() => {
     if (props.internalLink !== '') {
       return {
-        type: 'nuxt-link',
+        type: resolveComponent('NuxtLink'),
         url: props.internalLink,
       };
     }
@@ -86,12 +90,9 @@
   </script>
 
 <template>
-  <component
-    :is="banner.type"
-    :to="banner.url"
-    :href="banner.url"
-    class="banner-block"
-    :class="blockClass"
+  <ContentBaseBlock
+    :block-key="blockKey"
+    :margins="margins"
   >
     <component
       :is="'style'"
@@ -114,22 +115,30 @@
       }
       }
     </component>
-    <div
-      v-if="useBackgroundLook"
-      class="banner-block__background"
-      :style="backgroundCss"
+    <component
+      :is="banner.type"
+      :to="banner.url"
+      :href="banner.url"
+      class="banner-block"
+      :class="blockClass"
     >
-      <img
-        v-if="backgroundImage"
-        class="banner-block__background-image"
-        :src="backgroundImage"
-        :alt="backgroundImageAlt"
+      <div
+        v-if="useBackgroundLook"
+        class="banner-block__background"
+        :style="backgroundCss"
       >
-    </div>
-    <div class="banner-block__content" :class="{ 'banner-block__content--no-background': !useBackgroundLook}">
-      <slot name="body" />
-    </div>
-  </component>
+        <img
+          v-if="backgroundImage"
+          class="banner-block__background-image"
+          :src="backgroundImage"
+          :alt="backgroundImageAlt"
+        >
+      </div>
+      <div class="banner-block__content" :class="{ 'banner-block__content--no-background': !useBackgroundLook}">
+        <slot name="body" />
+      </div>
+    </component>
+  </ContentBaseBlock>
 </template>
 
   <style scoped lang="scss">
@@ -137,6 +146,7 @@
     position: relative;
     text-decoration: none;
     display: block;
+    height: 100%;
   }
   .banner-block__content {
     overflow: auto;

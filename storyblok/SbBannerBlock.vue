@@ -7,6 +7,7 @@
       required: true,
     },
   });
+  const margins = computed(() => props.blok.margins);
   const body = computed(() => props.blok.body);
   const background = computed(() => props.blok.background);
   const buttons = computed(() => props.blok.button);
@@ -37,11 +38,13 @@
 <template>
   <ContentBannerBlock
     v-editable="blok"
+    class="sb-banner-block"
     :block-key="blok._uid"
     :internal-link="internalLink"
     :external-link="externalLink"
     :background="background"
     :device-specific-height="deviceSpecificHeight"
+    :margins="margins"
   >
     <template #body>
       <StoryblokComponent
@@ -62,6 +65,9 @@
 </template>
 
 <style scoped lang="scss">
+.sb-banner-block {
+  height: 100%;
+}
 .sb-banner-block__buttons {
   margin: .5rem -.5rem 0;
   display: inline-flex;

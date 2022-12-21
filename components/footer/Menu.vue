@@ -36,6 +36,7 @@
 
 .footer-menu {
   background-color: $base-color;
+  color: $text-color;
 }
 .footer-menu__content {
   @include content-width();

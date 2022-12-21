@@ -25,3 +25,11 @@
     </NuxtLayout>
   </div>
 </template>
+
+<style lang="scss">
+
+.app {
+  font-family: $base-font;
+}
+
+</style>

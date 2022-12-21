@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  defineProps({
+  const props = defineProps({
     internalLink: {
       type: String,
       default: null,
@@ -14,15 +14,35 @@
     },
   });
 
+  const item = computed(() => {
+    if (props.internalLink !== '') {
+      return {
+        type: resolveComponent('nuxt-link'),
+        url: props.internalLink,
+      };
+    }
+
+    if (props.externalLink !== '') {
+      return {
+        type: 'a',
+        url: props.internalLink,
+      };
+    }
+    return { type: 'div', url: null };
+  });
+
 </script>
 
 <template>
-  <div
+  <component
+    :is="item.type"
+    :to="item.url"
+    :href="item.url"
     class="menu-department"
   >
     {{ title }}
     <slot />
-  </div>
+  </component>
 </template>
 
 <style scoped>

@@ -1,6 +1,14 @@
-$base-color: #c7c7c7;
+/* Colors */
+$base-color: #818181;
 $border-dark: rgba($base-color, 0.88);
+$text-color: #cfcfcf;
+$title-color: black;
+
+/* Sizes */
 $content-width: 1180px;
+
+/* Font Families */
+$base-font: Roboto, system-ui, Helvetica,Arial,sans-serif;
 
 
 @mixin content-width()

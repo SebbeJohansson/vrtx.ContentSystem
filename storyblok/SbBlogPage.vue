@@ -10,6 +10,8 @@
     },
   });
 
+  const title = computed(() => props.blok.title);
+
   const blogPosts = ref(props.blok.blogs as StoryData[]);
 
   const version = pagePreview.value ? 'draft' : 'published';
@@ -41,6 +43,6 @@
     v-editable="blok"
     class="sb-blog-page"
   >
-    <ContentBlogPage :posts="posts" />
+    <ContentBlogPage :title="title" :posts="posts" />
   </div>
 </template>

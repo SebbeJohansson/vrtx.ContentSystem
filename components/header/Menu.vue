@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  const localePath = useLocalePath();
   await useMenuFetch();
   const menuSource = useMenuSource().value;
   let menuContentComponent;
@@ -17,14 +18,13 @@
 <template>
   <div class="header-menu">
     <div class="header-menu__content">
-      <div>
+      <NuxtLink
+        :to="localePath('/')"
+      >
         <h2 class="header-menu__logo">
           {{ $t("logo") }}
         </h2>
-        <h3 class="header-menu__logo">
-          {{ $t("welcome") }}
-        </h3>
-      </div>
+      </NuxtLink>
       <component
         :is="menuContentComponent"
         class="header-menu__source-content"
@@ -36,6 +36,7 @@
 <style scoped lang="scss">
 .header-menu {
   background-color: $base-color;
+  color: $text-color;
 }
 .header-menu__content {
   @include content-width();

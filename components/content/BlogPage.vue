@@ -2,6 +2,10 @@
   const { toImageUrl } = useMediaHandler();
 
   defineProps({
+    title: {
+      type: String,
+      required: true,
+    },
     posts: {
       type: Array as () => BlogPost[],
       required: true,
@@ -34,6 +38,9 @@
   <div
     class="blog-page"
   >
+    <h1 class="blog-page__title">
+      {{ title }}
+    </h1>
     <div
       class="blog-page__posts"
     >
@@ -81,6 +88,12 @@
 
 .blog-page {
   margin-bottom: 1rem;
+}
+.blog-page__title {
+  text-align: center;
+  color: $title-color;
+  @include content-width();
+  margin-top: 2rem;
 }
 .blog-page__posts {
   overflow: hidden;
