@@ -1,11 +1,27 @@
 <script setup lang="ts">
-  import { BlogCategory } from '~/composables/useBlog';
+  import { BlogCategory, BlogAuthor } from '~/composables/useBlog';
+
+  const { toImageUrl } = useMediaHandler();
 
   const props = defineProps({
     categories: {
       type: Array as () => BlogCategory[],
       default: Array as () => BlogCategory[],
     },
+    author: {
+      type: Object as () => BlogAuthor | undefined,
+      default: undefined,
+    },
+  });
+  const authorImage = computed(() => {
+    if (!props.author?.cover_image || !props.author?.cover_image.url || props.author?.cover_image.url === '') { return undefined; }
+
+    return toImageUrl(props.author?.cover_image.url, { focalPoint: props.author?.cover_image.focal_point });
+  });
+  const authorImageAlt = computed(() => {
+    if (!props.author?.cover_image || !props.author?.cover_image.alt_text || props.author?.cover_image.alt_text === '') { return undefined; }
+
+    return props.author?.cover_image.alt_text;
   });
 </script>
 
@@ -31,15 +47,20 @@
         </div>
       </div>
       <div class="blog-post__author">
-        <h3>
-          {{ $t('blog.author') }}
-        </h3>
-        <p>First and last name</p>
-        <div>
-          IMAGE
-          of how
-          the
-          author looks
+        <div class="blog-post__author-info">
+          <h3>
+            {{ $t('blog.author') }}
+          </h3>
+          <p>{{ author?.first_name }} {{ author?.last_name }}</p>
+        </div>
+        <div
+          v-if="authorImage"
+          class="blog-page__author-image"
+        >
+          <img
+            :src="authorImage"
+            :alt="authorImageAlt"
+          >
         </div>
       </div>
     </div>
@@ -50,13 +71,33 @@
 .blog-post__more-info{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 .5rem;
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
+  @include for-phone-only {
+    grid-template-columns: 1fr;
+  }
 }
 .blog-post__categories, .blog-post__author {
   background-color: darken($background-color, 20%);
   color: $text-color;
-  margin: 0 .5rem;
+  margin: 0 1rem;
   border: 1px solid $border-dark;
   padding: 1rem;
 }
+.blog-post__author {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.blog-post__author-info {
+  margin-right: 1rem;
+}
+.blog-page__author-image {
+  max-width: 11rem;
+  & img {
+    width: 100%;
+  }
+}
+
 </style>
