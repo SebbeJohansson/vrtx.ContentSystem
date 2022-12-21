@@ -72,7 +72,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
-  margin-bottom: 1rem;
+  margin: 0 1rem 1rem;
   @include for-phone-only {
     grid-template-columns: 1fr;
   }
@@ -80,7 +80,6 @@
 .blog-post__categories, .blog-post__author {
   background-color: darken($background-color, 20%);
   color: $text-color;
-  margin: 0 1rem;
   border: 1px solid $border-dark;
   padding: 1rem;
 }

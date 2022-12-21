@@ -10,14 +10,19 @@
       type: Object,
       required: true,
     },
+    raw: {
+      type: Object,
+      required: true,
+    },
   });
 
   const title = computed(() => props.blok.title);
 
-  const blogPosts = ref(props.blok.blogs as StoryData[]);
+  const blogPosts = ref([] as StoryData[]);
 
   const version = pagePreview.value ? 'draft' : 'published';
-  await useStoryblokBlogPostFetch(version, props.blok.categories).then((response) => {
+  // Since we need the base object and not the content of the story, we need to pass the raw object.
+  await useStoryblokBlogPostFetch(version, [props.raw] as StoryData[]).then((response) => {
     blogPosts.value = blogPosts.value.concat(response);
   });
   const posts = computed(() => blogPosts.value.map((post: StoryData) => ({

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { BlogAuthor } from '~/composables/useBlog';
+  import { BlogAuthor, BlogCategory } from '~/composables/useBlog';
 
   const props = defineProps({
     blok: {
@@ -11,8 +11,8 @@
   const categories = computed(() => props.blok.categories.map((category: any) => ({
     key: category.uuid,
     title: category.content.title,
-    full_slug: category.slug,
-  })));
+    slug: useStoryblokMakeLinkSafe(category.full_slug, category.lang),
+  })) as BlogCategory[]);
   console.log(props.blok.author);
   const author = computed(() => (props.blok.author ? {
     key: props.blok.author.uuid,

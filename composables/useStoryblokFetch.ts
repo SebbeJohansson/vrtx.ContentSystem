@@ -164,3 +164,10 @@ export const useStoryblokFetchDynamicRoutes = async () => {
   });
   return data.stories.map(story => `/${story.full_slug}`);
 };
+
+export const useStoryblokMakeLinkSafe = (link: string, language: string) => {
+  if (link.startsWith(language)) {
+    return link.slice(language.length);
+  }
+  return link;
+};
