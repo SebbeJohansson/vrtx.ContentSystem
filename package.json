@@ -7,7 +7,9 @@
     "start": "nuxt start",
     "preview": "nuxt preview",
     "deploy": "nuxt build && nuxt start",
-    "static-deploy": "npx serve -s .output/public"
+    "static-deploy": "npx serve -s .output/public",
+    "storyblok-login": "storyblok login",
+    "storyblok-logout": "storyblok logout"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
@@ -15,7 +17,8 @@
     "@typescript-eslint/parser": "^5.26.0",
     "eslint": "^8.16.0",
     "eslint-plugin-vue": "^9.0.1",
-    "nuxt": "^3.0.0"
+    "nuxt": "^3.0.0",
+    "storyblok": "^3.16.1"
   },
   "dependencies": {
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
