@@ -63,7 +63,7 @@ Since the home page requires some special care because of the fact that we cant 
 1. Create a new story with the type "Content Page".
 2. Name it anything.
 3. Put 'slug' as "index" - That way Vrtx.ContentSystem knows its the home page.
-{{ Add image }}
+![image](https://user-images.githubusercontent.com/5083273/209223681-42067716-ddfd-4ce8-bd12-4dab30f7ce15.png)
 4. Add content.
 5. Publish.
 
@@ -74,7 +74,7 @@ Since menu is special it needs to be of the content type 'Menu' and have the 'sl
 1. Create a new story with the type "Menu".
 2. Name it anything.
 3. Put 'slug' as "menu" - That way Vrtx.ContentSystem knows its the menu.
-{{ Add image }}
+![image](https://user-images.githubusercontent.com/5083273/209223706-375e4da4-c7c6-4e3e-9c16-f46b6ce17aac.png)
 4. Add a few departments (each department is a menu option).
 5. Publish.
 
@@ -85,6 +85,6 @@ Since footer is special it needs to be of the content type 'Menu' and have the '
 1. Create a new story with the type "Menu".
 2. Name it anything.
 3. Put 'slug' as "footer" - That way Vrtx.ContentSystem knows its the footer.
-{{ Add image }}
+![image](https://user-images.githubusercontent.com/5083273/209223714-9739a9c7-6f17-4121-a644-facb2bd6dc23.png)
 4. Add a few departments (each department is a footer option).
 5. Publish.
