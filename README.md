@@ -2,6 +2,7 @@
 
 Uses [nuxt3](https://v3.nuxtjs.org) and [storyblok](https://www.storyblok.com/).
 
+-----
 ## Setup
 
 Make sure to install the dependencies:
@@ -14,7 +15,6 @@ yarn install
 ### Storyblok
 
 How to set up Vrtx.ContentSystem with Storyblok:
-```
 1. Create a new Storyblok Space - https://app.storyblok.com/#/me/spaces/new
 2. Remove default content types - https://app.storyblok.com/#/me/spaces/{your-space-id}/components
 ![image](https://user-images.githubusercontent.com/5083273/209108405-598d195c-d9f4-4e0d-be43-9f417e51a8c7.png)
@@ -25,8 +25,8 @@ How to set up Vrtx.ContentSystem with Storyblok:
 6. You are now ready to create content in Storyblok
 
 (To update the component file, use yarn storyblok pull-components --space {your-space-id} to generate new files)
-```
 
+-----
 ## Development Server
 
 Start the development server on http://localhost:3000
