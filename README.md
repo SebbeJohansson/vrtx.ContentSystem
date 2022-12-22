@@ -17,9 +17,9 @@ How to set up Vrtx.ContentSystem with Storyblok:
 ```
 1. Create a new Storyblok Space - https://app.storyblok.com/#/me/spaces/new
 2. Remove default content types - https://app.storyblok.com/#/me/spaces/{your-space-id}/components
-{{insert image}}
+![image](https://user-images.githubusercontent.com/5083273/209108405-598d195c-d9f4-4e0d-be43-9f417e51a8c7.png)
 3. Login to Storyblok CLI in your command line while in the project directory - yarn storyblok login
-{{insert image}}
+![image](https://user-images.githubusercontent.com/5083273/209108425-7cc108a5-35e8-4602-ba69-78e4a748979c.png)
 4. Push the Vrtx.ContentSystem components to your new Storyblok space - yarn storyblok push-components --space {your-space-id} storyblok/components.vrtx.json
 5. ???
 6. You are now ready to create content in Storyblok
