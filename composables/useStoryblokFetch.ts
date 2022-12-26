@@ -43,6 +43,7 @@ export const useStoryblokPageFetch = async (locale: string) => {
     pageSource.value = 'storyblok';
     pageMeta.value.title = response.value.content.title;
     pageMeta.value.description = response.value.content.description;
+    pageMeta.value.seamless_header = response.value.content.seamless_header;
   });
 };
 

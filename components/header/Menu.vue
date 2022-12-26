@@ -37,6 +37,13 @@
 .header-menu {
   background-color: $base-color;
   color: $text-color;
+  @at-root .content-page--seamless-header & {
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    color: $base-color;
+  }
 }
 .header-menu__content {
   @include content-width();

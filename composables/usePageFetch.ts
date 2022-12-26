@@ -1,6 +1,7 @@
-interface PageMeta {
+export interface PageMeta {
   title: string;
   description: string;
+  seamless_header: boolean;
 }
 
 export const usePageContent = () => useState<object>('pageContent', () => ({}));
@@ -15,12 +16,10 @@ export const acceptedPageTypes = ['content-page', 'blog-page', 'blog-post', 'blo
 /* Currently only storyblok. */
 export const usePageFetch = async () => {
   const route = useRoute();
-  const currentPath = ref('');
   const { locale } = useI18n();
 
-  await watchEffect(async () => {
-    currentPath.value = route.fullPath;
-    // TODO: Investigate if this is causing multiple fetches from storyblok.
+  watch(() => route.path, async () => {
+    // console.log(`Current path changed from ${oldPath} to ${newPath}!`);
     await useStoryblokPageFetch(locale.value);
   });
   await useStoryblokPageFetch(locale.value);
