@@ -1,11 +1,7 @@
 <script setup lang="ts">
-  const { $isArrayEmpty } = useNuxtApp();
+  import { DeviceSpecificHeightType } from '~/composables/useContent';
 
-  interface DeviceSpecificHeightType {
-    mobile: string;
-    tablet: string;
-    desktop: string;
-  }
+  const { $isArrayEmpty } = useNuxtApp();
 
   const props = defineProps({
     blockKey: {
@@ -43,14 +39,14 @@
     return css;
   });
   const backgroundImage = computed(() => {
-    if (!props.background.image && props.background.image === '') { return null; }
+    if (!props.background.url && props.background.url === '') { return null; }
 
-    return props.background.image;
+    return props.background.url;
   });
   const backgroundImageAlt = computed(() => {
-    if (!props.background.alt_tag && props.background.alt_tag === '') { return null; }
+    if (!props.background.alt_text && props.background.alt_text === '') { return null; }
 
-    return props.background.alt_tag;
+    return props.background.alt_text;
   });
   const banner = computed(() => {
     if (props.link) {
@@ -79,7 +75,7 @@
     }
     return null;
   });
-  const useBackgroundLook = computed(() => !$isArrayEmpty(backgroundCss.value));
+  const useBackgroundLook = computed(() => !$isArrayEmpty(backgroundCss.value) || backgroundImage.value);
   </script>
 
 <template>
