@@ -3,9 +3,9 @@
     {
       "name": "block-styling",
       "display_name": null,
-      "created_at": "2022-08-09T21:01:19.604Z",
-      "updated_at": "2022-08-09T21:01:19.604Z",
-      "id": 2798850,
+      "created_at": "2022-12-22T20:28:00.494Z",
+      "updated_at": "2022-12-22T20:28:00.494Z",
+      "id": 3255929,
       "schema": {
         "background_color": {
           "type": "custom",
@@ -24,7 +24,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "block-styling",
-      "component_group_uuid": "edb27979-8acb-46e8-a00e-5e9a787e7ecc",
+      "component_group_uuid": "6f42024d-f94f-4df8-bacf-5c82e697a41d",
       "color": null,
       "icon": null,
       "component_group_name": "Presets"
@@ -32,9 +32,9 @@
     {
       "name": "sb-author",
       "display_name": "Author",
-      "created_at": "2022-08-09T21:01:19.265Z",
-      "updated_at": "2022-10-04T21:01:39.623Z",
-      "id": 2798847,
+      "created_at": "2022-12-22T20:28:00.608Z",
+      "updated_at": "2022-12-22T20:28:00.608Z",
+      "id": 3255930,
       "schema": {
         "first_name": {
           "type": "text",
@@ -71,7 +71,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Author",
-      "component_group_uuid": "3e4e28b5-25cd-4c86-be19-c0c61341500e",
+      "component_group_uuid": "cc585d89-e205-4121-af1e-9d3e330a2631",
       "color": null,
       "icon": null,
       "component_group_name": "Blog"
@@ -79,9 +79,9 @@
     {
       "name": "sb-banner-block",
       "display_name": "Banner Block",
-      "created_at": "2022-08-09T21:01:19.516Z",
-      "updated_at": "2022-12-21T12:58:57.359Z",
-      "id": 2798849,
+      "created_at": "2022-12-22T20:28:00.730Z",
+      "updated_at": "2022-12-22T20:28:00.730Z",
+      "id": 3255931,
       "schema": {
         "body": {
           "type": "bloks",
@@ -164,7 +164,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Banner Block",
-      "component_group_uuid": "fd6a6e77-4685-4f48-9f4a-435f8684726c",
+      "component_group_uuid": "6c5979fd-34a3-4fa1-bd30-b61bbc7d4e97",
       "color": null,
       "icon": "block-text-img-c",
       "component_group_name": "Blocks"
@@ -172,9 +172,9 @@
     {
       "name": "sb-blog-category",
       "display_name": "Blog Category",
-      "created_at": "2022-08-09T21:01:19.736Z",
-      "updated_at": "2022-10-04T21:01:52.028Z",
-      "id": 2798851,
+      "created_at": "2022-12-22T20:28:00.831Z",
+      "updated_at": "2022-12-22T20:28:00.831Z",
+      "id": 3255932,
       "schema": {
         "title": {
           "type": "text",
@@ -191,7 +191,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Blog Category",
-      "component_group_uuid": "3e4e28b5-25cd-4c86-be19-c0c61341500e",
+      "component_group_uuid": "cc585d89-e205-4121-af1e-9d3e330a2631",
       "color": null,
       "icon": null,
       "component_group_name": "Blog"
@@ -199,9 +199,9 @@
     {
       "name": "sb-blog-page",
       "display_name": "Blog Page",
-      "created_at": "2022-08-09T21:01:19.835Z",
-      "updated_at": "2022-12-15T09:02:40.641Z",
-      "id": 2798852,
+      "created_at": "2022-12-22T20:28:00.950Z",
+      "updated_at": "2022-12-22T20:28:00.950Z",
+      "id": 3255933,
       "schema": {
         "title": {
           "type": "text",
@@ -234,7 +234,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Blog Page",
-      "component_group_uuid": "3e4e28b5-25cd-4c86-be19-c0c61341500e",
+      "component_group_uuid": "cc585d89-e205-4121-af1e-9d3e330a2631",
       "color": null,
       "icon": null,
       "component_group_name": "Blog"
@@ -242,9 +242,9 @@
     {
       "name": "sb-blog-post",
       "display_name": "Blog Post",
-      "created_at": "2022-08-09T21:01:19.926Z",
-      "updated_at": "2022-12-21T13:34:22.651Z",
-      "id": 2798853,
+      "created_at": "2022-12-22T20:28:01.078Z",
+      "updated_at": "2022-12-22T20:28:01.078Z",
+      "id": 3255934,
       "schema": {
         "title": {
           "type": "text",
@@ -302,8 +302,8 @@
           "maximum": "10",
           "pos": 5,
           "component_group_whitelist": [
-            "fd6a6e77-4685-4f48-9f4a-435f8684726c",
-            "1c54465e-60bf-401b-988a-37d55dd63df1"
+            "6c5979fd-34a3-4fa1-bd30-b61bbc7d4e97",
+            "9292b6e4-c535-4f35-96bc-cd97b73c2c9b"
           ]
         },
         "tab-7bb29c58-47b4-430f-9f2e-8e4865957cbd": {
@@ -336,7 +336,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Blog Post",
-      "component_group_uuid": "3e4e28b5-25cd-4c86-be19-c0c61341500e",
+      "component_group_uuid": "cc585d89-e205-4121-af1e-9d3e330a2631",
       "color": null,
       "icon": null,
       "component_group_name": "Blog"
@@ -344,9 +344,9 @@
     {
       "name": "sb-button",
       "display_name": "Button",
-      "created_at": "2022-08-09T21:01:20.480Z",
-      "updated_at": "2022-10-04T21:02:10.163Z",
-      "id": 2798859,
+      "created_at": "2022-12-22T20:28:01.190Z",
+      "updated_at": "2022-12-22T20:28:01.190Z",
+      "id": 3255935,
       "schema": {
         "text": {
           "type": "text",
@@ -394,7 +394,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Button",
-      "component_group_uuid": "c6b0fdc0-0246-4ba1-961f-cb39160f54a8",
+      "component_group_uuid": "0cdea0d8-5ce9-426b-b2d9-e18852100ae6",
       "color": null,
       "icon": null,
       "component_group_name": "Fields"
@@ -402,9 +402,9 @@
     {
       "name": "sb-columns-block",
       "display_name": "Columns",
-      "created_at": "2022-08-09T21:01:20.021Z",
-      "updated_at": "2022-10-04T21:01:15.340Z",
-      "id": 2798854,
+      "created_at": "2022-12-22T20:28:01.303Z",
+      "updated_at": "2022-12-22T20:28:01.303Z",
+      "id": 3255936,
       "schema": {
         "columns": {
           "type": "bloks",
@@ -440,7 +440,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Columns",
-      "component_group_uuid": "1c54465e-60bf-401b-988a-37d55dd63df1",
+      "component_group_uuid": "9292b6e4-c535-4f35-96bc-cd97b73c2c9b",
       "color": null,
       "icon": null,
       "component_group_name": "Structure Blocks"
@@ -448,9 +448,9 @@
     {
       "name": "sb-column-structure",
       "display_name": "Column",
-      "created_at": "2022-08-09T21:01:20.108Z",
-      "updated_at": "2022-10-04T21:01:15.284Z",
-      "id": 2798855,
+      "created_at": "2022-12-22T20:28:01.412Z",
+      "updated_at": "2022-12-22T20:28:01.412Z",
+      "id": 3255937,
       "schema": {
         "content": {
           "type": "bloks",
@@ -459,7 +459,7 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_group_whitelist": [
-            "fd6a6e77-4685-4f48-9f4a-435f8684726c"
+            "6c5979fd-34a3-4fa1-bd30-b61bbc7d4e97"
           ]
         },
         "width": {
@@ -495,7 +495,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Column",
-      "component_group_uuid": "3f2d1501-bd20-4e60-a8f6-0f69f5258438",
+      "component_group_uuid": "e4e6514f-62e5-4da2-b52a-689f6843a3ec",
       "color": null,
       "icon": null,
       "component_group_name": "Structures"
@@ -503,9 +503,9 @@
     {
       "name": "sb-content-page",
       "display_name": "Content Page",
-      "created_at": "2022-08-09T21:01:20.197Z",
-      "updated_at": "2022-12-14T06:48:31.821Z",
-      "id": 2798856,
+      "created_at": "2022-12-22T20:28:01.522Z",
+      "updated_at": "2022-12-26T17:22:22.448Z",
+      "id": 3255938,
       "schema": {
         "title": {
           "type": "text",
@@ -516,21 +516,26 @@
           "type": "text",
           "pos": 1
         },
+        "seamless_header": {
+          "type": "boolean",
+          "display_name": "Use Seamless Header",
+          "pos": 2
+        },
         "exclude_from_index": {
           "type": "boolean",
           "display_name": "Exclude page in search result",
           "description": "Exclude the page in both external and internal search engines.",
           "tooltip": true,
-          "pos": 2
+          "pos": 3
         },
         "content": {
           "type": "bloks",
-          "pos": 3,
+          "pos": 4,
           "restrict_type": "groups",
           "restrict_components": true,
           "component_group_whitelist": [
-            "fd6a6e77-4685-4f48-9f4a-435f8684726c",
-            "1c54465e-60bf-401b-988a-37d55dd63df1"
+            "6c5979fd-34a3-4fa1-bd30-b61bbc7d4e97",
+            "9292b6e4-c535-4f35-96bc-cd97b73c2c9b"
           ],
           "key": "content"
         },
@@ -540,9 +545,10 @@
             "title",
             "index_page",
             "exclude_from_index",
-            "description"
+            "description",
+            "seamless_header"
           ],
-          "pos": 4,
+          "pos": 5,
           "type": "tab",
           "key": "tab-531ffd8e-63fd-4605-8670-ff3caa7a1bc4"
         }
@@ -555,7 +561,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Content Page",
-      "component_group_uuid": "748fe79f-52b7-434f-845a-d0d5e07bd265",
+      "component_group_uuid": "5dba9501-51d4-43a6-a489-74fdd0324e20",
       "color": null,
       "icon": null,
       "component_group_name": "Content Types"
@@ -563,9 +569,9 @@
     {
       "name": "sb-github-gist",
       "display_name": "Github Gist",
-      "created_at": "2022-10-04T20:48:31.030Z",
-      "updated_at": "2022-10-04T20:59:58.359Z",
-      "id": 2975627,
+      "created_at": "2022-12-22T20:28:01.629Z",
+      "updated_at": "2022-12-22T20:28:01.629Z",
+      "id": 3255939,
       "schema": {
         "gist_id": {
           "type": "text"
@@ -582,7 +588,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Github Gist",
-      "component_group_uuid": "fd6a6e77-4685-4f48-9f4a-435f8684726c",
+      "component_group_uuid": "6c5979fd-34a3-4fa1-bd30-b61bbc7d4e97",
       "color": null,
       "icon": null,
       "component_group_name": "Blocks"
@@ -590,9 +596,9 @@
     {
       "name": "sb-menu",
       "display_name": "Menu",
-      "created_at": "2022-11-19T09:43:15.580Z",
-      "updated_at": "2022-11-19T09:55:54.261Z",
-      "id": 3145825,
+      "created_at": "2022-12-22T20:28:01.799Z",
+      "updated_at": "2022-12-22T20:28:01.799Z",
+      "id": 3255940,
       "schema": {
         "departments": {
           "type": "bloks",
@@ -613,7 +619,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Menu",
-      "component_group_uuid": "748fe79f-52b7-434f-845a-d0d5e07bd265",
+      "component_group_uuid": "5dba9501-51d4-43a6-a489-74fdd0324e20",
       "color": null,
       "icon": null,
       "component_group_name": "Content Types"
@@ -621,9 +627,9 @@
     {
       "name": "sb-menu-department",
       "display_name": "Menu Department",
-      "created_at": "2022-11-19T09:51:05.394Z",
-      "updated_at": "2022-11-22T09:56:12.855Z",
-      "id": 3145848,
+      "created_at": "2022-12-22T20:28:01.920Z",
+      "updated_at": "2022-12-26T17:32:29.654Z",
+      "id": 3255941,
       "schema": {
         "sub_departments": {
           "type": "bloks",
@@ -643,7 +649,15 @@
         "link": {
           "type": "multilink",
           "pos": 2,
-          "translatable": true
+          "translatable": true,
+          "restrict_content_types": true,
+          "component_whitelist": [
+            "sb-author",
+            "sb-blog-page",
+            "sb-blog-category",
+            "sb-blog-post",
+            "sb-content-page"
+          ]
         },
         "tab-e1ad396b-48e8-4590-9597-c44fa8e50d98": {
           "display_name": "Sub Departments",
@@ -679,7 +693,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Menu Department",
-      "component_group_uuid": "11e253eb-5612-413f-9a02-22240b6a404e",
+      "component_group_uuid": "84a9664e-4e0a-45ea-a95c-4df6e3e1b801",
       "color": null,
       "icon": null,
       "component_group_name": "Menu Structure Blocks"
@@ -687,9 +701,9 @@
     {
       "name": "sb-table-block",
       "display_name": "Table Block",
-      "created_at": "2022-08-09T21:01:20.569Z",
-      "updated_at": "2022-10-04T21:00:09.013Z",
-      "id": 2798860,
+      "created_at": "2022-12-22T20:28:02.022Z",
+      "updated_at": "2022-12-22T20:28:02.022Z",
+      "id": 3255942,
       "schema": {
         "table": {
           "type": "table"
@@ -703,7 +717,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Table Block",
-      "component_group_uuid": "fd6a6e77-4685-4f48-9f4a-435f8684726c",
+      "component_group_uuid": "6c5979fd-34a3-4fa1-bd30-b61bbc7d4e97",
       "color": null,
       "icon": null,
       "component_group_name": "Blocks"
@@ -711,9 +725,9 @@
     {
       "name": "sb-text-line",
       "display_name": "Text Line",
-      "created_at": "2022-08-09T21:01:20.745Z",
-      "updated_at": "2022-10-09T13:54:55.366Z",
-      "id": 2798862,
+      "created_at": "2022-12-22T20:28:02.135Z",
+      "updated_at": "2022-12-22T20:28:02.135Z",
+      "id": 3255943,
       "schema": {
         "text": {
           "type": "richtext",
@@ -751,7 +765,7 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Text Line",
-      "component_group_uuid": "c6b0fdc0-0246-4ba1-961f-cb39160f54a8",
+      "component_group_uuid": "0cdea0d8-5ce9-426b-b2d9-e18852100ae6",
       "color": null,
       "icon": null,
       "component_group_name": "Fields"
