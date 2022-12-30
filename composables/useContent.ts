@@ -12,6 +12,11 @@ export interface Image {
   title: string;
 }
 
+export interface Background {
+  image: Image;
+  color: string;
+}
+
 export interface MediaArguments {
   maxHeight?: number | undefined;
   maxWidth?: number | undefined;
