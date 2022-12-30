@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { DeviceSpecificHeightType } from '~/composables/useContent';
+  import { DeviceSpecificHeightType, Background } from '~/composables/useContent';
 
   const { $isArrayEmpty } = useNuxtApp();
 
@@ -21,7 +21,7 @@
       default: null,
     },
     background: {
-      type: Object,
+      type: Object as () => Background,
       required: true,
     },
     deviceSpecificHeight: {
@@ -32,21 +32,21 @@
   const blockClass = computed(() => `banner-block--${props.blockKey}`);
   const backgroundCss = computed(() => {
     const css = {};
-    if (props.background.color) {
+    if (props.background.color && props.background.color !== '') {
       css['background-color'] = props.background.color;
     }
 
     return css;
   });
   const backgroundImage = computed(() => {
-    if (!props.background.url && props.background.url === '') { return null; }
+    if (!props.background.image.url && props.background.image.url === '') { return null; }
 
-    return props.background.url;
+    return props.background.image.url;
   });
   const backgroundImageAlt = computed(() => {
-    if (!props.background.alt_text && props.background.alt_text === '') { return null; }
+    if (!props.background.image.alt_text && props.background.image.alt_text === '') { return null; }
 
-    return props.background.alt_text;
+    return props.background.image.alt_text;
   });
   const banner = computed(() => {
     if (props.link) {
@@ -75,7 +75,11 @@
     }
     return null;
   });
-  const useBackgroundLook = computed(() => !$isArrayEmpty(backgroundCss.value) || backgroundImage.value);
+  const useBackgroundLook = computed(() => {
+    console.log(!$isArrayEmpty(backgroundCss.value));
+    console.log(backgroundImage.value);
+    return !$isArrayEmpty(backgroundCss.value) || backgroundImage.value
+  });
   </script>
 
 <template>

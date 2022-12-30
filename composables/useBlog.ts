@@ -1,4 +1,4 @@
-import { Image } from './usePageFetch';
+import { Image } from './useContent';
 
 export interface BlogPost {
   key: string;
