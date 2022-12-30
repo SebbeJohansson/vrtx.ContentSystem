@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { Image } from '../composables/usePageFetch';
+
   const { $isArrayEmpty } = useNuxtApp();
 
   const props = defineProps({
@@ -9,7 +11,11 @@
   });
   const margins = computed(() => props.blok.margins);
   const body = computed(() => props.blok.body);
-  const background = computed(() => props.blok.background);
+  const background = computed(() => ({
+    url: props.blok.cover_image.filename,
+    alt_text: props.blok.cover_image.alt,
+    focal_point: props.blok.cover_image.focus,
+  }) as Image);
   const buttons = computed(() => props.blok.button);
   const buttonsStyle = computed(() => {
     const css = {};

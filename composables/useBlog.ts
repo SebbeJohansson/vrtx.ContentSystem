@@ -1,10 +1,4 @@
-export interface Image {
-  url: string;
-  alt_text: string;
-  focal_point: string | undefined;
-  name: string;
-  title: string;
-}
+import { Image } from './usePageFetch';
 
 export interface BlogPost {
   key: string;
