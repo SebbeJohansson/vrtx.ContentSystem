@@ -1,17 +1,7 @@
 <script setup lang="ts">
   await useFooterFetch();
-  const footerSource = useFooterSource().value;
-  let footerContentComponent: any;
-  switch (footerSource) {
-    case 'storyblok':
-      footerContentComponent = resolveComponent('SourcesStoryblokFooter');
-      break;
-    case 'contentful':
-      // footerContentComponent = ContentfulFooter;
-      break;
-    default:
-      break;
-  }
+  const menu = useFooterContent().value;
+  const { departments } = menu;
 </script>
 
 <template>
@@ -20,10 +10,18 @@
       <h2>
         {{ $t("logo") }}
       </h2>
-      <component
-        :is="footerContentComponent"
-        class="footer-menu__source-content"
-      />
+      <div
+        v-if="departments && Array.isArray(departments) && departments.length > 0"
+        class="footer-menu__departments"
+      >
+        <HeaderMenuDepartment
+          v-for="department in departments"
+          :key="department.key"
+          :title="department.title"
+          :link="department.slug"
+          :target="department.target"
+        />
+      </div>
       <PartsLanguageSwitcher />
     </div>
   </div>
@@ -46,9 +44,11 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.footer-menu__source-content {
-  display: flex;
-  align-items: center;
+
+.footer-menu__departments {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 </style>

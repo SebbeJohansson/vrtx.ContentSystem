@@ -13,7 +13,6 @@
     title: category.content.title,
     slug: useStoryblokMakeLinkSafe(category.full_slug, category.lang),
   })) as BlogCategory[]);
-  console.log(props.blok.author);
   const author = computed(() => (props.blok.author ? {
     key: props.blok.author.uuid,
     first_name: props.blok.author.content.first_name,

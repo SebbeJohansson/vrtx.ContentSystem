@@ -1,18 +1,16 @@
 <script setup lang="ts">
+  import { MenuDepartment } from '~/composables/useContent';
+
+  const { menuContent, setSelectedMenuDepartment } = useMenu();
+
   const localePath = useLocalePath();
   await useMenuFetch();
-  const menuSource = useMenuSource().value;
-  let menuContentComponent;
-  switch (menuSource) {
-    case 'storyblok':
-      menuContentComponent = resolveComponent('SourcesStoryblokMenu');
-      break;
-    case 'contentful':
-      // menuContentComponent = ContentfulMenu;
-      break;
-    default:
-      break;
-  }
+  const menu = menuContent.value;
+  const { departments } = menu;
+
+  const onSelectDepartment = (selectedDepartment: MenuDepartment) => {
+    setSelectedMenuDepartment(selectedDepartment);
+  };
 </script>
 
 <template>
@@ -25,10 +23,19 @@
           {{ $t("logo") }}
         </h2>
       </NuxtLink>
-      <component
-        :is="menuContentComponent"
-        class="header-menu__source-content"
-      />
+      <div
+        v-if="departments && Array.isArray(departments) && departments.length > 0"
+        class="header-menu__departments"
+      >
+        <HeaderMenuDepartment
+          v-for="department in departments"
+          :key="department.key"
+          :title="department.title"
+          :link="department.slug"
+          :target="department.target"
+          @select-department="onSelectDepartment(department)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -60,8 +67,10 @@
 .header-menu__logo {
   margin-right: 1rem;
 }
-.header-menu__source-content {
-  display: flex;
-  align-items: center;
+
+.header-menu__departments {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 </style>

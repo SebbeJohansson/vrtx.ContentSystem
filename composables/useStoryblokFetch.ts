@@ -1,4 +1,5 @@
 import { StoryData } from '@storyblok/vue/dist';
+import { MenuDepartment, HeaderMenu } from '~/composables/useContent';
 
 export interface Blok {
   story: StoryData;
@@ -47,6 +48,23 @@ export const useStoryblokPageFetch = async (locale: string) => {
   });
 };
 
+function menuDepartmentMapper(storyblokDepartment: any) {
+  let link;
+  if (storyblokDepartment.link.id !== '' && storyblokDepartment.link.linktype === 'story') {
+    link = `${storyblokDepartment.link.cached_url ?? storyblokDepartment.link.url ?? storyblokDepartment.link.link}`;
+  }
+  if (storyblokDepartment.link.linktype === 'url') {
+    link = `${storyblokDepartment.link.url ?? storyblokDepartment.link.link}`;
+  }
+  return {
+    key: storyblokDepartment._uid,
+    title: storyblokDepartment.title,
+    slug: link,
+    target: storyblokDepartment.link.target,
+    sub_departments: storyblokDepartment.sub_departments.map((subDepartment: any) => menuDepartmentMapper(subDepartment)),
+  } as MenuDepartment;
+}
+
 export const useStoryblokMenuFetch = async () => {
   const { locale } = useI18n();
 
@@ -63,7 +81,11 @@ export const useStoryblokMenuFetch = async () => {
     language: locale.value,
   }).then((response) => {
     if (!response) { return; }
-    menuContent.value = response.value;
+
+    const departments = response.value.content.departments.map((department: any) => menuDepartmentMapper(department)) as MenuDepartment[];
+    const headerMenu = { departments } as HeaderMenu;
+
+    menuContent.value = headerMenu;
     menuSource.value = 'storyblok';
   });
 };
@@ -84,7 +106,11 @@ export const useStoryblokFooterFetch = async () => {
     language: locale.value,
   }).then((response) => {
     if (!response) { return; }
-    footerContent.value = response.value;
+
+    const departments = response.value.content.departments.map((department: any) => menuDepartmentMapper(department)) as MenuDepartment[];
+    const footerMenu = { departments } as FooterMenu;
+
+    footerContent.value = footerMenu;
     footerSource.value = 'storyblok';
   });
 };

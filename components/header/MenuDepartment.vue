@@ -13,6 +13,7 @@
       default: null,
     },
   });
+  const emit = defineEmits(['select-department']);
 
   const item = computed(() => {
     if (props.link) {
@@ -24,6 +25,10 @@
     return { type: 'div', url: null };
   });
 
+  const onMouseEnter = () => {
+    emit('select-department');
+  };
+
 </script>
 
 <template>
@@ -32,6 +37,7 @@
     :to="item.url ? item.url : null"
     :target="target"
     class="menu-department"
+    @mouseenter="onMouseEnter"
   >
     {{ title }}
     <slot />
