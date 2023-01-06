@@ -1,20 +1,35 @@
 <script setup lang="ts">
   import { MenuDepartment } from '~/composables/useContent';
 
-  const { menuContent, setSelectedMenuDepartment } = useMenu();
+  const { menuContent, setSelectedMenuDepartment, selectedMenuDepartment } = useMenu();
 
   const localePath = useLocalePath();
   await useMenuFetch();
   const menu = menuContent.value;
   const { departments } = menu;
 
-  const onSelectDepartment = (selectedDepartment: MenuDepartment) => {
-    setSelectedMenuDepartment(selectedDepartment);
+  const onSelectDepartment = (selectedDepartment: MenuDepartment | undefined) => {
+    console.log(selectedDepartment);
+    if (selectedDepartment && selectedDepartment.sub_departments?.length > 0) {
+      setSelectedMenuDepartment(selectedDepartment);
+    } else {
+      setSelectedMenuDepartment(undefined);
+    }
   };
+
+  const showSelectedMenu = computed(() => {
+    if (selectedMenuDepartment.value && selectedMenuDepartment.value?.sub_departments?.length > 0) {
+      return true;
+    }
+    return false;
+  });
 </script>
 
 <template>
-  <div class="header-menu">
+  <div
+    class="header-menu"
+    @mouseleave="onSelectDepartment(undefined)"
+  >
     <div class="header-menu__content">
       <NuxtLink
         :to="localePath('/')"
@@ -30,13 +45,12 @@
         <HeaderMenuDepartment
           v-for="department in departments"
           :key="department.key"
-          :title="department.title"
-          :link="department.slug"
-          :target="department.target"
+          :department="department"
           @select-department="onSelectDepartment(department)"
         />
       </div>
     </div>
+    <HeaderSelectedMenuDepartment v-if="showSelectedMenu" class="header-menu__selected-menu-department" />
   </div>
 </template>
 
@@ -44,10 +58,12 @@
 .header-menu {
   background-color: $base-color;
   color: $text-color;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   @at-root .content-page--seamless-header & {
     position: absolute;
     width: 100%;
-    z-index: 1000;
     background-color: transparent;
     color: $base-color;
   }
@@ -72,5 +88,11 @@
   display: inline-flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+.header-menu__selected-menu-department {
+  background-color: $background-color;
+  position: absolute;
+  width: 100%;
 }
 </style>

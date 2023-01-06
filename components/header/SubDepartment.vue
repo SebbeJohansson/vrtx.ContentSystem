@@ -8,8 +8,6 @@
     },
   });
 
-  const emit = defineEmits(['select-department']);
-
   const item = computed(() => {
     if (props.department.slug) {
       return {
@@ -31,35 +29,42 @@
     }
     return null;
   });
+
   const subDepartments = computed(() => {
     if (props.department.sub_departments) {
       return props.department.sub_departments;
     }
     return [];
   });
-
-  const onMouseEnter = () => {
-    emit('select-department');
-  };
-
 </script>
 
 <template>
-  <component
-    :is="item.type"
-    :to="item.url ? item.url : null"
-    :target="target"
-    class="menu-department"
-    :class="{'menu-department--has-sub-menus' : subDepartments.length > 0}"
-    @mouseenter="onMouseEnter"
+  <div
+    class="sub-department"
   >
-    {{ title }}
-    <slot />
-  </component>
+    <component
+      :is="item.type"
+      :to="item.url ? item.url : null"
+      :target="target"
+      class="sub-department__title"
+    >
+      {{ title }}
+    </component>
+    <div v-if="subDepartments" class="sub-department__sub-departments">
+      <HeaderMenuDepartment
+        v-for="subDepartment in subDepartments"
+        :key="subDepartment.key"
+        :department="subDepartment"
+      />
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.menu-department--has-sub-menus {
-  cursor: pointer;
+.sub-department {
+  color: $text-color;
+}
+.sub-department__title {
+  font-weight: 500;
 }
 </style>

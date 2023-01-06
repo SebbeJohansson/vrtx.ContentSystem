@@ -7,19 +7,14 @@
 <template>
   <div class="footer-menu">
     <div class="footer-menu__content">
-      <h2>
-        {{ $t("logo") }}
-      </h2>
       <div
         v-if="departments && Array.isArray(departments) && departments.length > 0"
         class="footer-menu__departments"
       >
-        <HeaderMenuDepartment
+        <HeaderSubDepartment
           v-for="department in departments"
           :key="department.key"
-          :title="department.title"
-          :link="department.slug"
-          :target="department.target"
+          :department="department"
         />
       </div>
       <PartsLanguageSwitcher />
@@ -49,6 +44,7 @@
   display: inline-flex;
   flex-direction: row;
   gap: 1rem;
+  margin-right: auto;
 }
 
 </style>

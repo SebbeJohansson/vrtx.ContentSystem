@@ -1,8 +1,8 @@
-import { HeaderMenu, MenuDepartment } from "./useContent";
+import { HeaderMenu, MenuDepartment } from './useContent';
 
 export const useMenuContent = () => useState<HeaderMenu>('menuContent', () => ({} as HeaderMenu));
 export const useMenuSource = () => useState<string>('menuSource', () => '');
-export const useSelectedMenuDepartment = () => useState<MenuDepartment>('selectedMenuDepartment', () => ({} as MenuDepartment));
+export const useSelectedMenuDepartment = () => useState<MenuDepartment | undefined>('selectedMenuDepartment', () => (undefined));
 
 /* useMenuFetch - Fetches content from sources. */
 /* Currently only storyblok. */
@@ -15,7 +15,7 @@ export const useMenu = () => {
   const menuSource = useMenuSource();
   const selectedMenuDepartment = useSelectedMenuDepartment();
 
-  const setSelectedMenuDepartment = (department: MenuDepartment) => {
+  const setSelectedMenuDepartment = (department: MenuDepartment | undefined) => {
     selectedMenuDepartment.value = department;
   };
 
