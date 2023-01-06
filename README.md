@@ -92,7 +92,11 @@ Since footer is special it needs to be of the content type 'Menu' and have the '
 -----
 ## Creating a private fork
 
-Sometimes you might wanna create a private fork (even if the license and github don't allow it). If you want to do that do this:
+Sometimes you might wanna create a private fork (even if the license and github don't allow it). The easiest way to create a private version is to use the template function:
+![image](https://user-images.githubusercontent.com/5083273/211059583-369d028a-a853-4151-8cbe-213531cd083f.png)
+![image](https://user-images.githubusercontent.com/5083273/211059417-bd2d7127-0eef-46d2-9e7c-231828ba0286.png)
+
+The other option is to manually create a repo and add the repo as an upstream you can pull from. If you want to do that do this:
 1. Create an empty private repo.
 2. Clone the empty repo locally.
 3. Add Vrtx.ContentSystem repo as an upstream with: `git remote add upstream https://github.com/SebbeJohansson/Vrtx.ContentSystem.git`
