@@ -19,7 +19,6 @@ export const usePageFetch = async () => {
   const { locale } = useI18n();
 
   watch(() => route.path, async () => {
-    // console.log(`Current path changed from ${oldPath} to ${newPath}!`);
     await useStoryblokPageFetch(locale.value);
   });
   await useStoryblokPageFetch(locale.value);

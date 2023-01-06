@@ -75,11 +75,7 @@
     }
     return null;
   });
-  const useBackgroundLook = computed(() => {
-    console.log(!$isArrayEmpty(backgroundCss.value));
-    console.log(backgroundImage.value);
-    return !$isArrayEmpty(backgroundCss.value) || backgroundImage.value
-  });
+  const useBackgroundLook = computed(() => !$isArrayEmpty(backgroundCss.value) || backgroundImage.value);
   </script>
 
 <template>
