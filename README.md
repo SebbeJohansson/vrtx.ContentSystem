@@ -88,3 +88,14 @@ Since footer is special it needs to be of the content type 'Menu' and have the '
 ![image](https://user-images.githubusercontent.com/5083273/209223714-9739a9c7-6f17-4121-a644-facb2bd6dc23.png)
 4. Add a few departments (each department is a footer option).
 5. Publish.
+
+-----
+## Creating a private fork
+
+Sometimes you might wanna create a private fork (even if the license and github don't allow it). If you want to do that do this:
+1. Create an empty private repo.
+2. Clone the empty repo locally.
+3. Add Vrtx.ContentSystem repo as an upstream with: `git remote add upstream https://github.com/SebbeJohansson/Vrtx.ContentSystem.git`
+4. Disable pushing to upstream (since you are not allowed to do that either way): `git remote set-url --push upstream DISABLE`
+5. Pull main from the upstream: `git pull upstream/main main`
+6. Fix any potential merge issues.
