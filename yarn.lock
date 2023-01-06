@@ -5782,10 +5782,10 @@ storyblok-js-client@^4.5.6, storyblok-js-client@^4.5.8:
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-4.5.8.tgz#862f67d4f25b6c50334e6965bf27f6b6a755ccae"
   integrity sha512-0Wp7Kn4RdKaKRgMmNDu8c6OC81x1mgeri4ziKDY9BsUZEIGLTNw8KFIWlHYACgMnJQn/6qZaV9kGo8IY4hv6GA==
 
-storyblok@^3.16.1:
-  version "3.16.1"
-  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.16.1.tgz#062353e5f5cb3aaa112263dd9dc80ceed113d991"
-  integrity sha512-r1xwSPbq8Nq/k1SsaJWs0Z6XH+5Yq5URmjR5BsnR2aNYKlAeCtjDKKQyKPjBGVCse4a1Qw8GH1fE598/hrKE7Q==
+storyblok@^3.17.1:
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/storyblok/-/storyblok-3.17.1.tgz#76fe8c0e373bea431188a1bd291fb926f5e9f620"
+  integrity sha512-q8i5y/wLpTB57XXfpav3jx9uhpiJxxbe0PwwPpWQqkHp4BocHQjJj5KuPuBcxzmgjOd/SqV4/y+EJTtPafLsSg==
   dependencies:
     axios "^0.21.1"
     chalk "^4.1.0"
