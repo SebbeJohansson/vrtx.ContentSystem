@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { StoryData } from '@storyblok/vue/dist';
+  import { ISbStoryData } from '@storyblok/vue/dist';
 
   import { BlogPost } from '~/composables/useBlog';
 
@@ -18,14 +18,14 @@
 
   const title = computed(() => props.blok.title);
 
-  const blogPosts = ref([] as StoryData[]);
+  const blogPosts = ref([] as ISbStoryData[]);
 
   const version = pagePreview.value ? 'draft' : 'published';
   // Since we need the base object and not the content of the story, we need to pass the raw object.
-  await useStoryblokBlogPostFetch(version, [props.raw] as StoryData[]).then((response) => {
+  await useStoryblokBlogPostFetch(version, [props.raw] as ISbStoryData[]).then((response) => {
     blogPosts.value = blogPosts.value.concat(response);
   });
-  const posts = computed(() => blogPosts.value.map((post: StoryData) => ({
+  const posts = computed(() => blogPosts.value.map((post: ISbStoryData) => ({
     key: post.uuid,
     title: post.content.title || post.content.name || post.name,
     cover_image: {

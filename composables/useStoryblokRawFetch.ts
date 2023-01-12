@@ -1,12 +1,12 @@
 /* eslint-disable import/no-duplicates */
-import { StoryData } from '@storyblok/vue/dist';
+import { ISbStoryData } from '@storyblok/vue/dist';
 import { apiPlugin } from '@storyblok/vue';
 
 import { acceptedPageTypes } from './usePageFetch';
 
 export interface Blok {
-  story: StoryData;
-  stories: StoryData[];
+  story: ISbStoryData;
+  stories: ISbStoryData[];
   cv: number,
 }
 
@@ -14,10 +14,10 @@ export const useStoryblokRawFetchStories = async (storyblokApiToken: string, par
   const { storyblokApi } = apiPlugin({ apiOptions: { accessToken: storyblokApiToken } });
 
   let pages = 0;
-  const stories: StoryData[] = [];
+  const stories: ISbStoryData[] = [];
   const pageInfo = await storyblokApi.get('cdn/stories/', params);
 
-  stories.push(...(pageInfo.data.stories as StoryData[]));
+  stories.push(...(pageInfo.data.stories as ISbStoryData[]));
   const { total } = pageInfo.headers;
   const perPage = pageInfo.headers.per_page || total > 25 ? 25 : null;
 
@@ -30,7 +30,7 @@ export const useStoryblokRawFetchStories = async (storyblokApiToken: string, par
       ...params,
       page,
     });
-    stories.push(...(pageInfo2.data.stories as StoryData[]));
+    stories.push(...(pageInfo2.data.stories as ISbStoryData[]));
   }
 
   return stories;

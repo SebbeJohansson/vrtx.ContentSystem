@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { StoryData } from '@storyblok/vue/dist';
+  import { ISbStoryData } from '@storyblok/vue/dist';
 
   import { BlogPost } from '~/composables/useBlog';
 
@@ -14,13 +14,13 @@
 
   const title = computed(() => props.blok.title);
 
-  const blogPosts = ref(props.blok.blogs as StoryData[]);
+  const blogPosts = ref(props.blok.blogs as ISbStoryData[]);
 
   const version = pagePreview.value ? 'draft' : 'published';
   await useStoryblokBlogPostFetch(version, props.blok.categories).then((response) => {
     blogPosts.value = blogPosts.value.concat(response);
   });
-  const posts = computed(() => blogPosts.value.map((post: StoryData) => ({
+  const posts = computed(() => blogPosts.value.map((post: ISbStoryData) => ({
     key: post.uuid,
     title: post.content.title || post.content.name || post.name,
     cover_image: {

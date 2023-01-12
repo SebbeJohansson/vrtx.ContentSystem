@@ -1,9 +1,9 @@
-import { StoryData } from '@storyblok/vue/dist';
+import { ISbStoryData } from '@storyblok/vue/dist';
 import { MenuDepartment, HeaderMenu } from '~/composables/useContent';
 
 export interface Blok {
-  story: StoryData;
-  stories: StoryData[];
+  story: ISbStoryData;
+  stories: ISbStoryData[];
   cv: number,
 }
 
@@ -115,7 +115,7 @@ export const useStoryblokFooterFetch = async () => {
   });
 };
 
-export const useStoryblokBlogPostFetch = async (version: string, categories: StoryData[]) => {
+export const useStoryblokBlogPostFetch = async (version: string, categories: ISbStoryData[]) => {
   const params = {
     version,
     content_type: 'sb-blog-post',
@@ -130,7 +130,7 @@ export const useStoryblokBlogPostFetch = async (version: string, categories: Sto
       : {},
   };
   const data = await useStoryblokFetchStories('', params);
-  return data.stories as StoryData[];
+  return data.stories as ISbStoryData[];
 };
 
 export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
@@ -141,7 +141,7 @@ export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
       `storyblok-fetch-${slug}-${new URLSearchParams(JSON.stringify(params))}`,
       async () => {
         let pages = 0;
-        const stories: StoryData[] = [];
+        const stories: ISbStoryData[] = [];
 
         await storyblokApi.get(`cdn/stories/${slug}`, params).then((res) => {
           if (!res.data) { return; }
@@ -155,14 +155,14 @@ export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
               pages = Math.ceil(total / perPage);
             }
 
-            stories.push(...(res.data.stories as StoryData[]));
+            stories.push(...(res.data.stories as ISbStoryData[]));
           }
         });
 
         for (let page = 2; page <= pages; page += 1) {
           // eslint-disable-next-line no-await-in-loop
           await storyblokApi.get(`cdn/stories/${slug}`, params).then((res) => {
-            stories.push(...(res.data.stories as StoryData[]));
+            stories.push(...(res.data.stories as ISbStoryData[]));
           });
         }
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { StoryData } from '@storyblok/vue/dist';
+  import { ISbStoryData } from '@storyblok/vue/dist';
 
   const pageContent = usePageContent();
-  const blok = pageContent.value as StoryData;
+  const blok = pageContent.value as ISbStoryData;
 </script>
 
 <template>
