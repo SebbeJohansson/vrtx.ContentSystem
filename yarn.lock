@@ -881,26 +881,27 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.15.0.tgz#96915baa05e6a6a1d137badf4984d3fc05820bb6"
   integrity sha512-lu8BpxjAtRCAo5ifytTpCPCj99LF7o/2Myn+NXyNCBqvPYn7Pjd76AMmUB5l7XF1U6t0hcWrlEM5ESufW7wAeA==
 
-"@storyblok/js@^1.7.2", "@storyblok/js@^1.8.3":
-  version "1.8.6"
-  resolved "https://registry.yarnpkg.com/@storyblok/js/-/js-1.8.6.tgz#ca210b6828095e72ebdd3281202c6474f6e50392"
-  integrity sha512-MpDhwfs+TBrnfQqr9z+z7SCLnvX6/jZKCasexEvVt0Qp+MvWD7IsQtBu6WnKboTjaR4VLFb69YTk+xUG/Roqgw==
+"@storyblok/js@^2.0.5":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@storyblok/js/-/js-2.0.6.tgz#5fdab4f7e4d27384579b050402ae8e7826aa1b46"
+  integrity sha512-THXjr/HYU8fAECc8uKJ9HPcm/PvLXz5WNy1Lsao5eBmhSL3h01rHaUsUbMl1dtNJiRAaYOAqwG8pQSndR4ko+g==
   dependencies:
-    storyblok-js-client "^4.5.8"
+    storyblok-js-client "^5.2.5"
 
-"@storyblok/nuxt@^4.4.1":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-4.6.0.tgz#fa55abe89410dbce9eb295ff36e1e70db6a7198a"
-  integrity sha512-Km0HEuHJZ3PP0R3S9mQhkr4pAIDQG2qX6Y35mB5ncH7Gw1NmO2yWScg6FcX0fGr2W5ENXjDfePGAtEtmytPdIQ==
+"@storyblok/nuxt@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-5.0.0.tgz#526d9bd5c5a966acb443775ae045847ea8b4e6fe"
+  integrity sha512-N1VIH9qwZuCU7mJj5dDxBnXVEbCk9wqpF29LYpwEUSAHK/7IaWZwH9SSVHZh73r4WuJAyfuE1ELz8vjOYcMlug==
   dependencies:
-    "@storyblok/vue" "^6.3.0"
+    "@nuxt/kit" "^3.0.0"
+    "@storyblok/vue" "^7.0.0"
 
-"@storyblok/vue@^6.3.0":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@storyblok/vue/-/vue-6.3.2.tgz#fbb07de2b615f0952540c9854e43350c458fa85e"
-  integrity sha512-0nBIco2WsEmaqTTRxuYQeTRQkFqUheZsUlRgo2uw9qbZj8VMDrSqd6pxstZEn0LcijzbpFNhOOObIpo9rVsCkQ==
+"@storyblok/vue@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/vue/-/vue-7.0.0.tgz#064c223ac79e3c864d953d1ff89b3201aab075ce"
+  integrity sha512-r23LAho/M2fk6bNUW39XDTMM8V+Eug9gZoZf3ZBRoW40fpnjzP8eQj0hnCqhFK5gfOFVsmsL206AAbQx1xz3lQ==
   dependencies:
-    "@storyblok/js" "^1.8.3"
+    "@storyblok/js" "^2.0.5"
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
@@ -1447,14 +1448,6 @@ axios@^0.21.1:
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
   dependencies:
     follow-redirects "^1.14.0"
-
-axios@^0.27.2:
-  version "0.27.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
-  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
-  dependencies:
-    follow-redirects "^1.14.9"
-    form-data "^4.0.0"
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -3014,7 +3007,7 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-follow-redirects@^1.0.0, follow-redirects@^1.14.0, follow-redirects@^1.14.9:
+follow-redirects@^1.0.0, follow-redirects@^1.14.0:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -3023,15 +3016,6 @@ form-data@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-3.0.1.tgz#ebd53791b78356a99af9a300d4282c4d5eb9755f"
   integrity sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
-  dependencies:
-    asynckit "^0.4.0"
-    combined-stream "^1.0.8"
-    mime-types "^2.1.12"
-
-form-data@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
-  integrity sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==
   dependencies:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
@@ -5777,10 +5761,15 @@ std-env@^3.3.1:
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.3.1.tgz#93a81835815e618c8aa75e7c8a4dc04f7c314e29"
   integrity sha512-3H20QlwQsSm2OvAxWIYhs+j01MzzqwMwGiiO1NQaJYZgJZFPuAbf95/DiKRBSTYIJ2FeGUc+B/6mPGcWP9dO3Q==
 
-storyblok-js-client@^4.5.6, storyblok-js-client@^4.5.8:
+storyblok-js-client@^4.5.6:
   version "4.5.8"
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-4.5.8.tgz#862f67d4f25b6c50334e6965bf27f6b6a755ccae"
   integrity sha512-0Wp7Kn4RdKaKRgMmNDu8c6OC81x1mgeri4ziKDY9BsUZEIGLTNw8KFIWlHYACgMnJQn/6qZaV9kGo8IY4hv6GA==
+
+storyblok-js-client@^5.2.5:
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-5.2.5.tgz#407682ded56802ead9fecbecd43da0f46095c79c"
+  integrity sha512-tNiNcPm3HltZtA1XaaNSkpZacNW4TxM4cgAkfj/AGBvPuv5FN2BZfALUpNKIozgYH3ynTPEzMQYGupZ7h00LHw==
 
 storyblok@^3.16.1:
   version "3.16.1"

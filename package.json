@@ -22,9 +22,7 @@
   },
   "dependencies": {
     "@nuxtjs/i18n": "npm:@nuxtjs/i18n-edge",
-    "@storyblok/js": "^1.7.2",
-    "@storyblok/nuxt": "^4.4.1",
-    "axios": "^0.27.2",
+    "@storyblok/nuxt": "^5.0.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "nuxt-jsonld": "^2.0.6",
     "sass": "^1.54.9",
