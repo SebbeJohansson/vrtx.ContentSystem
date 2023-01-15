@@ -48,5 +48,5 @@ export const useStoryblokRawFetchDynamicRoutes = async (storyblokApiToken: strin
       },
     },
   );
-  return data.map(story => story.path || `/${story.full_slug}`) as string[];
+  return data.map(story => story.path || `/${story.slug}` || `/${story.full_slug}`) as string[];
 };
