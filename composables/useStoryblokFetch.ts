@@ -1,5 +1,5 @@
 import { ISbStoryData } from '@storyblok/vue/dist';
-import { MenuDepartment, HeaderMenu } from '~/composables/useContent';
+import { MenuDepartment, HeaderMenu } from '~/interfaces/menu';
 
 export interface Blok {
   story: ISbStoryData;

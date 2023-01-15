@@ -1,4 +1,4 @@
-import { HeaderMenu, MenuDepartment } from './useContent';
+import { HeaderMenu, MenuDepartment } from '~/interfaces/menu';
 
 export const useMenuContent = () => useState<HeaderMenu>('menuContent', () => ({} as HeaderMenu));
 export const useMenuSource = () => useState<string>('menuSource', () => '');
