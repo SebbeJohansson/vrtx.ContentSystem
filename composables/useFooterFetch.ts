@@ -1,4 +1,4 @@
-import { FooterMenu } from "./useContent";
+import { FooterMenu } from '~/interfaces/menu';
 
 export const useFooterContent = () => useState<FooterMenu>('footerContent', () => ({} as FooterMenu));
 export const useFooterSource = () => useState<string>('footerSource', () => '');

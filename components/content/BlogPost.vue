@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { BlogCategory, BlogAuthor } from '~/composables/useBlog';
+  import { BlogCategory, BlogAuthor } from '~/interfaces/blog';
 
   const { toImageUrl } = useMediaHandler();
 

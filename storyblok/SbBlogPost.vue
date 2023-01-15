@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { BlogAuthor, BlogCategory } from '~/composables/useBlog';
+  import { BlogAuthor, BlogCategory } from '~/interfaces/blog';
 
   const props = defineProps({
     blok: {

@@ -1,8 +1,4 @@
-export interface PageMeta {
-  title: string;
-  description: string;
-  seamless_header: boolean;
-}
+import { PageMeta } from '~/interfaces/page';
 
 export const usePageContent = () => useState<object>('pageContent', () => ({}));
 export const usePageType = () => useState<string>('pageType', () => '');

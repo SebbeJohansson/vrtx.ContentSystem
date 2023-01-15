@@ -1,5 +1,5 @@
 import { ISbStoryData } from '@storyblok/vue/dist';
-import { MenuDepartment, HeaderMenu } from '~/composables/useContent';
+import { MenuDepartment, HeaderMenu } from '~/interfaces/menu';
 
 export interface Blok {
   story: ISbStoryData;
@@ -62,6 +62,7 @@ function menuDepartmentMapper(storyblokDepartment: any) {
     slug: link,
     target: storyblokDepartment.link.target,
     sub_departments: storyblokDepartment.sub_departments.map((subDepartment: any) => menuDepartmentMapper(subDepartment)),
+    content: storyblokDepartment.content,
   } as MenuDepartment;
 }
 

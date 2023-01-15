@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { MenuDepartment } from '~/composables/useContent';
+  import { MenuDepartment } from '~/interfaces/menu';
 
   const { menuContent, setSelectedMenuDepartment, selectedMenuDepartment } = useMenu();
 
@@ -9,7 +9,6 @@
   const { departments } = menu;
 
   const onSelectDepartment = (selectedDepartment: MenuDepartment | undefined) => {
-    console.log(selectedDepartment);
     if (selectedDepartment && selectedDepartment.sub_departments?.length > 0) {
       setSelectedMenuDepartment(selectedDepartment);
     } else {
