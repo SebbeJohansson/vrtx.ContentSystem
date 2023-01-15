@@ -6,6 +6,7 @@ export interface MenuDepartment {
   slug: string;
   target: string;
   image: Image;
+  content: {};
   sub_departments: MenuDepartment[];
 }
 

@@ -62,6 +62,7 @@ function menuDepartmentMapper(storyblokDepartment: any) {
     slug: link,
     target: storyblokDepartment.link.target,
     sub_departments: storyblokDepartment.sub_departments.map((subDepartment: any) => menuDepartmentMapper(subDepartment)),
+    content: storyblokDepartment.content,
   } as MenuDepartment;
 }
 
