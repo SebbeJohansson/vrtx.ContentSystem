@@ -1,6 +1,11 @@
 <script setup lang="ts">
   try {
+    // Fetch first page.
     await usePageFetch();
+    // Fetch menu.
+    await useMenuFetch();
+    // Fetch footer.
+    await useFooterFetch();
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);

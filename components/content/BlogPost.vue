@@ -69,10 +69,11 @@
 
 <style scoped lang="scss">
 .blog-post__more-info{
+  margin: 0 1rem 1rem;
+  @include content-width();
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
-  margin: 0 1rem 1rem;
   @include for-phone-only {
     grid-template-columns: 1fr;
   }

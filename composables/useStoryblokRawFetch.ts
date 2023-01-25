@@ -32,7 +32,6 @@ export const useStoryblokRawFetchStories = async (storyblokApiToken: string, par
     });
     stories.push(...(pageInfo2.data.stories as ISbStoryData[]));
   }
-
   return stories;
 };
 
@@ -48,5 +47,18 @@ export const useStoryblokRawFetchDynamicRoutes = async (storyblokApiToken: strin
       },
     },
   );
-  return data.map(story => story.path || `/${story.slug}` || `/${story.full_slug}`) as string[];
+  return data.map((story) => {
+    let path = '';
+    if (story.path) {
+      path = story.path;
+    } else if (story.full_slug) {
+      path = `/${story.full_slug}`;
+    } else {
+      path = `/${story.slug}`;
+    }
+    if (path.slice(-1) !== '/') {
+      return `${path}/`;
+    }
+    return path;
+  }) as string[];
 };
