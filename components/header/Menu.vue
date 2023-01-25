@@ -4,7 +4,6 @@
   const { menuContent, setSelectedMenuDepartment, selectedMenuDepartment } = useMenu();
 
   const localePath = useLocalePath();
-  await useMenuFetch();
   const menu = menuContent.value;
   const { departments } = menu;
 

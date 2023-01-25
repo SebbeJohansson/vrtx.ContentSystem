@@ -1,13 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "dev": "nuxt dev",
-    "build": "nuxt build",
-    "generate": "nuxt generate",
-    "start": "nuxt start",
-    "preview": "nuxt preview",
-    "deploy": "nuxt build && nuxt start",
-    "static-deploy": "npx serve -s .output/public",
+    "dev": "npx nuxi dev",
+    "build": "npx nuxi build",
+    "generate": "npx nuxi generate",
+    "preview": "npx nuxi preview",
+    "deploy": "npx nuxi build && node .output/server/index.mjs",
+    "static-deploy": "npx nuxi generate && npx serve -s .output/public",
     "storyblok-login": "storyblok login",
     "storyblok-logout": "storyblok logout"
   },

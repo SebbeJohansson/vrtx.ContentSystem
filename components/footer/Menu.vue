@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  await useFooterFetch();
   const menu = useFooterContent().value;
   const { departments } = menu;
 </script>
