@@ -5,6 +5,7 @@
   });
 
   try {
+    console.log('normal page fetch');
     await usePageFetch();
   } catch (e) {
     // eslint-disable-next-line no-console

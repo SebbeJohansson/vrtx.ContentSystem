@@ -11,13 +11,12 @@ export const acceptedPageTypes = ['content-page', 'blog-page', 'blog-post', 'blo
 /* usePageFetch - Fetches content from sources. */
 /* Currently only storyblok. */
 export const usePageFetch = async () => {
-  const route = useRoute();
   const { locale } = useI18n();
-
-  watch(() => route.path, async () => {
-    await useStoryblokPageFetch(locale.value);
-  });
   await useStoryblokPageFetch(locale.value);
+};
+
+export const useRoutingPageFetch = async (locale: string) => {
+  await useStoryblokRoutingPageFetch(locale);
 };
 
 export const useGetDynamicRoutes = async () => {

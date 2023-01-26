@@ -1,7 +1,18 @@
 <script setup lang="ts">
   try {
+    const route = useRoute();
+    const { locale } = useI18n();
+
+    console.log('normal page fetch');
     // Fetch first page.
     await usePageFetch();
+
+    // Add watcher for route changes.
+    watch(() => route.path, async () => {
+      console.log('fetch from route change');
+      await useRoutingPageFetch(locale.value);
+    });
+
     // Fetch menu.
     await useMenuFetch();
     // Fetch footer.

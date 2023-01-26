@@ -26,6 +26,7 @@ export const useStoryblokPageFetch = async (locale: string) => {
   if (currentRoute.path === '/') {
     currentRoute.path = 'index';
   }
+  currentRoute.path = currentRoute.path.replace(/(^\/+|\/+$)/mg, '');
 
   const isPreview = !!(currentRoute.query._storyblok && currentRoute.query._storyblok !== '');
   const version = isPreview ? 'draft' : 'published';
@@ -46,6 +47,62 @@ export const useStoryblokPageFetch = async (locale: string) => {
     pageMeta.value.description = response.value.content.description;
     pageMeta.value.seamless_header = response.value.content.seamless_header;
   });
+};
+
+export const useStoryblokRoutingPageFetch = async (locale: string) => {
+  const pageContent = usePageContent();
+  const pageType = usePageType();
+  const pageSource = usePageSource();
+  const pagePreview = usePagePreview();
+  const pageMeta = usePageMeta();
+
+  const route = useRoute();
+
+  const currentRoute = { ...route };
+  const localeString = `/${locale}`;
+  if (currentRoute.path.startsWith(localeString)) {
+    currentRoute.path = currentRoute.path.slice(localeString.length);
+  }
+  if (currentRoute.path === '/') {
+    currentRoute.path = 'index';
+  }
+  currentRoute.path = currentRoute.path.replace(/(^\/+|\/+$)/mg, '');
+
+  const isPreview = !!(currentRoute.query._storyblok && currentRoute.query._storyblok !== '');
+  const version = isPreview ? 'draft' : 'published';
+  pagePreview.value = isPreview;
+
+  await useAsyncDataFetch(currentRoute.path, {
+    version,
+    language: locale,
+    resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories,sb-blog-post.author',
+  }).then((response) => {
+    if (!response) { return; }
+
+    pageContent.value = response.value;
+
+    pageType.value = response.value.content.component.substring(3);
+    pageSource.value = 'storyblok';
+    pageMeta.value.title = response.value.content.title;
+    pageMeta.value.description = response.value.content.description;
+    pageMeta.value.seamless_header = response.value.content.seamless_header;
+  });
+};
+
+const useAsyncDataFetch = async (url: string, apiOptions: any) : Promise<any> => {
+  const storyblokApiInstance = useStoryblokApi();
+  const uniqueKey = `${JSON.stringify(apiOptions)}${url}`;
+  const { data } = await useAsyncData(
+    `${uniqueKey}-asyncdata`,
+    // eslint-disable-next-line no-return-await
+    async () => await storyblokApiInstance.get(`cdn/stories/${url}`, apiOptions),
+  );
+  if (data.value) {
+    const story = useState(`${uniqueKey}-state`, () => null);
+    story.value = data.value.data.story;
+    return story;
+  }
+  return null;
 };
 
 function menuDepartmentMapper(storyblokDepartment: any) {
@@ -144,7 +201,7 @@ export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
         let pages = 0;
         const stories: ISbStoryData[] = [];
 
-        await storyblokApi.get(`cdn/stories/${slug}`, params).then((res) => {
+        await storyblokApi.get(`cdn/stories${slug}`, params).then((res) => {
           if (!res.data) { return; }
           if (res.data.story) {
             stories.push(res.data.story);
@@ -162,7 +219,7 @@ export const useStoryblokFetchStories = async (slug?: '', params?: {}) => {
 
         for (let page = 2; page <= pages; page += 1) {
           // eslint-disable-next-line no-await-in-loop
-          await storyblokApi.get(`cdn/stories/${slug}`, params).then((res) => {
+          await storyblokApi.get(`cdn/stories${slug}`, params).then((res) => {
             stories.push(...(res.data.stories as ISbStoryData[]));
           });
         }
