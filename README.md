@@ -16,9 +16,11 @@ yarn install
 ### Storyblok
 
 How to set up Vrtx.ContentSystem with Storyblok:
-1. Create a new Storyblok Space - https://app.storyblok.com/#/me/spaces/new
-2. Login to Storyblok CLI in your command line while in the project directory - yarn storyblok login
+1. Login to Storyblok CLI in your command line while in the project directory (make sure you have run `yarn install` first) - `yarn storyblok login`
 ![image](https://user-images.githubusercontent.com/5083273/209108425-7cc108a5-35e8-4602-ba69-78e4a748979c.png)
+2. Create a new Storyblok Space - `yarn storyblok quickstart`
+![image](https://user-images.githubusercontent.com/5083273/215266135-11c86f60-ab7e-4abd-aafa-ab37f098246d.png)
+3. Grab your new storyblok space id - `yarn storyblok spaces`
 3. Push the Vrtx.ContentSystem components to your new Storyblok space - yarn storyblok push-components --space {your-space-id} storyblok/components.vrtx.json
 4. Remove all the components that does not belong to vrtx.ContentSystem - yarn storyblok delete-components storyblok/components.vrtx.json --space {your-space-id} --reverse
 5. ???
