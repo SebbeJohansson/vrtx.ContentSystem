@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-  const { selectedMenuDepartment, menuSource } = useMenu();
+  const { selectedMenuDepartment } = useMenu();
 
   const subMenuDepartments = computed(() => {
     if (selectedMenuDepartment.value) {
@@ -19,7 +19,12 @@
       <HeaderSubDepartment v-for="department in subMenuDepartments" :key="department.key" :department="department" />
     </div>
     <div class="selected-menu-department__content">
-      <SourcesStoryblokSelectedMenuContent v-if="menuSource === 'storyblok'" :content="menuDepartmentContent" />
+      <component
+        :is="$resolveStoryBlokComponent(block)"
+        v-for="block in menuDepartmentContent"
+        :key="block._uid"
+        :blok="block"
+      />
     </div>
   </div>
 </template>

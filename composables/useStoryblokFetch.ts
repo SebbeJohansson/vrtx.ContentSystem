@@ -12,7 +12,6 @@ export const useGetAcceptedStoryblokPageTypes = () => acceptedPageTypes.map(page
 export const useStoryblokPageFetch = async (locale: string) => {
   const pageContent = usePageContent();
   const pageType = usePageType();
-  const pageSource = usePageSource();
   const pagePreview = usePagePreview();
   const pageMeta = usePageMeta();
 
@@ -41,7 +40,6 @@ export const useStoryblokPageFetch = async (locale: string) => {
     pageContent.value = response.value;
 
     pageType.value = response.value.content.component.substring(3);
-    pageSource.value = 'storyblok';
     pageMeta.value.title = response.value.content.title;
     pageMeta.value.description = response.value.content.description;
     pageMeta.value.seamless_header = response.value.content.seamless_header;
@@ -70,7 +68,6 @@ export const useStoryblokMenuFetch = async () => {
   const { locale } = useI18n();
 
   const menuContent = useMenuContent();
-  const menuSource = useMenuSource();
 
   const route = useRoute();
 
@@ -87,7 +84,6 @@ export const useStoryblokMenuFetch = async () => {
     const headerMenu = { departments } as HeaderMenu;
 
     menuContent.value = headerMenu;
-    menuSource.value = 'storyblok';
   });
 };
 
@@ -95,7 +91,6 @@ export const useStoryblokFooterFetch = async () => {
   const { locale } = useI18n();
 
   const footerContent = useFooterContent();
-  const footerSource = useFooterSource();
 
   const route = useRoute();
 
@@ -112,7 +107,6 @@ export const useStoryblokFooterFetch = async () => {
     const footerMenu = { departments } as FooterMenu;
 
     footerContent.value = footerMenu;
-    footerSource.value = 'storyblok';
   });
 };
 

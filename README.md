@@ -105,3 +105,8 @@ The other option is to manually create a repo and add the repo as an upstream yo
 4. Disable pushing to upstream (since you are not allowed to do that either way): `git remote set-url --push upstream DISABLE`
 5. Pull main from the upstream: `git pull upstream/main main`
 6. Fix any potential merge issues.
+
+
+**Multi-CMS version**
+
+Go to the [multi-cms branch](https://github.com/SebbeJohansson/vrtx.ContentSystem/tree/multi-cms) to see the older version that were prepped for multiple cmses.
