@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-  const { selectedMenuDepartment, menuSource } = useMenu();
+  const { selectedMenuDepartment } = useMenu();
 
   const subMenuDepartments = computed(() => {
     if (selectedMenuDepartment.value) {

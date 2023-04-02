@@ -68,7 +68,6 @@ export const useStoryblokMenuFetch = async () => {
   const { locale } = useI18n();
 
   const menuContent = useMenuContent();
-  const menuSource = useMenuSource();
 
   const route = useRoute();
 
@@ -85,7 +84,6 @@ export const useStoryblokMenuFetch = async () => {
     const headerMenu = { departments } as HeaderMenu;
 
     menuContent.value = headerMenu;
-    menuSource.value = 'storyblok';
   });
 };
 
@@ -93,7 +91,6 @@ export const useStoryblokFooterFetch = async () => {
   const { locale } = useI18n();
 
   const footerContent = useFooterContent();
-  const footerSource = useFooterSource();
 
   const route = useRoute();
 
@@ -110,7 +107,6 @@ export const useStoryblokFooterFetch = async () => {
     const footerMenu = { departments } as FooterMenu;
 
     footerContent.value = footerMenu;
-    footerSource.value = 'storyblok';
   });
 };
 

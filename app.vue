@@ -1,9 +1,4 @@
 <script setup lang="ts">
-  definePageMeta({
-    // We use a custom solution for layouts since some features we need does not exist.
-    layout: false,
-  });
-
   try {
     // Fetch first page.
     await usePageFetch();
