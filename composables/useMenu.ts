@@ -1,7 +1,6 @@
 import { HeaderMenu, MenuDepartment } from '~/interfaces/menu';
 
 export const useMenuContent = () => useState<HeaderMenu>('menuContent', () => ({} as HeaderMenu));
-export const useMenuSource = () => useState<string>('menuSource', () => '');
 export const useSelectedMenuDepartment = () => useState<MenuDepartment | undefined>('selectedMenuDepartment', () => (undefined));
 
 /* useMenuFetch - Fetches content from sources. */
@@ -12,7 +11,6 @@ export const useMenuFetch = async () => {
 
 export const useMenu = () => {
   const menuContent = useMenuContent();
-  const menuSource = useMenuSource();
   const selectedMenuDepartment = useSelectedMenuDepartment();
 
   const setSelectedMenuDepartment = (department: MenuDepartment | undefined) => {
@@ -21,7 +19,6 @@ export const useMenu = () => {
 
   return {
     menuContent,
-    menuSource,
     selectedMenuDepartment,
     setSelectedMenuDepartment,
   };
