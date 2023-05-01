@@ -23,19 +23,20 @@ export const useStoryblokPageFetch = async (locale: string) => {
     currentRoute.path = currentRoute.path.slice(localeString.length);
   }
   if (currentRoute.path === '/') {
-    currentRoute.path = 'index';
+    currentRoute.path = '/index';
   }
 
   const isPreview = !!(currentRoute.query._storyblok && currentRoute.query._storyblok !== '');
   const version = isPreview ? 'draft' : 'published';
   pagePreview.value = isPreview;
 
-  await useAsyncStoryblok(currentRoute.path, {
+  await useCustomAsyncStoryblok(currentRoute.path, {
     version,
     language: locale,
     resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories,sb-blog-post.author',
   }).then((response) => {
     if (!response) { return; }
+    console.log(response.value);
 
     pageContent.value = response.value;
 
