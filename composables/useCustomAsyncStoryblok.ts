@@ -10,18 +10,18 @@ export const useCustomAsyncStoryblok = async (
   bridgeOptions: StoryblokBridgeConfigV2 = {},
 ) => {
   const uniqueKey = `${JSON.stringify(apiOptions)}${url}`;
-  const story = useState<ISbStoryData>(`${uniqueKey}-state`, () => ({} as ISbStoryData));
+  // const story = useState<ISbStoryData>(`${uniqueKey}-state`, () => ({} as ISbStoryData));
   const storyblokApiInstance = useStoryblokApi();
 
-  onMounted(() => {
-    if (story.value && story.value.id) {
-      useStoryblokBridge(
-        story.value.id,
-        evStory => (story.value = evStory),
-        bridgeOptions,
-      );
-    }
-  });
+  // onMounted(() => {
+  //   if (story.value && story.value.id) {
+  //     useStoryblokBridge(
+  //       story.value.id,
+  //       evStory => (story.value = evStory),
+  //       bridgeOptions,
+  //     );
+  //   }
+  // });
 
   // const { data, error } = await useAsyncData<ISbResult, ISbError>(
   //   `${uniqueKey}-asyncdata`,
@@ -30,7 +30,7 @@ export const useCustomAsyncStoryblok = async (
   console.log('route: ', `/api/storyblok${url}?${stringify(apiOptions)}`);
   const { data, error } = await useAsyncData<ISbResult|ISbError>(
     `${uniqueKey}-asyncdata`,
-    () => $fetch(`/api/storyblok${url}?${stringify(apiOptions)}`),
+    () => $fetch(`/api/storyblok/blog?${stringify(apiOptions)}`),
   );
   const storyblokData = data.value as ISbResult;
   const storyblokError = data.value as ISbError;
@@ -42,7 +42,8 @@ export const useCustomAsyncStoryblok = async (
     throw createError({ statusCode: status, statusMessage: message });
   }
 
-  story.value = storyblokData?.data.story;
+  const story = toRef(storyblokData?.data.story, `${uniqueKey}-state`);
+  console.log('story:', story);
 
   return story;
 };

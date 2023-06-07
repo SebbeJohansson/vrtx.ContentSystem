@@ -30,21 +30,21 @@ export const useStoryblokPageFetch = async (locale: string) => {
   const version = isPreview ? 'draft' : 'published';
   pagePreview.value = isPreview;
 
-  await useCustomAsyncStoryblok(currentRoute.path, {
-    version,
-    language: locale,
-    resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories,sb-blog-post.author',
-  }).then((response) => {
-    if (!response) { return; }
-    console.log(response.value);
+  // await useCustomAsyncStoryblok(currentRoute.path, {
+  //   version,
+  //   language: locale,
+  //   resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories,sb-blog-post.author',
+  // }).then((response) => {
+  //   if (!response) { return; }
+  //   console.log('response from fetch:', response);
 
-    pageContent.value = response.value;
+  //   pageContent.value = response.value;
 
-    pageType.value = response.value.content.component.substring(3);
-    pageMeta.value.title = response.value.content.title;
-    pageMeta.value.description = response.value.content.description;
-    pageMeta.value.seamless_header = response.value.content.seamless_header;
-  });
+  //   pageType.value = response.value.content.component.substring(3);
+  //   pageMeta.value.title = response.value.content.title;
+  //   pageMeta.value.description = response.value.content.description;
+  //   pageMeta.value.seamless_header = response.value.content.seamless_header;
+  // });
 };
 
 function menuDepartmentMapper(storyblokDepartment: any) {
