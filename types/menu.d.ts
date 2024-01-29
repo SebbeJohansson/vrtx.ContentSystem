@@ -1,6 +1,4 @@
-import { Image } from './Content';
-
-export interface MenuDepartment {
+interface MenuDepartment {
   key: string;
   title: string;
   slug: string;
@@ -10,10 +8,10 @@ export interface MenuDepartment {
   sub_departments: MenuDepartment[];
 }
 
-export interface HeaderMenu {
+interface HeaderMenu {
   departments: MenuDepartment[];
 }
 
-export interface FooterMenu {
+interface FooterMenu {
   departments: MenuDepartment[];
 }

@@ -1,5 +1,3 @@
-import { MediaArguments } from '~/interfaces/Content';
-
 export const useMediaHandler = () => {
   function toImageUrl(url: string, {
     maxHeight = undefined,

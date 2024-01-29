@@ -1,5 +1,3 @@
-import { FooterMenu } from '~/interfaces/menu';
-
 export const useFooterContent = () => useState<FooterMenu>('footerContent', () => ({} as FooterMenu));
 
 /* useFooterFetch - Fetches footer from storyblok. */

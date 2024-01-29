@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { BlogCategory, BlogAuthor } from '~/interfaces/blog';
-
   const { toImageUrl } = useMediaHandler();
 
   const props = defineProps({

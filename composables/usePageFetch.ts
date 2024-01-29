@@ -1,5 +1,4 @@
-import { ISbStoryData } from '@storyblok/vue/dist';
-import { PageMeta } from '~/interfaces/page';
+import type { ISbStoryData } from '@storyblok/vue/dist';
 
 export const usePageContent = () => useState<ISbStoryData>('pageContent', () => ({} as ISbStoryData));
 export const usePageType = () => useState<string>('pageType', () => '');
@@ -7,17 +6,6 @@ export const usePagePreview = () => useState<boolean>('pagePreview', () => false
 export const usePageMeta = () => useState<PageMeta>('pageMeta', () => ({} as PageMeta));
 
 export const acceptedPageTypes = ['content-page', 'blog-page', 'blog-post', 'blog-category'];
-
-/* usePageFetch - Fetches content from storyblok. */
-export const usePageFetch = async () => {
-  const route = useRoute();
-  const { locale } = useI18n();
-
-  watch(() => route.path, async () => {
-    await useStoryblokPageFetch(locale.value);
-  });
-  await useStoryblokPageFetch(locale.value);
-};
 
 export const useGetDynamicRoutes = async () => {
   await useStoryblokFetchDynamicRoutes();

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { MenuDepartment } from '~/interfaces/menu';
-
   const { menuContent, setSelectedMenuDepartment, selectedMenuDepartment } = useMenu();
 
   const localePath = useLocalePath();

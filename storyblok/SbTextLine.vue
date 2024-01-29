@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { Richtext } from 'storyblok-js-client';
+  import type { ISbRichtext } from 'storyblok-js-client';
 
   const { formatRichText } = useMediaHandler();
 
@@ -34,7 +34,7 @@
             content: [
               node,
             ],
-          } as Richtext)),
+          } as ISbRichtext)),
         });
       }
     });

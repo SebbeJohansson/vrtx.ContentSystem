@@ -4,7 +4,7 @@ import { apiPlugin } from '@storyblok/vue';
 
 import { acceptedPageTypes } from './usePageFetch';
 
-export interface Blok {
+interface Blok {
   story: ISbStoryData;
   stories: ISbStoryData[];
   cv: number,
