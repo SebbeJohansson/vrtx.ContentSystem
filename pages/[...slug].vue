@@ -38,9 +38,9 @@
       pageMeta.value.seamless_header = response.value.content.seamless_header;
     });
     // // Fetch menu.
-    // await useMenuFetch();
+    await useMenuFetch();
     // // Fetch footer.
-    // await useFooterFetch();
+    await useFooterFetch();
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);
