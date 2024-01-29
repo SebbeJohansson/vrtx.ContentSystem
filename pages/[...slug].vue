@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  try {
-    // Fetch first page.
+  import type { ISbStoryData } from '@storyblok/vue/dist';
 
-    // console.log('route:', route);
-    // const pageContent = usePageContent();
-    const pageType = usePageType();
+  const pageContent = ref({} as ISbStoryData);
+  const pageType = ref('');
+
+  try {
     const pagePreview = usePagePreview();
     const pageMeta = usePageMeta();
 
@@ -34,10 +34,10 @@
       resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories,sb-blog-post.author',
     }).then((response) => {
       if (!response) { return; }
-
+      console.log('response:', response.value.content);
       pageContent.value = response.value;
 
-      pageType.value = response.value.content.component.substring(3);
+      usePageType().value = response.value.content.component.substring(3);
       pageMeta.value.title = response.value.content.title;
       pageMeta.value.description = response.value.content.description;
       pageMeta.value.seamless_header = response.value.content.seamless_header;
@@ -50,29 +50,18 @@
     // eslint-disable-next-line no-console
     console.error(e);
   }
-
-  const layout = usePageType();
   const pageMeta = usePageMeta();
 
   usePageTypeCheck();
-
-  const pageContent = usePageContent();
 </script>
 
 <template>
-  <div v-if="layout" class="app">
+  <div class="app">
     <Head>
       <Title>{{ pageMeta.title }}</Title>
       <Meta name="description" :content="pageMeta.description" />
     </Head>
-    <NuxtLayout :name="layout" fallback="default">
-      <component
-        :is="$resolveStoryBlokComponent(pageContent)"
-        v-if="pageContent.content"
-        :blok="pageContent.content"
-        :raw="pageContent"
-      />
-    </NuxtLayout>
+    <StoryblokComponent :blok="pageContent.content" :raw="pageContent" />
   </div>
 </template>
 
