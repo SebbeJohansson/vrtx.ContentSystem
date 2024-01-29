@@ -1,10 +1,10 @@
-export interface DeviceSpecificHeightType {
+interface DeviceSpecificHeightType {
   mobile: string;
   tablet: string;
   desktop: string;
 }
 
-export interface Image {
+interface Image {
   url: string;
   alt_text: string;
   focal_point: string | undefined;
@@ -12,12 +12,12 @@ export interface Image {
   title: string;
 }
 
-export interface Background {
+interface Background {
   image: Image;
   color: string;
 }
 
-export interface MediaArguments {
+interface MediaArguments {
   maxHeight?: number | undefined;
   maxWidth?: number | undefined;
   skipAutoFormat?: boolean | undefined;

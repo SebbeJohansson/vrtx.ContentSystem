@@ -1,5 +1,3 @@
-import type { HeaderMenu, MenuDepartment } from '~/interfaces/menu';
-
 export const useMenuContent = () => useState<HeaderMenu>('menuContent', () => ({} as HeaderMenu));
 export const useSelectedMenuDepartment = () => useState<MenuDepartment | undefined>('selectedMenuDepartment', () => (undefined));
 

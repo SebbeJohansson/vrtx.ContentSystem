@@ -1,5 +1,4 @@
-import { ISbStoryData } from '@storyblok/vue/dist';
-import { PageMeta } from '~/interfaces/page';
+import type { ISbStoryData } from '@storyblok/vue/dist';
 
 export const usePageContent = () => useState<ISbStoryData>('pageContent', () => ({} as ISbStoryData));
 export const usePageType = () => useState<string>('pageType', () => '');

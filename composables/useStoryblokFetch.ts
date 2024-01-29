@@ -1,7 +1,6 @@
 import type { ISbStoryData } from '@storyblok/vue/dist';
-import type { MenuDepartment, HeaderMenu } from '~/interfaces/menu';
 
-export interface Blok {
+interface Blok {
   story: ISbStoryData;
   stories: ISbStoryData[];
   cv: number,

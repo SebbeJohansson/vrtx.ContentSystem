@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { Image, Background } from '../composables/useContent';
-
   const { $isArrayEmpty } = useNuxtApp();
 
   const props = defineProps({

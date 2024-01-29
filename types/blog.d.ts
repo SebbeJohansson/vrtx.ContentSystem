@@ -1,6 +1,4 @@
-import type { Image } from './content';
-
-export interface BlogPost {
+interface BlogPost {
   key: string;
   title: string;
   cover_color: string;
@@ -9,13 +7,13 @@ export interface BlogPost {
   slug: string;
 }
 
-export interface BlogCategory {
+interface BlogCategory {
   key: string;
   title: string;
   slug: string;
 }
 
-export interface BlogAuthor {
+interface BlogAuthor {
   key: string;
   first_name: string;
   last_name: string;

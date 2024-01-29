@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import type { BlogPost } from '~/interfaces/blog';
-
   const { toImageUrl } = useMediaHandler();
 
   defineProps({
