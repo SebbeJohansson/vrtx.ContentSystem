@@ -1,5 +1,5 @@
-import { ISbStoryData } from '@storyblok/vue/dist';
-import { MenuDepartment, HeaderMenu } from '~/interfaces/menu';
+import type { ISbStoryData } from '@storyblok/vue/dist';
+import type { MenuDepartment, HeaderMenu } from '~/interfaces/menu';
 
 export interface Blok {
   story: ISbStoryData;
@@ -8,43 +8,6 @@ export interface Blok {
 }
 
 export const useGetAcceptedStoryblokPageTypes = () => acceptedPageTypes.map(pageType => `sb-${pageType}`);
-
-export const useStoryblokPageFetch = async (locale: string) => {
-  const pageContent = usePageContent();
-  const pageType = usePageType();
-  const pagePreview = usePagePreview();
-  const pageMeta = usePageMeta();
-
-  const route = useRoute();
-
-  const currentRoute = { ...route };
-  const localeString = `/${locale}`;
-  if (currentRoute.path.startsWith(localeString)) {
-    currentRoute.path = currentRoute.path.slice(localeString.length);
-  }
-  if (currentRoute.path === '/') {
-    currentRoute.path = 'index';
-  }
-
-  const isPreview = !!(currentRoute.query._storyblok && currentRoute.query._storyblok !== '');
-  const version = isPreview ? 'draft' : 'published';
-  pagePreview.value = isPreview;
-
-  await useAsyncStoryblok(currentRoute.path, {
-    version,
-    language: locale,
-    resolve_relations: 'sb-blog-page.categories,sb-blog-post.categories,sb-blog-post.author',
-  }).then((response) => {
-    if (!response) { return; }
-
-    pageContent.value = response.value;
-
-    pageType.value = response.value.content.component.substring(3);
-    pageMeta.value.title = response.value.content.title;
-    pageMeta.value.description = response.value.content.description;
-    pageMeta.value.seamless_header = response.value.content.seamless_header;
-  });
-};
 
 function menuDepartmentMapper(storyblokDepartment: any) {
   let link;

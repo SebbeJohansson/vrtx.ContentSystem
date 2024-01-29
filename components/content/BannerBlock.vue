@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { DeviceSpecificHeightType, Background } from '~/interfaces/content';
+  import type { DeviceSpecificHeightType, Background } from '~/interfaces/content';
 
   const { $isArrayEmpty } = useNuxtApp();
 

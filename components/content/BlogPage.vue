@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { BlogPost } from '~/interfaces/blog';
+  import type { BlogPost } from '~/interfaces/blog';
 
   const { toImageUrl } = useMediaHandler();
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { MenuDepartment } from '~/interfaces/menu';
+  import type { MenuDepartment } from '~/interfaces/menu';
 
   const props = defineProps({
     department: {

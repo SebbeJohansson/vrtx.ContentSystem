@@ -1,4 +1,4 @@
-import { Image } from './content';
+import type { Image } from './content';
 
 export interface BlogPost {
   key: string;

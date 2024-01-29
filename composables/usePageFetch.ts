@@ -8,17 +8,6 @@ export const usePageMeta = () => useState<PageMeta>('pageMeta', () => ({} as Pag
 
 export const acceptedPageTypes = ['content-page', 'blog-page', 'blog-post', 'blog-category'];
 
-/* usePageFetch - Fetches content from storyblok. */
-export const usePageFetch = async () => {
-  const route = useRoute();
-  const { locale } = useI18n();
-
-  watch(() => route.path, async () => {
-    await useStoryblokPageFetch(locale.value);
-  });
-  await useStoryblokPageFetch(locale.value);
-};
-
 export const useGetDynamicRoutes = async () => {
   await useStoryblokFetchDynamicRoutes();
 };

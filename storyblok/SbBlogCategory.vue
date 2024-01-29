@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { ISbStoryData } from '@storyblok/vue/dist';
+  import type { ISbStoryData } from '@storyblok/vue/dist';
 
-  import { BlogPost } from '~/interfaces/blog';
+  import type { BlogPost } from '~/interfaces/blog';
 
   const pagePreview = usePagePreview();
 
