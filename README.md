@@ -4,14 +4,17 @@ ARCHIVED - Because of security issues in dependencies, this repository is archiv
 
 -----
 
-
-
-
-
-
-
-
 <a href="https://www.buymeacoffee.com/sebbejohansson"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Monster&emoji=🐉&slug=sebbejohansson&button_colour=000000&font_colour=48e704&font_family=Bree&outline_colour=48e704&coffee_colour=48e704" height="40px"/></a>
+
+<details>
+  <summary>content below is only included for historial purposes</summary>
+
+
+
+
+
+
+
 
 Uses [nuxt3](https://v3.nuxtjs.org) and [storyblok](https://www.storyblok.com/).
 
@@ -122,3 +125,6 @@ The other option is to manually create a repo and add the repo as an upstream yo
 **Multi-CMS version**
 
 Go to the [multi-cms branch](https://github.com/SebbeJohansson/vrtx.ContentSystem/tree/multi-cms) to see the older version that were prepped for multiple cmses.
+
+
+</details>
